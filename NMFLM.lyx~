@@ -69,7 +69,128 @@
 
 \begin_body
 
+\begin_layout Title
+NMF in LM
+\end_layout
+
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Quantum dots are good for microscopy because they are bright and photo-stable.
+ LM can't really use them because they are difficult to controle.
+ (Some recent publications in LM using QDs.
+ Stress that LM is very accessible and cheap.) We try first to separate the
+ individual sources and then localise them individually contraty to the
+ fitting of the model of the PSF and intentistie to the time data.
+ This accomodates the PSF of different shapes as no prior knowledge about
+ hte PSF (apart from the non-negativity constraints) are used.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+One of the issue is to estimate the number of components in the data.
+ As this might result in differnet reconstruction (demonstration).
+ Different appraches of the K estimation.
+ Compare PCA, BIC, variational LB and correlations in residuals.
+ Come up with a way to determine a kink in the data.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LM concept
+\begin_inset Newline newline
+\end_inset
+
+Existing work - MAP, ICA, [1.
+ Chien, F.-C., Kuo, C.W.
+ & Chen, P.
+ Localization imaging using blinking quantum dots.
+ The Analyst 136, 1608-13 (2011).] 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+NMF and GaP model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+NMF introducioion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Model comparison
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Compare on simulation BIC, PCA, variational approach and residual correlation
+ analysis.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+GaP introduction.
+ Explain what they have in comon and what is different.
+ Variational approach to GaP.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Out of focus PSF
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Real data of the NMF separation.
+ Out of focus PSF.
+ Localisation of the individual out of focus PSFs?
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
