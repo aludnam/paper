@@ -313,7 +313,7 @@ key "Lee2001"
 \end_inset
 
  that maximizes the likelihood of model for data corrupted with Poisson
- noise which makes it a method of choice compard to ICA.
+ noise.
 \end_layout
 
 \begin_layout Standard
@@ -326,11 +326,7 @@ We use the NMF model to separate the individual sources form the movie of
 \begin_layout Standard
 Apart from the non-negativity, NMF does not put any other constraints on
  the spatial or temporal part of the decomposition.
- Therefore NMF can separate overlapping sources each with different shape
- and blinking behavior.
- For example, sources in different focal depths or sources distorted by
- abberations of the optical system can be revealed from noisy data.
- 
+ Therefore it can reveal sources with different shapes 
 \end_layout
 
 \begin_layout Section

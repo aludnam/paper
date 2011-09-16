@@ -79,7 +79,7 @@ status open
 
 \begin_layout Plain Layout
 Quantum dots are good for microscopy because they are bright and photo-stable.
- LM can't really use them because they are difficult to controle.
+ LM cant really use them because they are difficult to controle.
  (Some recent publications in LM using QDs.
  Stress that LM is very accessible and cheap.) We try first to separate the
  individual sources and then localise them individually contraty to the
@@ -94,8 +94,20 @@ One of the issue is to estimate the number of components in the data.
  As this might result in differnet reconstruction (demonstration).
  Different appraches of the K estimation.
  Compare PCA, BIC, variational LB and correlations in residuals.
- Come up with a way to determine a kink in the data.
  
+\end_layout
+
+\begin_layout Plain Layout
+Give a draft to Chris by the end of the next week.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+When to go to Germany? Beginning of Octobre? 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -112,7 +124,12 @@ Introduction
 status open
 
 \begin_layout Plain Layout
-LM concept
+LM concept (+ Stress that LM is very accessible and cheap.)
+\begin_inset Newline newline
+\end_inset
+
+QD good for LM (bright and stable) but current method cant use QD because
+ of the blinking (cant be controlled).
 \begin_inset Newline newline
 \end_inset
 
@@ -120,7 +137,7 @@ Existing work - MAP, ICA, [1.
  Chien, F.-C., Kuo, C.W.
  & Chen, P.
  Localization imaging using blinking quantum dots.
- The Analyst 136, 1608-13 (2011).] 
+ The Analyst 136, 1608-13 (2011).]
 \begin_inset Newline newline
 \end_inset
 
@@ -129,11 +146,129 @@ Existing work - MAP, ICA, [1.
 
 \end_inset
 
+Localisation microscopy (LM) is a conceptually simple and accessible technique
+ providing superresolution images of fluorescently labeled samples 
+\begin_inset Note Note
+status open
 
+\begin_layout Plain Layout
+references
+\end_layout
+
+\end_inset
+
+.
+ It reconstruct the image by localising individual fluorophores with precision
+ surpassing the calssical resolutioin limt 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ober2004"
+
+\end_inset
+
+.
+ LM make use of the fluorophore transition between bright (ON) and dark
+ (OFF) states.
+ Standard LM techniques (PALM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hess2006"
+
+\end_inset
+
+, STORM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rust2006"
+
+\end_inset
+
+) controle transition between these states by photo-switching of the fluorophore
+s as they require only one source to be ON within a diffraction limited
+ area at a time.
+ This is achieved by driving the sample into a state where only a small
+ subset of the fluorophores are in ON state.
+ The superresolution image is composed from the repetitive localisation
+ of the different subsets of individual fluorophores.
+ An optimal number of the ON sources in each acquisition frame must experimantal
+ly estimated as a high density of the ON fluorophores results in overlapping
+ sources that cannot be localised whereas a small density lead to a long
+ acquistion time 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Small2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Quantum dots (QD) are an order of magnitude brighter compared to the organic
+ dyes used in standard LM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jaiswal2004,Resch-Genger2008"
+
+\end_inset
+
+.
+ Under a continuous excitation the standard QDs exhibit a stochastic blinking
+ between ON and OFF states 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "nirmal1996fluorescence,Kuno2001,Stefani2009"
+
+\end_inset
+
+.
+ An excellent photo-stability, low cyto-toxicity and unique spectral properties
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Resch-Genger2008"
+
+\end_inset
+
+ make QDs very attractive for biological research.
+ However, the stochastic blinking makes QDs impractical for the standard
+ LM as the rate of ON-OFF transition is difficult to control.
+ This results in highly overlapping sources that cannot be localised with
+ standard LM techniques.
+\end_layout
+
+\begin_layout Standard
+Some methods exploiting the blinking behaviour of the QD have been proposed.
+ Maximum aposteriori fitting of the positions and the intensities of known
+ individual point spread functions (PSFs) into a movie of blinking QD (QD
+ data) has been proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrington2008"
+
+\end_inset
+
+.
+ Independent component analysis (ICA) of the QD data was sugggested in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lidke2005"
+
+\end_inset
+
+ and a resolution improvement by a statistical analysis of the intensity
+ fluctuation (SOFI) has been demonstrated 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2010a"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
-NMF and GaP model
+NMF
 \end_layout
 
 \begin_layout Standard
@@ -141,12 +276,49 @@ NMF and GaP model
 status open
 
 \begin_layout Plain Layout
-NMF introducioion
+NMF introducioion - KL update -> Poisson data.
+ Blind in time and space.
+ Local minima (multiple restarts).
+ Relation to the RL deconvolution.
+ Mention GaP as a generative probabilistic model for NMF (introduce H as
+ hidden variables).
+ Explain what has NMF and GaP in comon and what is different.
+ 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Non-negative matrix factorisation (NMF) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lee1999"
+
+\end_inset
+
+ is a natural model for QD data.
+ It models the movie of blinking QDs as a combination of the individual
+ sources with fluctuating intensities.
+ Unlike ICA, NMF imposes a natural non-negativity constraints on the images
+ of the inidvidual sources and their intensities.
+ Moreover, we used a NMF algorith
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lee2001"
+
+\end_inset
+
+ that maximizes the likelihood of model for data corrupted with Poisson
+ noise.
+\end_layout
+
+\begin_layout Standard
+We use the model to separate the individual sources form the movie of the
+ blinking QDs.
+ We 
 \end_layout
 
 \begin_layout Section
@@ -158,16 +330,17 @@ Model comparison
 status open
 
 \begin_layout Plain Layout
-Compare on simulation BIC, PCA, variational approach and residual correlation
+Compare on simulations BIC, PCA, variational approach and residual correlation
  analysis.
- 
 \end_layout
 
 \begin_layout Plain Layout
-GaP introduction.
- Explain what they have in comon and what is different.
- Variational approach to GaP.
- 
+Variational approach to GaP.
+ (short about integrating out H, W are parameters)
+\end_layout
+
+\begin_layout Plain Layout
+Simulations (?)
 \end_layout
 
 \end_inset
@@ -186,8 +359,24 @@ status open
 \begin_layout Plain Layout
 Real data of the NMF separation.
  Out of focus PSF.
- Localisation of the individual out of focus PSFs?
+ Identification of the number of sources.
+ Localisation of the individual out of focus PSFs? Structure 3D? 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references/QuantumDots,references/Microscopy,references/MachineLearning,references/SNARE"
+options "plain"
 
 \end_inset
 
