@@ -3,6 +3,27 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\usepackage{overcite}
+\usepackage{multicol}
+\date{}
+
+\hyphenation{the-o-re-ti-cal}
+\hyphenation{fluo-ro-pho-re}
+\hyphenation{Fluo-ro-pho-re}
+\hyphenation{fluo-res-cen-ce}
+\hyphenation{Fluo-res-cen-ce}
+\hyphenation{ma-the-ma-ti-cal}
+\hyphenation{Ma-the-ma-ti-cal}
+\hyphenation{in-ter-fero-met-er}
+\hyphenation{ex-pe-ri-ment}
+\hyphenation{pa-ra-me-ters}
+\hyphenation{se-pa-ra-ted}
+\hyphenation{exo-cy-to-sis}
+\hyphenation{in-ves-ti-ga-ted}
+\hyphenation{Har-ring-ton-at-all}
+\hyphenation{re-so-lu-ti-on}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -37,7 +58,7 @@
 \pdf_backref page
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -52,6 +73,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -106,8 +131,17 @@ Give a draft to Chris by the end of the next week.
 When to go to Germany? Beginning of Octobre? 
 \end_layout
 
+\end_inset
+
+
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+
+\backslash
+begin{multicols}{2}
 \end_layout
 
 \end_inset
@@ -147,19 +181,16 @@ Existing work - MAP, ICA, [1.
 \end_inset
 
 Localisation microscopy (LM) is a conceptually simple and accessible technique
- providing superresolution images of fluorescently labeled samples 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-references
-\end_layout
+ providing superresolution fluorescent images
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hess2006,Huang2008,Linde2008,Jones2011"
 
 \end_inset
 
 .
- It reconstruct the image by localising individual fluorophores with precision
- surpassing the calssical resolutioin limt 
+ The structure of the sample is reconstructed by localising individual fluoropho
+res with precision surpassing the calssical resolutioin limt 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ober2004"
@@ -169,7 +200,7 @@ key "Ober2004"
 .
  LM make use of the fluorophore transition between bright (ON) and dark
  (OFF) states.
- Standard LM techniques (PALM 
+ Standard LM techniques (fPALM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hess2006"
@@ -183,17 +214,17 @@ key "Rust2006"
 
 \end_inset
 
-) controle transition between these states by photo-switching of the fluorophore
-s as they require only one source to be ON within a diffraction limited
- area at a time.
+) control ON-OFF transition by photo-switching of the fluorophores as they
+ require only one source to be ON within a diffraction limited area at a
+ time.
  This is achieved by driving the sample into a state where only a small
  subset of the fluorophores are in ON state.
  The superresolution image is composed from the repetitive localisation
  of the different subsets of individual fluorophores.
- An optimal number of the ON sources in each acquisition frame must experimantal
-ly estimated as a high density of the ON fluorophores results in overlapping
- sources that cannot be localised whereas a small density lead to a long
- acquistion time 
+ An optimal number of the ON sources in each acquisition frame must be experiman
+tally estimated as a small density lead to a long acquistion time whereas
+ a high density of the ON fluorophores results in overlapping sources that
+ cannot be localised 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Small2009"
@@ -205,7 +236,7 @@ key "Small2009"
 
 \begin_layout Standard
 Quantum dots (QD) are an order of magnitude brighter compared to the organic
- dyes used in standard LM 
+ dyes used in the standard LM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Jaiswal2004,Resch-Genger2008"
@@ -213,8 +244,8 @@ key "Jaiswal2004,Resch-Genger2008"
 \end_inset
 
 .
- Under a continuous excitation the standard QDs exhibit a stochastic blinking
- between ON and OFF states 
+ Under a continuous excitation the QDs exhibit a stochastic blinking between
+ ON and OFF states 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nirmal1996fluorescence,Kuno2001,Stefani2009"
@@ -304,7 +335,7 @@ key "Lee1999"
  a spatial component - images of the individual sources - and a temporal
  component - their fluctuating intensities.
  Unlike ICA, NMF imposes a natural non-negativity constraints on the images
- of the inidvidual sources and their intensities.
+ of the inidvidual sources (point spread function PSF) and their intensities.
  Moreover, we used a NMF algorith
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -313,20 +344,17 @@ key "Lee2001"
 \end_inset
 
  that maximizes the likelihood of model for data corrupted with Poisson
- noise.
+ noise which makes it a method of choice compard to ICA.
 \end_layout
 
 \begin_layout Standard
-We use the NMF model to separate the individual sources form the movie of
- the blinking QDs.
- The separated individual sources can then be localised the same way as
- in the standard LM.
-\end_layout
-
-\begin_layout Standard
-Apart from the non-negativity, NMF does not put any other constraints on
- the spatial or temporal part of the decomposition.
- Therefore it can reveal sources with different shapes 
+NMF does not put any constraints on the shpae or blinking behavior of the
+ individual sources (apart from being non-negative).
+ Therefore NMF can separate images overlapping fluorophores each having
+ different shape and blinking behavior.
+ This can, for example, arise in a 3D sample where sources can be in different
+ focal depth.
+ This results in variety of point spread function
 \end_layout
 
 \begin_layout Section
@@ -347,13 +375,25 @@ Variational approach to GaP.
  (short about integrating out H, W are parameters)
 \end_layout
 
-\begin_layout Plain Layout
-Simulations (?)
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+NMF requires a prior knowledge about the number of sources (
+\begin_inset Formula $K$
+\end_inset
+
+) to be separated.
+ Principal component analysis (PCA) can be used as a simple method for dimension
+ality estimation.
+ However, for noisy data the estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ is difficult.
+ 
 \end_layout
 
 \begin_layout Section
@@ -374,9 +414,176 @@ Real data of the NMF separation.
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Notes
 \end_layout
 
 \begin_layout Standard
+Fitting of the multiple PSF into the STORM data is in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Supplementary materials
+\end_layout
+
+\begin_layout Standard
+Spatial temporal data (movie) of blinking quantum dots can be ragarded as
+ a 
+\begin_inset Formula $N\times T$
+\end_inset
+
+ data matrix 
+\begin_inset Formula $\bm{D}(x,\, t)$
+\end_inset
+
+ where 
+\begin_inset Formula $N$
+\end_inset
+
+ is a number of pixels and 
+\begin_inset Formula $T$
+\end_inset
+
+ is a number of time frames in the movie.
+ Each frame in the movie is transformed into a colmun of the matrix 
+\begin_inset Formula $\bm{D}$
+\end_inset
+
+ by concateneting columns of the 2D image into a 
+\begin_inset Formula $N\times1$
+\end_inset
+
+ vector.
+ Non-negative matrix factorisation (NMF) makes an approximative decomposition
+ 
+\begin_inset Formula 
+\begin{equation}
+\bm{D}\approx\bm{WH},\label{eq:NMF approximative}
+\end{equation}
+
+\end_inset
+
+where the 
+\begin_inset Formula $N\times T$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\bm{D}$
+\end_inset
+
+ is expresssed as a multiplication of the 
+\begin_inset Formula $N\times K$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\bm{W}$
+\end_inset
+
+ and 
+\begin_inset Formula $K\times T$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\bm{H}$
+\end_inset
+
+ subject to the non-negativity constraints on the entries 
+\begin_inset Formula $w_{xk}\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $h_{kt}\geq0$
+\end_inset
+
+.
+ Each column 
+\begin_inset Formula $\bm{w}_{k}$
+\end_inset
+
+ of the matrix 
+\begin_inset Formula $\bm{W}$
+\end_inset
+
+ (
+\begin_inset Formula $N\times1$
+\end_inset
+
+ vector) then represents a 
+\begin_inset Formula $k$
+\end_inset
+
+th image of one source and each row 
+\begin_inset Formula $\bm{h}_{t}^{T}$
+\end_inset
+
+ of the matrix 
+\begin_inset Formula $\bm{H}$
+\end_inset
+
+ (
+\begin_inset Formula $1\times T$
+\end_inset
+
+ vector) represents the time profile of hte 
+\begin_inset Formula $k$
+\end_inset
+
+th source blinking.
+\end_layout
+
+\begin_layout Standard
+The NMF algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lee2001"
+
+\end_inset
+
+ makes the decomposition such that the likelihood function of the model
+ is maximised under assumption of the Poisson noise.
+ The approximative factorisation
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF approximative"
+
+\end_inset
+
+ can then be written as 
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\bm{D}\right]=\bm{WH},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbb{E}\left[.\right]$
+\end_inset
+
+ denotes expectation value of the noisy data.
+ 
 \begin_inset Newpage clearpage
 \end_inset
 
