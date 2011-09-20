@@ -8,6 +8,8 @@
 \usepackage{multicol}
 \date{}
 
+\renewcommand{\appendixname}{Supplementary material}
+
 \hyphenation{the-o-re-ti-cal}
 \hyphenation{fluo-ro-pho-re}
 \hyphenation{Fluo-ro-pho-re}
@@ -104,20 +106,20 @@ status open
 
 \begin_layout Plain Layout
 Quantum dots are good for microscopy because they are bright and photo-stable.
- LM cant really use them because they are difficult to controle.
+ LM cant really use them because they are difficult to control.
  (Some recent publications in LM using QDs.
  Stress that LM is very accessible and cheap.) We try first to separate the
  individual sources and then localise them individually contraty to the
  fitting of the model of the PSF and intentistie to the time data.
  This accomodates the PSF of different shapes as no prior knowledge about
- hte PSF (apart from the non-negativity constraints) are used.
+ the PSF (apart from the non-negativity constraints) are used.
  
 \end_layout
 
 \begin_layout Plain Layout
 One of the issue is to estimate the number of components in the data.
- As this might result in differnet reconstruction (demonstration).
- Different appraches of the K estimation.
+ As this might result in different reconstruction (demonstration).
+ Different approaches of the K estimation.
  Compare PCA, BIC, variational LB and correlations in residuals.
  
 \end_layout
@@ -128,7 +130,53 @@ Give a draft to Chris by the end of the next week.
 \end_layout
 
 \begin_layout Plain Layout
-When to go to Germany? Beginning of Octobre? 
+When to go to Germany? Beginning of October? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Images:
+\end_layout
+
+\begin_layout Itemize
+main article:
+\begin_inset Newline newline
+\end_inset
+
+Resolution of wo sources vs estimation of the K for two sources.
+ Or for 10 sources? 
+\begin_inset Newline newline
+\end_inset
+
+Separated out of focus PSFs.
+ 
+\end_layout
+
+\begin_layout Itemize
+supplementary materials:
+\begin_inset Newline newline
+\end_inset
+
+K estimation comparison for PCA, variational lower bound and correlations.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Localisation of the individual components demonstrated on the simulated
+ data.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Comparison to ICA?
 \end_layout
 
 \end_inset
@@ -149,7 +197,7 @@ begin{multicols}{2}
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsubsection*
 Introduction
 \end_layout
 
@@ -180,8 +228,8 @@ Existing work - MAP, ICA, [1.
 
 \end_inset
 
-Localisation microscopy (LM) is a conceptually simple and accessible technique
- providing superresolution fluorescent images
+Localisation microscopy (LM) is a conceptually simple and an accessible
+ technique providing super-resolution fluorescent images
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hess2006,Huang2008,Linde2008,Jones2011"
@@ -190,17 +238,38 @@ key "Hess2006,Huang2008,Linde2008,Jones2011"
 
 .
  The structure of the sample is reconstructed by localising individual fluoropho
-res with precision surpassing the calssical resolutioin limt 
+res with precision surpassing 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ober2004"
 
 \end_inset
 
+ the classical resolution limit 
+\begin_inset Formula $\delta=\frac{\lambda}{\mbox{2NA}}$
+\end_inset
+
+, where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the wavelength of the emmission light and 
+\begin_inset Formula $\mbox{NA}$
+\end_inset
+
+ is the numerical aperture of the objective lens.
+ LM makes use of the fluorophore transition between bright (ON) and dark
+ (OFF) states to discriminate individual sources separated by a distance
+ 
+\begin_inset Formula $d<\delta$
+\end_inset
+
 .
- LM make use of the fluorophore transition between bright (ON) and dark
- (OFF) states.
- Standard LM techniques (fPALM 
+ 
+\end_layout
+
+\begin_layout Standard
+Standard LM techniques (fPALM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hess2006"
@@ -219,15 +288,24 @@ key "Rust2006"
  time.
  This is achieved by driving the sample into a state where only a small
  subset of the fluorophores are in ON state.
- The superresolution image is composed from the repetitive localisation
- of the different subsets of individual fluorophores.
- An optimal number of the ON sources in each acquisition frame must be experiman
-tally estimated as a small density lead to a long acquistion time whereas
- a high density of the ON fluorophores results in overlapping sources that
- cannot be localised 
+ The super-resolution image is composed from the repetitive localisation
+ of the different subsets of individual spatially separated fluorophores.
+ An optimal number of the ON sources in each acquisition frame must be experimen
+tally estimated 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Small2009"
+
+\end_inset
+
+ as a small density lead to a long acquisition time whereas a high density
+ of the ON fluorophores results in overlapping sources and complicates localizat
+ion.
+ However, some recent concepts suggest algorithms which can deal with high
+ density of the ON sources
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
 
 \end_inset
 
@@ -236,7 +314,7 @@ key "Small2009"
 
 \begin_layout Standard
 Quantum dots (QD) are an order of magnitude brighter compared to the organic
- dyes used in the standard LM 
+ dyes used in the conventional LM 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Jaiswal2004,Resch-Genger2008"
@@ -269,8 +347,8 @@ key "Resch-Genger2008"
 \end_layout
 
 \begin_layout Standard
-Some methods exploiting the blinking behaviour of the QD have been proposed.
- Maximum aposteriori fitting of the positions and the intensities of known
+Some methods exploiting the blinking behavior of the QDs have been proposed.
+ Maximum a posteriori fitting of the positions and the intensities of known
  individual point spread functions (PSFs) into a movie of blinking QD (QD
  data) has been proposed in 
 \begin_inset CommandInset citation
@@ -280,25 +358,25 @@ key "Harrington2008"
 \end_inset
 
 .
- Independent component analysis (ICA) of the QD data was sugggested in 
+ Independent component analysis (ICA) of the QD data was suggested in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lidke2005"
 
 \end_inset
 
- and a resolution improvement by a statistical analysis of the intensity
- fluctuation (SOFI) has been demonstrated 
+ and a resolution improvement by an analysis of the intensity fluctuation
+ (SOFI) has been demonstrated 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Dertinger2010a"
+key "Dertinger2010b"
 
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsubsection*
 NMF
 \end_layout
 
@@ -307,13 +385,13 @@ NMF
 status open
 
 \begin_layout Plain Layout
-NMF introducioion - KL update -> Poisson data.
+NMF introduction - KL update -> Poisson data.
  Blind in time and space.
  Local minima (multiple restarts).
  Relation to the RL deconvolution.
  Mention GaP as a generative probabilistic model for NMF (introduce H as
  hidden variables).
- Explain what has NMF and GaP in comon and what is different.
+ Explain what has NMF and GaP in common and what is different.
  
 \end_layout
 
@@ -323,41 +401,49 @@ NMF introducioion - KL update -> Poisson data.
 \end_layout
 
 \begin_layout Standard
-Non-negative matrix factorisation (NMF) 
+We used non-negative matrix factorisation (NMF) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lee1999"
 
 \end_inset
 
- is a natural model for QD data.
- It decomposes spatio-temporal data - a movie of the blinking QDs - into
- a spatial component - images of the individual sources - and a temporal
- component - their fluctuating intensities.
- Unlike ICA, NMF imposes a natural non-negativity constraints on the images
- of the inidvidual sources (point spread function PSF) and their intensities.
- Moreover, we used a NMF algorith
+ as a natural model for QD data.
+ NMF decomposes spatio-temporal data (a movie of the blinking QDs) into
+ spatial components (time independent images of the individual sources)
+ and temporal components (fluctuating intensities).
+ NMF imposes a natural non-negativity constraints on the images of the individua
+l sources (point spread function PSF) and their intensities.
+ Moreover, we used a NMF algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lee2001"
 
 \end_inset
 
- that maximizes the likelihood of model for data corrupted with Poisson
- noise which makes it a method of choice compard to ICA.
+ that maximizes the likelihood of the model for data corrupted with Poisson
+ noise.
+ This makes NMF a method of choice compared to ICA based approach
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lidke2005"
+
+\end_inset
+
+ which allows negative entries in the separated components and does not
+ account for noise in the measured data.
 \end_layout
 
 \begin_layout Standard
-NMF does not put any constraints on the shpae or blinking behavior of the
+NMF does not put any constraints on the shape or blinking behavior of the
  individual sources (apart from being non-negative).
- Therefore NMF can separate images overlapping fluorophores each having
- different shape and blinking behavior.
- This can, for example, arise in a 3D sample where sources can be in different
- focal depth.
- This results in variety of point spread function
+ Therefore NMF can separate overlapping sources each having different shape
+ and blinking behavior.
+ This can, for example, arise in a 3D sample where fluorophores can be in
+ different focal depths and therefore each exhibiting a different PSF.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsubsection*
 Model comparison
 \end_layout
 
@@ -381,13 +467,13 @@ Variational approach to GaP.
 \end_layout
 
 \begin_layout Standard
-NMF requires a prior knowledge about the number of sources (
+NMF alogrithm requires a prior knowledge about the number of sources 
 \begin_inset Formula $K$
 \end_inset
 
-) to be separated.
- Principal component analysis (PCA) can be used as a simple method for dimension
-ality estimation.
+ to be separated.
+ Principal component analysis of the data (PCA) can be used as a simple
+ method for dimensionality estimation.
  However, for noisy data the estimation of 
 \begin_inset Formula $K$
 \end_inset
@@ -396,7 +482,96 @@ ality estimation.
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+As the results of NMF are the maximum-likelihood estimates, the higher 
+\begin_inset Formula $K$
+\end_inset
+
+ leeds to a higher likelihood (or a lower residual error) as more sources
+ are better able to fit the data, however, overestimating 
+\begin_inset Formula $K$
+\end_inset
+
+ produces a spurious unrealistic sources.
+ On the other hand, an underestimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ results in incorrect source shapes as one component must fit several sources.
+ Therefore a reliable estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ is vital for a succesfull separation.
+\end_layout
+
+\begin_layout Standard
+A Bayesian treatment of the probabilistic formulation of NMF 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Canny2004,Buntine2006"
+
+\end_inset
+
+ can quantitatively evaluate a credibility of the individual models with
+ different values of 
+\begin_inset Formula $K$
+\end_inset
+
+ for a given data set 
+\begin_inset Formula ${\bf D}$
+\end_inset
+
+ - the posterior probability 
+\begin_inset Formula $p(K|{\bf D})$
+\end_inset
+
+.
+ We can then choose the 
+\begin_inset Formula $K$
+\end_inset
+
+ which maximizes this quantity.
+ However, a test on simulated data suggests that this approach systematicaly
+ underestimates 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We achieved more reliable estimate of 
+\begin_inset Formula $K$
+\end_inset
+
+ by analysing the residuals data-model.
+ Underestimateion of 
+\begin_inset Formula $K$
+\end_inset
+
+ gives rise to correlations in certains areas of the image as several individual
+ emmiters are explained by a single component.
+ The correlatins in residuals should drop to a chance level for a model
+ with at least 
+\begin_inset Formula $K_{\mbox{true}}$
+\end_inset
+
+ sources.
+ A slight overestimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ does not lead to any further significant improvement.
+ We can evaluat We can then select the 
+\begin_inset Formula $K$
+\end_inset
+
+ where the last significant drop in correlations appears.
+\end_layout
+
+\begin_layout Subsubsection*
 Out of focus PSF
 \end_layout
 
@@ -430,32 +605,25 @@ end{multicols}
 \end_layout
 
 \begin_layout Section
-Notes
-\end_layout
-
-\begin_layout Standard
-Fitting of the multiple PSF into the STORM data is in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Holden2011"
+\start_of_appendix
+Supplementary materials
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Supplementary-materials"
 
 \end_inset
 
-.
-\end_layout
 
-\begin_layout Section*
-Supplementary materials
 \end_layout
 
 \begin_layout Standard
-Spatial temporal data (movie) of blinking quantum dots can be ragarded as
+Spatial temporal data (movie) of blinking quantum dots can be regarded as
  a 
 \begin_inset Formula $N\times T$
 \end_inset
 
  data matrix 
-\begin_inset Formula $\bm{D}(x,\, t)$
+\begin_inset Formula ${\bf D}$
 \end_inset
 
  where 
@@ -467,11 +635,11 @@ Spatial temporal data (movie) of blinking quantum dots can be ragarded as
 \end_inset
 
  is a number of time frames in the movie.
- Each frame in the movie is transformed into a colmun of the matrix 
-\begin_inset Formula $\bm{D}$
+ Each frame in the movie is transformed into a column of the matrix 
+\begin_inset Formula ${\bf D}$
 \end_inset
 
- by concateneting columns of the 2D image into a 
+ by concatenating columns of the 2D image into a 
 \begin_inset Formula $N\times1$
 \end_inset
 
@@ -480,7 +648,7 @@ Spatial temporal data (movie) of blinking quantum dots can be ragarded as
  
 \begin_inset Formula 
 \begin{equation}
-\bm{D}\approx\bm{WH},\label{eq:NMF approximative}
+{\bf D}\approx{\bf WH},\label{eq:NMF approximative}
 \end{equation}
 
 \end_inset
@@ -490,15 +658,15 @@ where the
 \end_inset
 
  matrix 
-\begin_inset Formula $\bm{D}$
+\begin_inset Formula ${\bf D}$
 \end_inset
 
- is expresssed as a multiplication of the 
+ is expressed as a multiplication of the 
 \begin_inset Formula $N\times K$
 \end_inset
 
  matrix 
-\begin_inset Formula $\bm{W}$
+\begin_inset Formula ${\bf W}$
 \end_inset
 
  and 
@@ -506,11 +674,11 @@ where the
 \end_inset
 
  matrix 
-\begin_inset Formula $\bm{H}$
+\begin_inset Formula ${\bf H}$
 \end_inset
 
  subject to the non-negativity constraints on the entries 
-\begin_inset Formula $w_{xk}\geq0$
+\begin_inset Formula $w_{nk}\geq0$
 \end_inset
 
  and 
@@ -523,34 +691,34 @@ where the
 \end_inset
 
  of the matrix 
-\begin_inset Formula $\bm{W}$
+\begin_inset Formula ${\bf W}$
 \end_inset
 
  (
 \begin_inset Formula $N\times1$
 \end_inset
 
- vector) then represents a 
+ vector) then represents an image of the 
 \begin_inset Formula $k$
 \end_inset
 
-th image of one source and each row 
-\begin_inset Formula $\bm{h}_{t}^{T}$
+th source and each row 
+\begin_inset Formula $\bm{h}_{k}$
 \end_inset
 
  of the matrix 
-\begin_inset Formula $\bm{H}$
+\begin_inset Formula ${\bf H}$
 \end_inset
 
  (
 \begin_inset Formula $1\times T$
 \end_inset
 
- vector) represents the time profile of hte 
+ vector) represents the time profile of the 
 \begin_inset Formula $k$
 \end_inset
 
-th source blinking.
+th source intensity.
 \end_layout
 
 \begin_layout Standard
@@ -561,9 +729,16 @@ key "Lee2001"
 
 \end_inset
 
- makes the decomposition such that the likelihood function of the model
- is maximised under assumption of the Poisson noise.
- The approximative factorisation
+ makes the decomposition 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF approximative"
+
+\end_inset
+
+ such that the likelihood function of the model is maximised under assumption
+ of the Poisson noise.
+ The approximative factorisation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:NMF approximative"
@@ -572,9 +747,9 @@ reference "eq:NMF approximative"
 
  can then be written as 
 \begin_inset Formula 
-\[
-\mathbb{E}\left[\bm{D}\right]=\bm{WH},
-\]
+\begin{equation}
+\mathbb{E}\left[{\bf D}\right]={\bf WH},\label{eq:NMF relaxed}
+\end{equation}
 
 \end_inset
 
@@ -582,8 +757,190 @@ where
 \begin_inset Formula $\mathbb{E}\left[.\right]$
 \end_inset
 
- denotes expectation value of the noisy data.
- 
+ denotes expectation value of the noisy data with respect to the Poisson
+ distribution.
+\end_layout
+
+\begin_layout Standard
+Gamma-Poisson model (GaP) has been proposed as a probabilistic model for
+ NMF
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Canny2004"
+
+\end_inset
+
+.
+ The entries 
+\begin_inset Formula $h_{kt}$
+\end_inset
+
+ of the intensity matrix 
+\begin_inset Formula ${\bf H}$
+\end_inset
+
+ are regarded as latent variables generated form a Gamma distribution with
+ parameters 
+\begin_inset Formula $\alpha_{k},\ \beta_{k}$
+\end_inset
+
+ and the data modelled as Poisson variable with mean 
+\begin_inset Formula ${\bf WH}$
+\end_inset
+
+ as in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF relaxed"
+
+\end_inset
+
+.
+ Variables 
+\begin_inset Formula $\theta=\{\bm{w}_{k},\alpha_{k},\beta_{k},\, k=1..K\}$
+\end_inset
+
+ are then parameters of the GaP model.
+ The variational approximation of the GaP model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buntine2006"
+
+\end_inset
+
+ provides a lower bound 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ on the likelihood function 
+\begin_inset Formula $p({\bf D}|K,\theta)$
+\end_inset
+
+ with latent variables 
+\begin_inset Formula $\bm{h}_{k}$
+\end_inset
+
+ integrated out.
+ We can express the posterior distribution 
+\begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)p(K)$
+\end_inset
+
+ where 
+\begin_inset Formula $p(K)$
+\end_inset
+
+ is a prior distribution over values of 
+\begin_inset Formula $K$
+\end_inset
+
+ and 
+\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|\theta,K)p(\theta|K)d\theta$
+\end_inset
+
+ is a marginal likelihood.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+nejak mi to vlastne neni jasne...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A different approach to estimating the number of components 
+\begin_inset Formula $K$
+\end_inset
+
+ is to analyse the 
+\begin_inset Formula $N\times T$
+\end_inset
+
+ residual matrix 
+\begin_inset Formula $\bm{S}$
+\end_inset
+
+ (entries 
+\begin_inset Formula $s_{xt}$
+\end_inset
+
+).
+ After evaluating the model 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF relaxed"
+
+\end_inset
+
+ for different values of 
+\begin_inset Formula $K$
+\end_inset
+
+, we compute a standartised residual matrix with entries 
+\begin_inset Formula 
+\[
+s_{nt}=\frac{d_{nt}-\sum_{k=1}^{K}w_{nk}h_{kt}}{\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}}.
+\]
+
+\end_inset
+
+The factor 
+\begin_inset Formula $1/\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}$
+\end_inset
+
+ is applied in order to standardise the residuals of Poisson distributed
+ data.
+ We can then compute the 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ correlation matrix 
+\begin_inset Formula 
+\[
+\bm{C}_{S}=\bm{SS}^{T},
+\]
+
+\end_inset
+
+and the 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ matrix of the correlation coefficients 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\bm{R}_{S}$
+\end_inset
+
+ with entries 
+\begin_inset Formula 
+\begin{equation}
+r_{ij}=\frac{c_{ij}}{\sqrt{c_{ii}c_{jj}}}.\label{eq:Correlation in residuals}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Underestimation of the number of sources (
+\begin_inset Formula $K$
+\end_inset
+
+ too small) will lead to correlations between some pixels as the model will
+ try to explain multiple sources by one component.
+ For 
+\begin_inset Formula $K=K_{\mbox{true}}$
+\end_inset
+
+ the correlations are expected to drop to a base level and teh residuals
+ become uncorrelated.
 \begin_inset Newpage clearpage
 \end_inset
 
