@@ -70,7 +70,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\use_refstyle 1
+\use_refstyle 0
 \index Index
 \shortcut idx
 \color #008000
@@ -423,7 +423,7 @@ key "Lee2001"
 
  that maximizes the likelihood of the model for data corrupted with Poisson
  noise.
- This makes NMF a method of choice compared to ICA based approach
+ This makes NMF a method of choice compared to the ICA 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lidke2005"
@@ -546,29 +546,24 @@ We achieved more reliable estimate of
 \begin_inset Formula $K$
 \end_inset
 
- by analysing the residuals data-model.
- Underestimateion of 
+ by analysing the residuals (data-model).
+ Underestimation of 
 \begin_inset Formula $K$
 \end_inset
 
- gives rise to correlations in certains areas of the image as several individual
- emmiters are explained by a single component.
- The correlatins in residuals should drop to a chance level for a model
- with at least 
-\begin_inset Formula $K_{\mbox{true}}$
-\end_inset
-
- sources.
- A slight overestimation of 
+ gives rise to correlations in certains areas of the image as multiple individua
+l emmiters have to be represented with fewer components.
+ A correct number (or overestimation) of 
 \begin_inset Formula $K$
 \end_inset
 
- does not lead to any further significant improvement.
- We can evaluat We can then select the 
+ removes this correlations.
+ We can select the smallest 
 \begin_inset Formula $K$
 \end_inset
 
- where the last significant drop in correlations appears.
+ which eliminates the resdual correlations.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -910,10 +905,6 @@ and the
 \end_inset
 
  matrix of the correlation coefficients 
-\begin_inset Formula $ $
-\end_inset
-
-
 \begin_inset Formula $\bm{R}_{S}$
 \end_inset
 
