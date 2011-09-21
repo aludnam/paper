@@ -286,10 +286,8 @@ key "Rust2006"
 ) control ON-OFF transition by photo-switching of the fluorophores as they
  require only one source to be ON within a diffraction limited area at a
  time.
- This is achieved by driving the sample into a state where only a small
- subset of the fluorophores are in ON state.
- The super-resolution image is composed from the repetitive localisation
- of the different subsets of individual spatially separated fluorophores.
+ The super-resolution image is achieved by repetitive localisation of the
+ different subsets of individual spatially separated fluorophores.
  An optimal number of the ON sources in each acquisition frame must be experimen
 tally estimated 
 \begin_inset CommandInset citation
@@ -298,7 +296,7 @@ key "Small2009"
 
 \end_inset
 
- as a small density lead to a long acquisition time whereas a high density
+ as a small density leads to a long acquisition time whereas a high density
  of the ON fluorophores results in overlapping sources and complicates localizat
 ion.
  However, some recent concepts suggest algorithms which can deal with high
@@ -332,15 +330,15 @@ key "nirmal1996fluorescence,Kuno2001,Stefani2009"
 
 .
  An excellent photo-stability, low cyto-toxicity and unique spectral properties
- 
+ make QDs very attractive for biological research
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Resch-Genger2008"
 
 \end_inset
 
- make QDs very attractive for biological research.
- However, the stochastic blinking makes QDs impractical for the standard
+.
+ However, the stochastic blinking of QDs is impractical for the standard
  LM as the rate of ON-OFF transition is difficult to control.
  This results in highly overlapping sources that cannot be localised with
  standard LM techniques.
@@ -348,9 +346,9 @@ key "Resch-Genger2008"
 
 \begin_layout Standard
 Some methods exploiting the blinking behavior of the QDs have been proposed.
- Maximum a posteriori fitting of the positions and the intensities of known
- individual point spread functions (PSFs) into a movie of blinking QD (QD
- data) has been proposed in 
+ Maximum a-posteriori (MAP) fitting of the positions and the intensities
+ of known individual point spread functions (PSFs) into a movie of blinking
+ QD (QD data) has been proposed in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Harrington2008"
@@ -409,19 +407,19 @@ key "Lee1999"
 \end_inset
 
  as a natural model for QD data.
- NMF decomposes spatio-temporal data (a movie of the blinking QDs) into
- spatial components (time independent images of the individual sources)
- and temporal components (fluctuating intensities).
- NMF imposes a natural non-negativity constraints on the images of the individua
-l sources (point spread function PSF) and their intensities.
- Moreover, we used a NMF algorithm
+ NMF decomposes a movie of the blinking QDs into spatial components (time
+ independent images of the individual sources) and temporal components (fluctuat
+ing intensities).
+ NMF imposes natural non-negativity constraints on the images of the individual
+ sources (point spread function PSF) and their intensities.
+ Moreover, we used the NMF algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lee2001"
 
 \end_inset
 
- that maximizes the likelihood of the model for data corrupted with Poisson
+ which maximizes the likelihood of the model for data corrupted with Poisson
  noise.
  This makes NMF a method of choice compared to the ICA 
 \begin_inset CommandInset citation
@@ -430,15 +428,17 @@ key "Lidke2005"
 
 \end_inset
 
- which allows negative entries in the separated components and does not
- account for noise in the measured data.
+.
+ ICA allows negative entries in the separated components and does not account
+ for noise in the measured data.
+ 
 \end_layout
 
 \begin_layout Standard
 NMF does not put any constraints on the shape or blinking behavior of the
  individual sources (apart from being non-negative).
  Therefore NMF can separate overlapping sources each having different shape
- and blinking behavior.
+ and blinking characteristics.
  This can, for example, arise in a 3D sample where fluorophores can be in
  different focal depths and therefore each exhibiting a different PSF.
 \end_layout
@@ -538,7 +538,46 @@ key "Canny2004,Buntine2006"
 \end_inset
 
 .
- 
+\end_layout
+
+\begin_layout Standard
+The posterior distribution 
+\begin_inset Formula $p(K|{\bf D})$
+\end_inset
+
+ representes an evidence for a praticular value of 
+\begin_inset Formula $K$
+\end_inset
+
+ given a data set 
+\begin_inset Formula ${\bf D}$
+\end_inset
+
+.
+ This quantity can be estimated by Bayesian treatment of the probabilistic
+ formulation of NMF 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Canny2004,Buntine2006"
+
+\end_inset
+
+.
+ We can then choose the 
+\begin_inset Formula $K$
+\end_inset
+
+ which maximizes 
+\begin_inset Formula $p(K|{\bf D})$
+\end_inset
+
+.
+ However, a test on simulated data suggests that this approach systematicaly
+ underestimates 
+\begin_inset Formula $K$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -553,16 +592,16 @@ We achieved more reliable estimate of
 
  gives rise to correlations in certains areas of the image as multiple individua
 l emmiters have to be represented with fewer components.
- A correct number (or overestimation) of 
+ Increasing 
 \begin_inset Formula $K$
 \end_inset
 
- removes this correlations.
+ gradually reduces residual correlatins.
  We can select the smallest 
 \begin_inset Formula $K$
 \end_inset
 
- which eliminates the resdual correlations.
+ which eliminates the resdual correlations to a certain level.
  
 \end_layout
 
