@@ -553,8 +553,8 @@ We achieved more reliable estimate of
 
  gives rise to correlations in certains areas of the image as several individual
  emmiters are explained by a single component.
- The correlatins in residuals should drop to a base level for a model with
- at least 
+ The correlatins in residuals should drop to a chance level for a model
+ with at least 
 \begin_inset Formula $K_{\mbox{true}}$
 \end_inset
 
@@ -564,11 +564,11 @@ We achieved more reliable estimate of
 \end_inset
 
  does not lead to any further significant improvement.
- We can then select the 
+ We can evaluat We can then select the 
 \begin_inset Formula $K$
 \end_inset
 
- where the last significant drop appears.
+ where the last significant drop in correlations appears.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -936,11 +936,11 @@ Underestimation of the number of sources (
  too small) will lead to correlations between some pixels as the model will
  try to explain multiple sources by one component.
  For 
-\begin_inset Formula $K=K$
+\begin_inset Formula $K=K_{\mbox{true}}$
 \end_inset
 
- the correlations are expected to decrease until we reach a sufficient number
- of sources to explain the data and the residuals become uncorrelated.
+ the correlations are expected to drop to a base level and teh residuals
+ become uncorrelated.
 \begin_inset Newpage clearpage
 \end_inset
 

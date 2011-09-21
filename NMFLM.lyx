@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 1.6.10 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
 \begin_document
 \begin_header
 \textclass article
@@ -27,26 +27,18 @@
 \hyphenation{re-so-lu-ti-on}
 \end_preamble
 \use_default_options true
-\maintain_unincluded_children false
 \language english
-\language_package default
 \inputencoding auto
-\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
 \font_default_family default
-\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 
 \graphics default
-\default_output_format default
-\output_sync 0
-\bibtex_command default
-\index_command default
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -63,18 +55,9 @@
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
-\use_mhchem 1
-\use_mathdots 1
 \cite_engine basic
 \use_bibtopic false
-\use_indices false
 \paperorientation portrait
-\suppress_date false
-\use_refstyle 1
-\index Index
-\shortcut idx
-\color #008000
-\end_index
 \leftmargin 2cm
 \topmargin 2cm
 \rightmargin 2cm
@@ -82,16 +65,14 @@
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\paragraph_indentation default
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
 \output_changes false
-\html_math_output 0
-\html_css_as_file 0
-\html_be_strict false
+\author "" 
 \end_header
 
 \begin_body
@@ -646,10 +627,8 @@ Spatial temporal data (movie) of blinking quantum dots can be regarded as
  vector.
  Non-negative matrix factorisation (NMF) makes an approximative decomposition
  
-\begin_inset Formula 
-\begin{equation}
-{\bf D}\approx{\bf WH},\label{eq:NMF approximative}
-\end{equation}
+\begin_inset Formula \begin{equation}
+{\bf D}\approx{\bf WH},\label{eq:NMF approximative}\end{equation}
 
 \end_inset
 
@@ -746,10 +725,8 @@ reference "eq:NMF approximative"
 \end_inset
 
  can then be written as 
-\begin_inset Formula 
-\begin{equation}
-\mathbb{E}\left[{\bf D}\right]={\bf WH},\label{eq:NMF relaxed}
-\end{equation}
+\begin_inset Formula \begin{equation}
+\mathbb{E}\left[{\bf D}\right]={\bf WH},\label{eq:NMF relaxed}\end{equation}
 
 \end_inset
 
@@ -880,10 +857,8 @@ reference "eq:NMF relaxed"
 \end_inset
 
 , we compute a standartised residual matrix with entries 
-\begin_inset Formula 
-\[
-s_{nt}=\frac{d_{nt}-\sum_{k=1}^{K}w_{nk}h_{kt}}{\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}}.
-\]
+\begin_inset Formula \[
+s_{nt}=\frac{d_{nt}-\sum_{k=1}^{K}w_{nk}h_{kt}}{\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}}.\]
 
 \end_inset
 
@@ -898,10 +873,8 @@ The factor
 \end_inset
 
  correlation matrix 
-\begin_inset Formula 
-\[
-\bm{C}_{S}=\bm{SS}^{T},
-\]
+\begin_inset Formula \[
+\bm{C}_{S}=\bm{SS}^{T},\]
 
 \end_inset
 
@@ -910,18 +883,12 @@ and the
 \end_inset
 
  matrix of the correlation coefficients 
-\begin_inset Formula $ $
-\end_inset
-
-
 \begin_inset Formula $\bm{R}_{S}$
 \end_inset
 
  with entries 
-\begin_inset Formula 
-\begin{equation}
-r_{ij}=\frac{c_{ij}}{\sqrt{c_{ii}c_{jj}}}.\label{eq:Correlation in residuals}
-\end{equation}
+\begin_inset Formula \begin{equation}
+r_{ij}=\frac{c_{ij}}{\sqrt{c_{ii}c_{jj}}}.\label{eq:Correlation in residuals}\end{equation}
 
 \end_inset
 
