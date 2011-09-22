@@ -6,6 +6,9 @@
 \begin_preamble
 \usepackage{overcite}
 \usepackage{multicol}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{graphicx}
+
 \date{}
 
 \renewcommand{\appendixname}{Supplementary material}
@@ -96,6 +99,145 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+homepath}{/Users/ondrejmandula}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sfnpath}{/DTC/postersfn/Images}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+annreppath}{/DTC/annualreport/images}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+presimgpath}{/DTC/presentantios/images}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+qdotspath}{/project/data/qdots}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+spacedef}{10mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizea}{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizeb}{.8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizec}{.6}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sized}{.4}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizee}{.3}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizef}{.25}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizeg}{.2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizeh}{.15}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 NMF in LM
 \end_layout
@@ -131,6 +273,11 @@ Give a draft to Chris by the end of the next week.
 
 \begin_layout Plain Layout
 When to go to Germany? Beginning of October? 
+\end_layout
+
+\begin_layout Plain Layout
+Maybe measure the similarity of the simulated and recovered sources? (comparison
+ of ICA and NMF)
 \end_layout
 
 \end_inset
@@ -265,29 +412,8 @@ key "Ober2004"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Standard LM techniques (fPALM 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hess2006"
-
-\end_inset
-
-, STORM 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Rust2006"
-
-\end_inset
-
-) control ON-OFF transition by photo-switching of the fluorophores as they
- require only one source to be ON within a diffraction limited area at a
- time.
- The super-resolution image is achieved by repetitive localisation of the
- different subsets of individual spatially separated fluorophores.
+ The super-resolution image is achieved by a repetitive localisation of
+ the different individual spatially separated subsets of fluorophores.
  An optimal number of the ON sources in each acquisition frame must be experimen
 tally estimated 
 \begin_inset CommandInset citation
@@ -308,6 +434,22 @@ key "Holden2011"
 \end_inset
 
 .
+ Standard LM techniques (fPALM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hess2006"
+
+\end_inset
+
+, STORM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rust2006"
+
+\end_inset
+
+) control the density of the ON sources by photo-switching.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -324,7 +466,7 @@ key "Jaiswal2004,Resch-Genger2008"
  ON and OFF states 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "nirmal1996fluorescence,Kuno2001,Stefani2009"
+key "Stefani2009"
 
 \end_inset
 
@@ -339,16 +481,16 @@ key "Resch-Genger2008"
 
 .
  However, the stochastic blinking of QDs is impractical for the standard
- LM as the rate of ON-OFF transition is difficult to control.
- This results in highly overlapping sources that cannot be localised with
- standard LM techniques.
+ LM as the rate of ON-OFF transition and hence the density of the ON sources
+ is difficult to control.
+ QD labled data typically consist of highly overlapping sources which cannot
+ be localised with the standard LM techniques.
 \end_layout
 
 \begin_layout Standard
 Some methods exploiting the blinking behaviour of the QDs have been proposed.
  Maximum a-posteriori (MAP) fitting of the positions and the intensities
- of known individual point spread functions (PSFs) into a movie of blinking
- QD (QD data) has been proposed in 
+ of known point spread functions (PSFs) to blinking QD data has been proposed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Harrington2008"
@@ -356,7 +498,7 @@ key "Harrington2008"
 \end_inset
 
 .
- Independent component analysis (ICA) of the QD data was suggested in 
+ Independent component analysis (ICA) of the QD data was suggested
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lidke2005"
@@ -364,14 +506,14 @@ key "Lidke2005"
 \end_inset
 
  and a resolution improvement by an analysis of the intensity fluctuation
- (SOFI) has been demonstrated 
+ (SOFI
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Dertinger2010b"
 
 \end_inset
 
-.
+) has been demonstrated.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -407,11 +549,11 @@ key "Lee1999"
 \end_inset
 
  as a natural model for QD data.
- NMF decomposes a movie of the blinking QDs into spatial components (time
- independent images of the individual sources) and temporal components (fluctuat
-ing intensities).
- NMF imposes natural non-negativity constraints on the images of the individual
- sources (point spread function PSF) and their intensities.
+ NMF decomposes a movie of the blinking QDs into spatial (time independent
+ images of the individual sources) and temporal parts (fluctuating intensities
+ of each emmiter).
+ NMF imposes natural non-negativity constraints on both the spatial (the
+ images of the individual sources) and the temporal (intensities) components.
  Moreover, we used the NMF algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -435,8 +577,9 @@ key "Lidke2005"
 \end_layout
 
 \begin_layout Standard
-NMF does not put any constraints on the shape or blinking behaviour of the
- individual sources (apart from being non-negative).
+NMF does not put any additional constraints on the shape (point spread function
+ PSF) or blinking behaviour of the individual sources, apart from being
+ non-negative.
  Therefore NMF can separate overlapping sources each having different shape
  and blinking characteristics.
  This can, for example, arise in a 3D sample where fluorophores can be in
@@ -506,6 +649,10 @@ As the results of NMF are the maximum-likelihood estimates, the higher
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 A Bayesian treatment of the probabilistic formulation of NMF 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -540,6 +687,11 @@ key "Canny2004,Buntine2006"
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 The posterior distribution 
 \begin_inset Formula $p(K|{\bf D})$
@@ -555,7 +707,7 @@ The posterior distribution
 
 .
  This quantity can be estimated by Bayesian treatment of the probabilistic
- formulation of NMF 
+ NMF formulation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Canny2004,Buntine2006"
@@ -581,27 +733,59 @@ key "Canny2004,Buntine2006"
 \end_layout
 
 \begin_layout Standard
-We achieved more reliable estimate of 
+We achieved more reliable 
 \begin_inset Formula $K$
 \end_inset
 
- by analysing the residuals (data-model).
- Underestimation of 
+ estimation by analysing the residuals (data-model).
+ The models with low 
 \begin_inset Formula $K$
 \end_inset
 
- gives rise to correlations in certain areas of the image as multiple individual
- emitters have to be represented with fewer components.
- Increasing 
+ gives rise to residual correlations as multiple individual emitters have
+ to be represented with fewer components.
+ Correlations decrease with higher 
 \begin_inset Formula $K$
 \end_inset
 
- gradually reduces residual correlations.
- We can select the smallest 
+.
+ We selected the smallest 
 \begin_inset Formula $K$
 \end_inset
 
- which eliminates the residual correlations to a certain level.
+ which reduces the residual correlations to a certain level.
+ 
+\end_layout
+
+\begin_layout Standard
+The ability to estimate 
+\begin_inset Formula $K$
+\end_inset
+
+ correctly becomes increasigly difficult for closely spaced sources.
+ Simulations of the noisy data comprising of two QDs show that NMF can correctly
+ separate two closely spaces emmiters (
+\begin_inset Formula $d>\delta/10)$
+\end_inset
+
+ when 
+\begin_inset Formula $K=K_{\mbox{true}}$
+\end_inset
+
+.
+ However, the correct estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ is possible only when the two sources are separated at least by 
+\begin_inset Formula $d>\delta/5$
+\end_inset
+
+, where 
+\begin_inset Formula $\delta=\lambda/2\mbox{NA}$
+\end_inset
+
+ is the classical resolution limit.
  
 \end_layout
 
@@ -633,6 +817,13 @@ status open
 end{multicols}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -970,6 +1161,1874 @@ Underestimation of the number of sources (
 
  the correlations are expected to drop to a base level and the residuals
  become uncorrelated.
+\end_layout
+
+\begin_layout Standard
+We used simulated data of two QDs separated by 
+\begin_inset Formula $d$
+\end_inset
+
+ to asses the performance of NMF when we assumed that the number of sources
+ is known 
+\begin_inset Formula $K=K_{\mbox{true}}$
+\end_inset
+
+.
+ Separated components were localised as a maximum likelihood estimator of
+ a gaussian center 
+\begin_inset Formula $\overline{x}_{i}$
+\end_inset
+
+.
+ We computed the mean localisation error per separation for separated components
+\begin_inset Formula 
+\[
+\varepsilon=\frac{1}{d}\frac{e_{1}+e_{2}}{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $e_{i}=\left|\overline{x}_{i}-x_{i}^{\mbox{true}}\right|$
+\end_inset
+
+ corresponds to the localisation error of the 
+\begin_inset Formula $i$
+\end_inset
+
+th source located at 
+\begin_inset Formula $x_{i}^{true}$
+\end_inset
+
+ and 
+\begin_inset Formula $d=\left|x_{1}^{\mbox{true}}-x_{2}^{\mbox{true}}\right|$
+\end_inset
+
+ is the true separation of the emmiters.
+ NMF separated sources are reliably localised for 
+\begin_inset Formula $d>20\mbox{ nm}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We evaluated the model for 
+\begin_inset Formula $K=K_{\mbox{true}}\pm1$
+\end_inset
+
+ and analysed the residual correlations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Correlation in residuals"
+
+\end_inset
+
+.
+ We observed that we can estimate the correct 
+\begin_inset Formula $K$
+\end_inset
+
+ only for sources with 
+\begin_inset Formula $d>50\mbox{ nm}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Figures
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+ima}{$2
+\backslash
+delta$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+imb}{$1.5
+\backslash
+delta$}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+imc}{$
+\backslash
+delta$}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+pca}{, PCA}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+llk}{, log-likelihood}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+lbd}{, lower bound}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+mxc}{, maximum correlation}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+specialsize}{.2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{multicols}{2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=.9]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/dpixc_mean}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+wide field
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace*{-.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1.0cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/ica_Noise_c1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/ica_Noise_c2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ICA (noise)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1.0cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/nmf_noise_c1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/nmf_noise_c2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+NMF (noise)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{1.0cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/ica_noNoise_c1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+specialsize]{
+\backslash
+homepath 
+\backslash
+qdotspath /S310/images/ica_noNoise_c2}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+ICA (noise free)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 	
+\backslash
+end{multicols}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Comparison of the conponents separated with ICA (b) and NMF (c) for noisy
+ data of blinking QDs (mean value shown in (a)).
+ ICA for noise free data shown in (d).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizec]{
+\backslash
+homepath 
+\backslash
+qdotspath /S307/images/maxCorrLocPrec}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Maximum value of correlations in residuals for 
+\begin_inset Formula $K=1$
+\end_inset
+
+ (blue), 
+\begin_inset Formula $2$
+\end_inset
+
+ (green) and 
+\begin_inset Formula $3$
+\end_inset
+
+ (red).
+ Mean localisation error per separation 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ for 
+\begin_inset Formula $K=2$
+\end_inset
+
+.
+ Simulated data of two sources (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+).
+ The difference in residual correlations for 
+\begin_inset Formula $K=1$
+\end_inset
+
+ and 
+\begin_inset Formula $K=2$
+\end_inset
+
+ are apparent only when the two sources are separated at least 
+\begin_inset Formula $50\mbox{ nm}$
+\end_inset
+
+.
+ The classical resolution limit 
+\begin_inset Formula $\delta=273\mbox{ nm}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Localisation precision and maximum correlations"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizebb}{0.7}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizebb]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/reslocalized_nc11_sc20}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ima
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simulations 2.0 delta "
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizebb]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/reslocalized_nc11_sc15}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imb
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simulations 1.5 delta "
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizebb]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/reslocalized_nc11_sc10}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imc
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simulations 1 delta "
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pca
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S301/images/pca_nc20}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ima 
+\backslash
+pca
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S301/images/pca_nc15}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imb 
+\backslash
+pca
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S301/images/pca_nc10}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imc 
+\backslash
+pca
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lower bound
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/LowerBound_nc20}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ima 
+\backslash
+lbd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/LowerBound_nc15}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imb 
+\backslash
+lbd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/LowerBound_nc10}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imc 
+\backslash
+lbd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+These are results from the nmf initialized from the var updates.
+ Somehow smoother curves...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/MaxCorrInResid_nc20_NMF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ima 
+\backslash
+mxc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/MaxCorrInResid_nc15_NMF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imb 
+\backslash
+mxc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizee]{
+\backslash
+homepath 
+\backslash
+qdotspath /S303/images/MaxCorrInResid_nc10_NMF}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imc 
+\backslash
+mxc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $K$
+\end_inset
+
+ estimation for sources contained in a circular area with radius 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ima 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ (left column), 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imb 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ (middle column) and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+imc 
+\backslash
+ 
+\end_layout
+
+\end_inset
+
+ (right column).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of time slices in the sequence
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $K_{true}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of sources in the simulated data
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $10^{2}$
+\end_inset
+
+ photons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Uniform background added to each time slice
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I_{max}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.5\cdot10^{3}$
+\end_inset
+
+ photons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum intensity of a single source in one time slice
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{em}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $655\ \text{nm}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Emission wavelength
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $NA$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Numerical aperture of the objective
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pixel-size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $106$
+\end_inset
+
+ nm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Size of a pixel in the sample plane
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $333\,\text{nm}$
+\end_inset
+
+ (
+\begin_inset Formula $3.1$
+\end_inset
+
+ pixels)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radius of the region containing the sources (
+\begin_inset Formula $\delta=0.61\frac{\lambda_{em}}{NA}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Parameters of the simulation
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Parameters-of-the-simulation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newpage clearpage
 \end_inset
 
