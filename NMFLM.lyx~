@@ -244,19 +244,26 @@ sizeh}{.15}
 
 \begin_layout Title
 NMF in LM
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Abstract
-We used non-negative matrix factorisation (NMF) as a model for blinking
- quantum dots in microscopic samples.
+\begin_layout Plain Layout
+We use non-negative matrix factorisation (NMF) as a model for blinking quantum
+ dots.
  This allows us to separate and subsequently localise individual, sources
- with highl overlapping point spread functions (PSFs).
- NMF does not use any prior information about the shape or the blinking
- characteristics of the individual sources.
- Therefore NMF can be used to recover the individual sources from data where
- each emmiters produces a different PSF.
+ with highly overlapping point spread functions (PSFs).
+ Because NMF does not use any prior information about the shape or the blinking
+ characteristics of the individual sources it can recover different individual
+ PSFs.
  This situation can, for example, arise in 3D samples where the fluorophores
  are in different focal depths.
+ The method is demonstrated on real sample of quantum dots.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -268,9 +275,9 @@ Quantum dots are good for microscopy because they are bright and photo-stable.
  LM cant really use them because they are difficult to control.
  (Some recent publications in LM using QDs.
  Stress that LM is very accessible and cheap.) We try first to separate the
- individual sources and then localise them individually contraty to the
- fitting of the model of the PSF and intentistie to the time data.
- This accomodates the PSF of different shapes as no prior knowledge about
+ individual sources and then localise them individually contrary to the
+ fitting of the model of the PSF and intensity to the time data.
+ This accommodates the PSF of different shapes as no prior knowledge about
  the PSF (apart from the non-negativity constraints) are used.
  
 \end_layout
@@ -315,7 +322,7 @@ main article:
 \begin_inset Newline newline
 \end_inset
 
-Resolution of wo sources vs estimation of the K for two sources.
+Resolution of two sources vs estimation of the K for two sources.
  Or for 10 sources? 
 \begin_inset Newline newline
 \end_inset
@@ -382,7 +389,7 @@ QD good for LM (bright and stable) but current method cant use QD because
 Existing work - MAP, ICA, [1.
  Chien, F.-C., Kuo, C.W.
  & Chen, P.
- Localization imaging using blinking quantum dots.
+ Localisation imaging using blinking quantum dots.
  The Analyst 136, 1608-13 (2011).]
 \begin_inset Newline newline
 \end_inset
@@ -608,7 +615,7 @@ NMF does not put any additional constraints on the shape (point spread function
  Therefore NMF can separate overlapping sources of differing shapes and
  blinking characteristics.
  Variability in PSFs can, for example, arise in a 3D sample where fluorophores
- can be in different focal depths and therefore each exhibiting a different
+ can be in different focal depths and therefore each exhibiting a unique
  PSF.
 \end_layout
 
@@ -627,7 +634,7 @@ Compare on simulations BIC, PCA, variational approach and residual correlation
 
 \begin_layout Plain Layout
 Variational approach to GaP.
- (short about integrating oπut H, W are parameters)
+ (short about integrating out H, W are parameters)
 \end_layout
 
 \end_inset
@@ -755,20 +762,21 @@ key "Canny2004,Buntine2006"
 \end_inset
 
 .
- (Details in suppelentary materials.)
+ (Details in supplementary materials.)
 \end_layout
 
 \begin_layout Standard
-An alternative approach to comparison of the model with different 
+An alternative approach is to analyse the residuals (data-model) for models
+ with different 
 \begin_inset Formula $K$
 \end_inset
 
- is to analyse the residuals data-model.
+.
  Models with low 
 \begin_inset Formula $K$
 \end_inset
 
- give rise to residual correlations because multiple individual emitters
+ give rise to correlations in residuals because multiple individual emitters
  have to be represented with fewer components.
  Correlations decrease with higher 
 \begin_inset Formula $K$
@@ -780,13 +788,13 @@ An alternative approach to comparison of the model with different
 \end_inset
 
  which reduces the residual correlations to a certain level.
- Simulations suggest taht this apprach can provide more reliable estimation
+ Simulations suggest that this approach can provide more reliable estimation
  of 
 \begin_inset Formula $K$
 \end_inset
 
  compared to the variational lower bound method.
- (Details in suppelentary materials.)
+ (Details in supplementary materials.)
 \end_layout
 
 \begin_layout Subsubsection*
@@ -794,9 +802,14 @@ Results
 \end_layout
 
 \begin_layout Standard
-Test on simulated data with different densities of ten QDs suggest (suppementary
- materials) that the analysis of the residuals in correlations provides
- a more accurate estimate of the and we used this method in further computations.
+Test on simulated data with different densities of ten QDs suggests (supplementa
+ry materials) that the analysis of the residuals in correlations provides
+ a more accurate estimate of the number of sources 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ We used this method in further computations.
  
 \end_layout
 
@@ -824,7 +837,7 @@ Simulations of noisy data comprising two QDs show that NMF can reliably
 \begin_inset Formula $K<K_{\mbox{true}}$
 \end_inset
 
- arise only when the two sources are separated at least by 
+ arise only when the two sources are separated by at least 
 \begin_inset Formula $d>\delta/5$
 \end_inset
 
@@ -854,12 +867,12 @@ Out of focus PSF
 \begin_layout Standard
 NMF can extract individual sources with differing shape because apart from
  the non-negativity there is no further constraints on the separated components.
- We show a separation of overlapping out-of-focus point spread fucntions
- (PSF) from a 
+ We show a separation of overlapping out-of-focus point spread functions
+ (PSF) from a movie (
 \begin_inset Formula $10^{3}$
 \end_inset
 
- frames movie of several blinking QDs (supplementary materials fig.
+ frames) of several blinking QDs (fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -870,7 +883,19 @@ reference "fig:Real-QD-data."
 ).
  Individual emitters were in slightly different focal depths and therefore
  each QD produced a distinctive PSF.
- The number of components was estimated from the analysis of the correlations
+ As can be seen from fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Real-QD-data."
+
+\end_inset
+
+ individual PSFs were highly overlapping in each frame.
+ 
+\end_layout
+
+\begin_layout Standard
+The number of components was estimated from the analysis of the correlations
  in residual (fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -884,18 +909,21 @@ reference "fig:real QD - K estimation"
 
 \begin_layout Standard
 NMF was able to recover images of individual sources which correspond to
- realsitic out-of-focus PSFs.
- Each QD was in a slightly different axial position and therefore resuletd
- variety of PSF shapes.
- As can be seen from fig.
- 
+ realistic out-of-focus PSFs (fig.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Real-QD-data."
 
 \end_inset
 
- idividual PSFs are highly overlapping in each frame.
+).
+ It also recovered sources with PSFs only partially present in the selected
+ region.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -922,12 +950,12 @@ Discussion
 
 \begin_layout Standard
 We demonstrated that NMF allows to separate images of individual emitters
- from a movie of bilnking QDs.
+ from a movie of blinking QDs.
  The ability to recover PSFs with different shapes from the data with highly
  overlapping sources makes the method interesting for imaging of 3D samples
  where fluorophores can be in different focal depths and therefore produce
  a variety of different PSFs.
- Diversity in PSFs for individual sources can also arise with abberations
+ Diversity in PSFs for individual sources can also arise with aberrations
  in the optical system.
  
 \end_layout
@@ -935,8 +963,8 @@ We demonstrated that NMF allows to separate images of individual emitters
 \begin_layout Standard
 NMF allows localisation microscopy with blinking QDs, however, NMF is not
  limited to QD only.
- It can separate any source with intermittent intenisty as long as the actual
- fluorophores remain static in space during the acquistion period.
+ It can separate any source with intermittent intensity as long as the actual
+ fluorophores remain static in space during the acquisition period.
  
 \end_layout
 
@@ -948,9 +976,9 @@ A typical data set consist of
  frames and therefore the acquisition time is typically in order of tens
  of seconds.
  During this period the sample must remain still.
- This is a common limiting factor localisation microscopy techniques.
- However, the ability of separating overlapping sources can speed up the
- acquisition compared to standard LM techniques
+ This is a common limiting factor for localisation microscopy techniques.
+ However, as NMF can separate overlapping sources it can speed up the acquisitio
+n compared to the standard LM techniques
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Small2009"
@@ -958,22 +986,25 @@ key "Small2009"
 \end_inset
 
 .
- The possibility of using QDs can make the exposure time shorter because
- QDs are usually brighter than common organic fluorophores used in LM.
+ Moreover the possibility of using QDs can make the exposure time shorter
+ because QDs are usually brighter than common organic fluorophores used
+ in LM.
 \end_layout
 
 \begin_layout Standard
-NMF does not take the temporatl structure of the data into account.
+NMF does not take into account the temporal structure of the data.
  Time frames can be permuted without affecting the separated components.
- This is a disadvantage because QD clearly exhibit temporal structure, the
- periods of ON and OFF times, which can facilitate the factorisation.
+ However, there is a clear temporal structure in QDs blinking - the periods
+ of ON and OFF times.
+ This information would likely facilitate the factorisation.
 \end_layout
 
 \begin_layout Standard
 Reliable estimation of the number of sources is important for correct recovery
  of individual components.
+ This is a difficult task for data with high density of overlapping sources.
  We demonstrated on simulated data that this might be limiting factor for
- resloution and applicability of the method.
+ the resolution and applicability of the method.
 \end_layout
 
 \begin_layout Standard
@@ -1164,7 +1195,7 @@ key "Lee2001"
 
 \end_inset
 
- to compute the facrorisation 
+ to compute the factorisation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:NMF relaxed"
@@ -1426,7 +1457,7 @@ Underestimation of the number of sources (
 \begin_inset Formula $K>\bar{K}$
 \end_inset
 
- does not give any further imporvement.
+ does not give any further improvement.
  
 \end_layout
 
@@ -1451,7 +1482,7 @@ reference "tab:Parameters-of-the-simulation"
 
 .
  The individual QDs were generated as in-focus point-spread functions and
- the intenisty of each source was generated from uniform distribution on
+ the intensity of each source was generated from uniform distribution on
  the interval 
 \begin_inset Formula $\left[0,\, I_{max}\right]$
 \end_inset
@@ -1463,7 +1494,7 @@ reference "tab:Parameters-of-the-simulation"
 \end_layout
 
 \begin_layout Standard
-Two different collections of data-sets were created.
+We generated two different collections of data-sets.
  In the first collection we simulated two sources (
 \begin_inset Formula $K_{\mbox{true}}=2$
 \end_inset
@@ -1477,7 +1508,7 @@ Two different collections of data-sets were created.
 \begin_inset Formula $K_{\mbox{true}}=10$
 \end_inset
 
-) randomly distributed within a circualr area with diameter 
+) randomly distributed within a circular area with diameter 
 \begin_inset Formula $r=\delta,\,1.5\delta$
 \end_inset
 
@@ -1486,12 +1517,12 @@ Two different collections of data-sets were created.
 \end_inset
 
 , where 
-\begin_inset Formula $\delta=\frac{\lambda}{2\mbox{NA}}$
+\begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
 \end_inset
 
  is the classical resolution limit.
  Each dataset in both collections was generated 10 times with a random geometric
-al configuration of the sources.
+al configuration of the individual sources.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1503,12 +1534,12 @@ Estimation of
 \end_layout
 
 \begin_layout Standard
-We compared the preformance of the the variational approximaton of GaP model
- and the analysis of the residual correlations in 
+We compared the performance of the the variational approximation of GaP
+ model and the analysis of the residual correlations in 
 \begin_inset Formula $K$
 \end_inset
 
- estimatinon task.
+ estimation task.
  We used simulated data comprising 
 \begin_inset Formula $ $
 \end_inset
@@ -1527,9 +1558,9 @@ reference "fig: estimation of K by variational lower bound and maximum correlati
 \end_inset
 
 .
- For each density we generated data with 10 random geometrical configuration.
- First 18 principal components eigenvalues for three different random configurat
-ions are plotted in the second row of fig.
+ We generated data with 10 random geometrical configuration for each density.
+ First 18 principal components (PC) eigenvalues for three different random
+ configurations are plotted in the second row of fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: estimation of K by variational lower bound and maximum correlation"
@@ -1538,9 +1569,13 @@ reference "fig: estimation of K by variational lower bound and maximum correlati
 
 .
  For sparse data (left column) we can estimate the number of components
- from the `kink' in the coefficient values.
- The last non-negligible one is the 10th component.
- However for dense data (right) this estimation is impossible.
+ from the `kink' in the spectrum of PC eigenvalues at 
+\begin_inset Formula $K=10$
+\end_inset
+
+.
+ However, for dense data (right) this estimation is impossible to make because
+ the PC eigenvalues drip very gradually.
  
 \end_layout
 
@@ -1549,7 +1584,7 @@ The variational lower bound for models with different
 \begin_inset Formula $K$
 \end_inset
 
- for three different geometrical configuration of the sources is ploted
+ for three different geometrical configuration of the sources is plotted
  in the third line of fig.
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1558,22 +1593,39 @@ reference "fig: estimation of K by variational lower bound and maximum correlati
 \end_inset
 
 .
- For sparse data set (left) the lower bound peaks at the correct 
+ The lower bound peaks at the correct 
 \begin_inset Formula $K=K_{\mbox{true}}$
 \end_inset
 
-, however, for the denser data it tends to reach the maximum for 
+ for sparse data set (left), but for the denser data (right) it tends to
+ reach the maximum for 
 \begin_inset Formula $K<K_{\mbox{true}}$
 \end_inset
 
- and leads to an underestimation of the sources number.
+.
+ The varaitional lower bound systematically underestimates the value of
  
+\begin_inset Formula $K$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The maximum residual correlations is shown in the last line of fig.
+The maximum correlation coefficient 
 \begin_inset CommandInset ref
 LatexCommand eqref
+reference "eq:Correlation in residuals"
+
+\end_inset
+
+ in residuals 
+\begin_inset Formula $\max_{i,j}(r_{ij})$
+\end_inset
+
+ is shown in the last line of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "fig: estimation of K by variational lower bound and maximum correlation"
 
 \end_inset
@@ -1587,16 +1639,12 @@ reference "eq:NMF updates Lee 2001"
 \end_inset
 
 .
- Values for three different configutations are shown.
- The 
+ Values for three different configurations are shown.
+ We can pick the 
 \begin_inset Formula $K$
 \end_inset
 
- were the correlations drop (a `kink') is the estimated 
-\begin_inset Formula $K_{\mbox{true}}$
-\end_inset
-
-.
+ were the `kink' occures.
 \end_layout
 
 \begin_layout Standard
@@ -1612,8 +1660,8 @@ reference "fig:Histogram: Maximum-correlations-in"
 \end_inset
 
 .
- We observe that the analysus of hte maximum residual correlation provides
- a better estimate for the 
+ The analyses of the maximum residual correlation provides a better estimate
+ for 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1656,7 +1704,7 @@ reference "eq:Correlation in residuals"
 
 \end_inset
 
- as a funciton of 
+ as a function of 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1792,7 +1840,7 @@ reference "fig:Localisation precision and maximum correlations"
 \begin_inset Formula $\varepsilon=0.2$
 \end_inset
 
-) and is futher decreasing for higher values of 
+) and is further decreasing for higher values of 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1810,11 +1858,11 @@ reference "fig:Localisation precision and maximum correlations"
 \end_inset
 
 ) shows that the determining factor for resolution of the method is the
- ablility to estimate 
+ ability to estimate 
 \begin_inset Formula $K$
 \end_inset
 
- corectly (here for 
+ correctly (here for 
 \begin_inset Formula $d>50\mbox{ nm}$
 \end_inset
 
@@ -1829,7 +1877,7 @@ Real samples
 \begin_layout Standard
 Solution of QDs (Qdot 565, invitrogen) was deposited and dried on the coverslip
  and imaged with a standard wide-field microscope (100x, 1.4NA) on a CCD
- camera (64nm pixelsize).
+ camera (64nm pixel-size).
  We acquired 
 \begin_inset Formula $10^{3}$
 \end_inset
