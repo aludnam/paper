@@ -410,7 +410,7 @@ key "Ober2004"
 \end_inset
 
  the classical resolution limit 
-\begin_inset Formula $\delta=\frac{\lambda}{\mbox{2NA}}$
+\begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
 \end_inset
 
 , where 
@@ -499,8 +499,8 @@ key "Resch-Genger2008"
 
 .
  However, the stochastic blinking of QDs is impractical for standard LM
- as the rate of ON-OFF transition and hence the density of ON sources is
- difficult to control.
+ because the rate of ON-OFF transition and hence the density of ON sources
+ is difficult to control.
  QD labeled data typically consist of highly overlapping sources which cannot
  be localised with standard LM techniques.
 \end_layout
@@ -589,7 +589,7 @@ key "Lidke2005"
 
 \end_inset
 
- for QD data as ICA allows negative entries in the separated components
+ for QD data because ICA allows negative entries in the separated components
  and does not account for noise in the measured data (fig.
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -674,9 +674,6 @@ The results of NMF are the maximum-likelihood estimates and therefore a
 \end_inset
 
  is vital for a successful separation.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -734,8 +731,8 @@ The posterior distribution
 \end_inset
 
 .
- This quantity can be estimated by Bayesian treatment of the probabilistic
- NMF formulation 
+ A lower bound for this quantity can be estimated by Bayesian treatment
+ of the probabilistic NMF formulation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Canny2004,Buntine2006"
@@ -747,7 +744,7 @@ key "Canny2004,Buntine2006"
 \begin_inset Formula $K$
 \end_inset
 
- which maximises 
+ which maximises the lower bound on 
 \begin_inset Formula $p(K|{\bf D})$
 \end_inset
 
@@ -758,20 +755,21 @@ key "Canny2004,Buntine2006"
 \end_inset
 
 .
+ (Details in suppelentary materials.)
 \end_layout
 
 \begin_layout Standard
-We achieved more reliable 
+An alternative approach to comparison of the model with different 
 \begin_inset Formula $K$
 \end_inset
 
- estimation by analysing the residuals (data-model).
+ is to analyse the residuals data-model.
  Models with low 
 \begin_inset Formula $K$
 \end_inset
 
- give rise to residual correlations as multiple individual emitters have
- to be represented with fewer components.
+ give rise to residual correlations because multiple individual emitters
+ have to be represented with fewer components.
  Correlations decrease with higher 
 \begin_inset Formula $K$
 \end_inset
@@ -782,6 +780,12 @@ We achieved more reliable
 \end_inset
 
  which reduces the residual correlations to a certain level.
+ Simulations suggest taht this apprach can provide more reliable estimation
+ of 
+\begin_inset Formula $K$
+\end_inset
+
+ compared to the variational lower bound method.
  (Details in suppelentary materials.)
 \end_layout
 
@@ -790,12 +794,14 @@ Results
 \end_layout
 
 \begin_layout Standard
-The ability to estimate 
-\begin_inset Formula $K$
-\end_inset
+Test on simulated data with different densities of ten QDs suggest (suppementary
+ materials) that the analysis of the residuals in correlations provides
+ a more accurate estimate of the and we used this method in further computations.
+ 
+\end_layout
 
- correctly becomes increasingly difficult for closely spaced sources.
- Simulations of the noisy data comprising two QDs show that NMF can reliably
+\begin_layout Standard
+Simulations of noisy data comprising two QDs show that NMF can reliably
  separate two close emitters (
 \begin_inset Formula $d>\delta/10)$
 \end_inset
@@ -809,7 +815,12 @@ The ability to estimate
 \end_inset
 
 ).
- However, the high correlations in residuals for 
+ However, the ability to estimate 
+\begin_inset Formula $K$
+\end_inset
+
+ correctly becomes increasingly difficult for closely spaced sources.
+ The high correlations in residuals for 
 \begin_inset Formula $K<K_{\mbox{true}}$
 \end_inset
 
@@ -818,7 +829,7 @@ The ability to estimate
 \end_inset
 
 , where 
-\begin_inset Formula $\delta=\lambda/2\mbox{NA}$
+\begin_inset Formula $\delta=0.61\lambda/\mbox{NA}$
 \end_inset
 
  is the classical resolution limit (fig.
@@ -833,11 +844,6 @@ reference "fig:Localisation precision and maximum correlations"
 \end_inset
 
 ).
- The credible estimation of 
-\begin_inset Formula $K$
-\end_inset
-
- determines the actual resolution limit of the method.
  
 \end_layout
 
@@ -846,6 +852,53 @@ Out of focus PSF
 \end_layout
 
 \begin_layout Standard
+NMF can extract individual sources with differing shape because apart from
+ the non-negativity there is no further constraints on the separated components.
+ We show a separation of overlapping out-of-focus point spread fucntions
+ (PSF) from a 
+\begin_inset Formula $10^{3}$
+\end_inset
+
+ frames movie of several blinking QDs (supplementary materials fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Real-QD-data."
+
+\end_inset
+
+).
+ Individual emitters were in slightly different focal depths and therefore
+ each QD produced a distinctive PSF.
+ The number of components was estimated from the analysis of the correlations
+ in residual (fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:real QD - K estimation"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+NMF was able to recover images of individual sources which correspond to
+ realsitic out-of-focus PSFs.
+ Each QD was in a slightly different axial position and therefore resuletd
+ variety of PSF shapes.
+ As can be seen from fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Real-QD-data."
+
+\end_inset
+
+ idividual PSFs are highly overlapping in each frame.
+\end_layout
+
+\begin_layout Subsubsection*
 \begin_inset Note Note
 status open
 
@@ -864,7 +917,66 @@ Deep tissue imaging.
 
 \end_inset
 
+Discussion
+\end_layout
 
+\begin_layout Standard
+We demonstrated that NMF allows to separate images of individual emitters
+ from a movie of bilnking QDs.
+ The ability to recover PSFs with different shapes from the data with highly
+ overlapping sources makes the method interesting for imaging of 3D samples
+ where fluorophores can be in different focal depths and therefore produce
+ a variety of different PSFs.
+ Diversity in PSFs for individual sources can also arise with abberations
+ in the optical system.
+ 
+\end_layout
+
+\begin_layout Standard
+NMF allows localisation microscopy with blinking QDs, however, NMF is not
+ limited to QD only.
+ It can separate any source with intermittent intenisty as long as the actual
+ fluorophores remain static in space during the acquistion period.
+ 
+\end_layout
+
+\begin_layout Standard
+A typical data set consist of 
+\begin_inset Formula $10^{3}$
+\end_inset
+
+ frames and therefore the acquisition time is typically in order of tens
+ of seconds.
+ During this period the sample must remain still.
+ This is a common limiting factor localisation microscopy techniques.
+ However, the ability of separating overlapping sources can speed up the
+ acquisition compared to standard LM techniques
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Small2009"
+
+\end_inset
+
+.
+ The possibility of using QDs can make the exposure time shorter because
+ QDs are usually brighter than common organic fluorophores used in LM.
+\end_layout
+
+\begin_layout Standard
+NMF does not take the temporatl structure of the data into account.
+ Time frames can be permuted without affecting the separated components.
+ This is a disadvantage because QD clearly exhibit temporal structure, the
+ periods of ON and OFF times, which can facilitate the factorisation.
+\end_layout
+
+\begin_layout Standard
+Reliable estimation of the number of sources is important for correct recovery
+ of individual components.
+ We demonstrated on simulated data that this might be limiting factor for
+ resloution and applicability of the method.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1330,7 +1442,7 @@ name "sub:Simulated-data"
 \end_layout
 
 \begin_layout Standard
-The parameters used for simulations are shown in Table
+The parameters used for simulations are shown in table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Parameters-of-the-simulation"
@@ -1380,6 +1492,222 @@ Two different collections of data-sets were created.
  is the classical resolution limit.
  Each dataset in both collections was generated 10 times with a random geometric
 al configuration of the sources.
+\end_layout
+
+\begin_layout Subsubsection*
+Estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We compared the preformance of the the variational approximaton of GaP model
+ and the analysis of the residual correlations in 
+\begin_inset Formula $K$
+\end_inset
+
+ estimatinon task.
+ We used simulated data comprising 
+\begin_inset Formula $ $
+\end_inset
+
+10 sources (
+\begin_inset Formula $K_{\mbox{true}}=10$
+\end_inset
+
+).
+ The mean image of the data with three different densities of sources is
+ shown in the first line of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+.
+ For each density we generated data with 10 random geometrical configuration.
+ First 18 principal components eigenvalues for three different random configurat
+ions are plotted in the second row of fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+.
+ For sparse data (left column) we can estimate the number of components
+ from the `kink' in the coefficient values.
+ The last non-negligible one is the 10th component.
+ However for dense data (right) this estimation is impossible.
+ 
+\end_layout
+
+\begin_layout Standard
+The variational lower bound for models with different 
+\begin_inset Formula $K$
+\end_inset
+
+ for three different geometrical configuration of the sources is ploted
+ in the third line of fig.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+.
+ For sparse data set (left) the lower bound peaks at the correct 
+\begin_inset Formula $K=K_{\mbox{true}}$
+\end_inset
+
+, however, for the denser data it tends to reach the maximum for 
+\begin_inset Formula $K<K_{\mbox{true}}$
+\end_inset
+
+ and leads to an underestimation of the sources number.
+ 
+\end_layout
+
+\begin_layout Standard
+The maximum residual correlations is shown in the last line of fig.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+.
+ The model was estimated using the NMF updates
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF updates Lee 2001"
+
+\end_inset
+
+.
+ Values for three different configutations are shown.
+ The 
+\begin_inset Formula $K$
+\end_inset
+
+ were the correlations drop (a `kink') is the estimated 
+\begin_inset Formula $K_{\mbox{true}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A histogram of estimated 
+\begin_inset Formula $K$
+\end_inset
+
+ for both methods is shown in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Histogram: Maximum-correlations-in"
+
+\end_inset
+
+.
+ We observe that the analysus of hte maximum residual correlation provides
+ a better estimate for the 
+\begin_inset Formula $K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We used the simulated data of two QDs (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+) separated by 
+\begin_inset Formula $d=0.1-1.2\mbox{ pixels}$
+\end_inset
+
+ to evaluated the model for 
+\begin_inset Formula $K=1,\,2$
+\end_inset
+
+ and 
+\begin_inset Formula $3$
+\end_inset
+
+ and analysed the residual correlations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Correlation in residuals"
+
+\end_inset
+
+.
+ The maximum value 
+\begin_inset Formula $\max_{i,j}(r_{ij})$
+\end_inset
+
+ in the correlation coefficient matrix 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Correlation in residuals"
+
+\end_inset
+
+ as a funciton of 
+\begin_inset Formula $d$
+\end_inset
+
+ is shown in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Localisation precision and maximum correlations"
+
+\end_inset
+
+ for the three different values of 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ For closely spaced sources (
+\begin_inset Formula $d\leq30\mbox{ nm)}$
+\end_inset
+
+ the correlations are approximately on the same level for any 
+\begin_inset Formula $K$
+\end_inset
+
+.
+ However, for 
+\begin_inset Formula $d\geq40\mbox{ nm}$
+\end_inset
+
+ there is a steep increase of the correlations for 
+\begin_inset Formula $K=1$
+\end_inset
+
+ (blue line) compared to 
+\begin_inset Formula $K=2$
+\end_inset
+
+ (green line).
+ The model with 
+\begin_inset Formula $K=3$
+\end_inset
+
+ (red line) does not lead to any further improvement.
+ For this noise level we can therefore estimate the correct 
+\begin_inset Formula $K=2$
+\end_inset
+
+ for emitters separated by at least 
+\begin_inset Formula $d>50\mbox{ nm}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1472,121 +1800,26 @@ reference "fig:Localisation precision and maximum correlations"
  
 \end_layout
 
-\begin_layout Subsubsection*
-Estimation of 
-\begin_inset Formula $K$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-We used the same data (
-\begin_inset Formula $K_{\mbox{true}}=2$
-\end_inset
-
-) to evaluated the model for 
-\begin_inset Formula $K=1,\,2$
-\end_inset
-
- and 
-\begin_inset Formula $3$
-\end_inset
-
- and analysed the residual correlations 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Correlation in residuals"
-
-\end_inset
-
-.
- The maximum value 
-\begin_inset Formula $\max_{i,j}(r_{ij})$
-\end_inset
-
- in the correlation coefficient matrix 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:Correlation in residuals"
-
-\end_inset
-
- as a funciton of 
-\begin_inset Formula $d$
-\end_inset
-
- is shown in fig.
+Comparison with with the maximum residual correlation curves (blue, green,
+ red in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Localisation precision and maximum correlations"
 
 \end_inset
 
- for the three different values of 
+) shows that the determining factor for resolution of the method is the
+ ablility to estimate 
 \begin_inset Formula $K$
 \end_inset
 
-.
- For closely spaced sources (
-\begin_inset Formula $d\leq30\mbox{ nm)}$
-\end_inset
-
- the correlations are approximately on the same level for any 
-\begin_inset Formula $K$
-\end_inset
-
-.
- However, for 
-\begin_inset Formula $d\geq40\mbox{ nm}$
-\end_inset
-
- there is a steep increase of the correlations for 
-\begin_inset Formula $K=1$
-\end_inset
-
- (blue line) compared to 
-\begin_inset Formula $K=2$
-\end_inset
-
- (green line).
- The model with 
-\begin_inset Formula $K=3$
-\end_inset
-
- (red line) does not lead to any further improvement.
- For this noise level we can therefore estimate the correct 
-\begin_inset Formula $K=2$
-\end_inset
-
- for emitters separated at least by 
+ corectly (here for 
 \begin_inset Formula $d>50\mbox{ nm}$
 \end_inset
 
-.
- Comparison with the mean localisation precision (magenta line) suggests
- that the correct estimation of 
-\begin_inset Formula $K$
-\end_inset
-
- determines the resolution of the method.
-\end_layout
-
-\begin_layout Standard
-The dataset with 
-\begin_inset Formula $K_{\mbox{true}}=10$
-\end_inset
-
- with different densities of the sources (see section simulatd data) has
- been evaluated with NMF and with updates for variational approximation
- of the GaP model
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Buntine2006"
-
-\end_inset
-
-.
+).
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1594,8 +1827,25 @@ Real samples
 \end_layout
 
 \begin_layout Standard
-A QDs (Qdot 565, invitrogen) deposited on the coverslip.
+Solution of QDs (Qdot 565, invitrogen) was deposited and dried on the coverslip
+ and imaged with a standard wide-field microscope (100x, 1.4NA) on a CCD
+ camera (64nm pixelsize).
+ We acquired 
+\begin_inset Formula $10^{3}$
+\end_inset
+
+ frames each with 100
+\begin_inset space ~
+\end_inset
+
+ms exposure time.
+ The total acquisition time was about 2 mins.
  
+\end_layout
+
+\begin_layout Standard
+The camera pixels values were converted into a photon counts with a gain
+ estimated from a calibration measurement.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3494,6 +3744,168 @@ status open
 
 
 \backslash
+begin{centering}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=.5]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/KestHist_lb}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Variational lower bound
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histogram:Variational-lower-bound"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=.5]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/KestHist_maxC_Kink}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Maximum correlations in residuals
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histogram: Maximum-correlations-in"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{centering}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Histograms of the 
+\begin_inset Formula $K$
+\end_inset
+
+ estimations for data with three different sources density.
+ (
+\begin_inset Formula $K_{\mbox{true}}=10$
+\end_inset
+
+) 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Histograms-of-the-K-estimation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
 begin{multicols}{2}
 \end_layout
 
@@ -3744,6 +4156,13 @@ end{multicols}
 
 \begin_layout Plain Layout
 Real QD data.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Real-QD-data."
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3896,6 +4315,13 @@ end{centering}
 
 \begin_layout Plain Layout
 Estimation of K
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:real QD - K estimation"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4098,6 +4524,13 @@ Left: mean intensity image correspond to a standard wide-field image.
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:real QDs separated"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
