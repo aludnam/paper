@@ -246,6 +246,19 @@ sizeh}{.15}
 NMF in LM
 \end_layout
 
+\begin_layout Abstract
+We used non-negative matrix factorisation (NMF) as a model for blinking
+ quantum dots in microscopic samples.
+ This allows us to separate and subsequently localise individual, sources
+ with highl overlapping point spread functions (PSFs).
+ NMF does not use any prior information about the shape or the blinking
+ characteristics of the individual sources.
+ Therefore NMF can be used to recover the individual sources from data where
+ each emmiters produces a different PSF.
+ This situation can, for example, arise in 3D samples where the fluorophores
+ are in different focal depths.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -614,7 +627,7 @@ Compare on simulations BIC, PCA, variational approach and residual correlation
 
 \begin_layout Plain Layout
 Variational approach to GaP.
- (short about integrating out H, W are parameters)
+ (short about integrating oπut H, W are parameters)
 \end_layout
 
 \end_inset
@@ -757,7 +770,7 @@ We achieved more reliable
 \begin_inset Formula $K$
 \end_inset
 
- gives rise to residual correlations as multiple individual emitters have
+ give rise to residual correlations as multiple individual emitters have
  to be represented with fewer components.
  Correlations decrease with higher 
 \begin_inset Formula $K$
@@ -769,7 +782,11 @@ We achieved more reliable
 \end_inset
 
  which reduces the residual correlations to a certain level.
- 
+ (Details in suppelentary materials.)
+\end_layout
+
+\begin_layout Subsubsection*
+Results
 \end_layout
 
 \begin_layout Standard
@@ -779,20 +796,24 @@ The ability to estimate
 
  correctly becomes increasingly difficult for closely spaced sources.
  Simulations of the noisy data comprising two QDs show that NMF can reliably
- separate two closely spaces emitters (
+ separate two close emitters (
 \begin_inset Formula $d>\delta/10)$
 \end_inset
 
  when 
+\begin_inset Formula $K_{\mbox{ture}}$
+\end_inset
+
+ is known (
 \begin_inset Formula $K=K_{\mbox{true}}$
 \end_inset
 
-.
- However, the correct estimation of 
-\begin_inset Formula $K$
+).
+ However, the high correlations in residuals for 
+\begin_inset Formula $K<K_{\mbox{true}}$
 \end_inset
 
- is possible only when the two sources are separated at least by 
+ arise only when the two sources are separated at least by 
 \begin_inset Formula $d>\delta/5$
 \end_inset
 
@@ -800,7 +821,23 @@ The ability to estimate
 \begin_inset Formula $\delta=\lambda/2\mbox{NA}$
 \end_inset
 
- is the classical resolution limit.
+ is the classical resolution limit (fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Localisation precision and maximum correlations"
+
+\end_inset
+
+).
+ The credible estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ determines the actual resolution limit of the method.
  
 \end_layout
 
@@ -817,6 +854,12 @@ Real data of the NMF separation.
  Out of focus PSF.
  Identification of the number of sources.
  Localisation of the individual out of focus PSFs? Structure 3D? 
+\end_layout
+
+\begin_layout Plain Layout
+Deep tissue imaging.
+ Why the bright QD dots are good.
+ 
 \end_layout
 
 \end_inset
@@ -847,6 +890,10 @@ name "sub:Supplementary-materials"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection*
+NMF model of the blinking QDs
 \end_layout
 
 \begin_layout Standard
@@ -993,6 +1040,92 @@ where
  distribution.
 \end_layout
 
+\begin_layout Subsubsection*
+NMF updates 
+\end_layout
+
+\begin_layout Standard
+We used iterative NMF updates
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lee2001"
+
+\end_inset
+
+ to compute the facrorisation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NMF relaxed"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{alignat}{1}
+w_{nk} & =\frac{w_{nk}}{\sum_{t=1}^{T}h_{kt}}\left[({\bf D}./{\bf WH}){\bf H^{\top}}\right]_{nk}\nonumber \\
+h_{kt} & =\frac{h_{kt}}{\sum_{n=1}^{N}w_{nk}}\left[{\bf W^{\top}}({\bf D}./{\bf WH})\right]_{kt}\label{eq:NMF updates Lee 2001}
+\end{alignat}
+
+\end_inset
+
+where the `
+\begin_inset Formula $./$
+\end_inset
+
+' operation refers to an element-wise division.
+ The matrix elements 
+\begin_inset Formula $w_{nk}$
+\end_inset
+
+ and 
+\begin_inset Formula $h_{kt}$
+\end_inset
+
+ were initialised at random from uniform distribution.
+ The columns of the matrix 
+\begin_inset Formula ${\bf W}$
+\end_inset
+
+ were normalised such that 
+\begin_inset Formula $\sum_{n}w_{nk}=1$
+\end_inset
+
+.
+ One component was added as a homogeneous, static background: 
+\begin_inset Formula $w_{n(K+1)}=\frac{1}{N}$
+\end_inset
+
+, 
+\begin_inset Formula $h_{(K+1)t}=Nb$
+\end_inset
+
+, where the background value 
+\begin_inset Formula $b$
+\end_inset
+
+ was estimated from the dark regions of the data averaged over time 
+\begin_inset Formula $\frac{1}{T}\sum_{t}d_{nt}$
+\end_inset
+
+.
+ This component was not updated over the iterations.
+ We run each NMF evaluation with five partial restarts - after each run
+ convergence we restarted the values of 
+\begin_inset Formula $h_{kt}$
+\end_inset
+
+ while keeping 
+\begin_inset Formula $w_{xk}$
+\end_inset
+
+.
+ This procedure helps to reach a better local minimum.
+\end_layout
+
+\begin_layout Subsubsection*
+Gamma-Poisson model
+\end_layout
+
 \begin_layout Standard
 The gamma-Poisson (GaP) model has been proposed as a probabilistic model
  for NMF
@@ -1082,6 +1215,10 @@ nejak mi to vlastne neni jasne...
 
 \end_layout
 
+\begin_layout Subsubsection*
+Correlations in residuals
+\end_layout
+
 \begin_layout Standard
 The number of components 
 \begin_inset Formula $K_{\mbox{true}}$
@@ -1107,7 +1244,7 @@ reference "eq:NMF relaxed"
 
 \end_inset
 
- for different values of 
+ for a specific 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1169,34 +1306,104 @@ Underestimation of the number of sources (
 
  the correlations are expected to drop to a base level and the residuals
  become uncorrelated.
+ We can pick up the value of 
+\begin_inset Formula $K=\bar{K}$
+\end_inset
+
+ for which the residual correlations decrease to a certain level and 
+\begin_inset Formula $K>\bar{K}$
+\end_inset
+
+ does not give any further imporvement.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Simulated data
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Simulated-data"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-We used simulated noisy data of two QDs separated by 
-\begin_inset Formula $d$
-\end_inset
-
- to asses the performance of NMF when we assumed that the number of sources
- is known 
-\begin_inset Formula $K=K_{\mbox{true}}$
-\end_inset
-
-.
- Data were simulated with parameters shown in 
+The parameters used for simulations are shown in table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Parameters-of-the-simulation"
 
 \end_inset
 
- for 10 random geometrical configuration of two sources separated by 
-\begin_inset Formula $d$
+.
+ The individual QDs were generated as in-focus point-spread functions and
+ the intenisty of each source was generated from uniform distribution on
+ the interval 
+\begin_inset Formula $\left[0,\, I_{max}\right]$
 \end_inset
 
 .
- Extracted components were localised as a maximum likelihood estimator of
- a gaussian centre 
-\begin_inset Formula $\overline{x}_{i}$
+ A uniform constant background was added to each frame and all pixels were
+ corrupted with Poisson noise.
+ 
+\end_layout
+
+\begin_layout Standard
+Two different collections of data-sets were created.
+ In the first collection we simulated two sources (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+) separated by a distance 
+\begin_inset Formula $d=0.1-1.2\mbox{ pixels}$
+\end_inset
+
+.
+ In the second collection we simulated ten sources (
+\begin_inset Formula $K_{\mbox{true}}=10$
+\end_inset
+
+) randomly distributed within a circualr area with diameter 
+\begin_inset Formula $r=\delta,\,1.5\delta$
+\end_inset
+
+ and 
+\begin_inset Formula $2\delta$
+\end_inset
+
+, where 
+\begin_inset Formula $\delta=\frac{\lambda}{2\mbox{NA}}$
+\end_inset
+
+ is the classical resolution limit.
+ Each dataset in both collections was generated 10 times with a random geometric
+al configuration of the sources.
+\end_layout
+
+\begin_layout Subsubsection*
+Localisation error
+\end_layout
+
+\begin_layout Standard
+To asses the localisation performance of NMF we used dataset of two QDs
+ (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+) separated by 
+\begin_inset Formula $d$
+\end_inset
+
+ and assumed that the number of sources is known 
+\begin_inset Formula $K=K_{\mbox{true}}$
+\end_inset
+
+.
+ Separated components were localised as a maximum likelihood fit of an isotropic
+ 2D gaussian with a centre 
+\begin_inset Formula $\bm{\overline{x}}_{i}$
 \end_inset
 
 .
@@ -1209,7 +1416,7 @@ reference "tab:Parameters-of-the-simulation"
 \end_inset
 
 where 
-\begin_inset Formula $e_{i}=\left|\overline{x}_{i}-x_{i}^{\mbox{true}}\right|$
+\begin_inset Formula $e_{i}=\left|\bm{\overline{x}}_{i}-\bm{x}_{i}^{\mbox{true}}\right|$
 \end_inset
 
  corresponds to the localisation error of the 
@@ -1217,14 +1424,30 @@ where
 \end_inset
 
 th source located at 
-\begin_inset Formula $x_{i}^{true}$
+\begin_inset Formula $\bm{x}_{i}^{true}$
 \end_inset
 
  and 
-\begin_inset Formula $d=\left|x_{1}^{\mbox{true}}-x_{2}^{\mbox{true}}\right|$
+\begin_inset Formula $d=\left|\bm{x}_{1}^{\mbox{true}}-\bm{x}_{2}^{\mbox{true}}\right|$
 \end_inset
 
  is the true separation of the emitters.
+ The estimated 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ for different values of 
+\begin_inset Formula $d$
+\end_inset
+
+ is shown as a magenta line in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Localisation precision and maximum correlations"
+
+\end_inset
+
+.
  For 
 \begin_inset Formula $d>30\mbox{ nm}$
 \end_inset
@@ -1237,35 +1460,71 @@ th source located at
 \begin_inset Formula $d$
 \end_inset
 
- (fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Localisation precision and maximum correlations"
-
+ (
+\begin_inset Formula $\varepsilon=0.2$
 \end_inset
 
-).
+) and is futher decreasing for higher values of 
+\begin_inset Formula $d$
+\end_inset
+
+.
  
 \end_layout
 
+\begin_layout Subsubsection*
+Estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-We used the same data to evaluated the model for 
-\begin_inset Formula $K=K_{\mbox{true}}\pm1$
+We used the same data (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+) to evaluated the model for 
+\begin_inset Formula $K=1,\,2$
+\end_inset
+
+ and 
+\begin_inset Formula $3$
 \end_inset
 
  and analysed the residual correlations 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:Correlation in residuals"
 
 \end_inset
 
 .
- The maximum correlation in residuals is shown in fig.
+ The maximum value 
+\begin_inset Formula $\max_{i,j}(r_{ij})$
+\end_inset
+
+ in the correlation coefficient matrix 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Correlation in residuals"
+
+\end_inset
+
+ as a funciton of 
+\begin_inset Formula $d$
+\end_inset
+
+ is shown in fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Localisation precision and maximum correlations"
 
+\end_inset
+
+ for the three different values of 
+\begin_inset Formula $K$
 \end_inset
 
 .
@@ -1286,26 +1545,56 @@ reference "fig:Localisation precision and maximum correlations"
 \begin_inset Formula $K=1$
 \end_inset
 
- compared to 
+ (blue line) compared to 
 \begin_inset Formula $K=2$
 \end_inset
 
-.
+ (green line).
  The model with 
 \begin_inset Formula $K=3$
 \end_inset
 
- does not lead to any further improvement.
- For this noise level we can estimate the correct 
+ (red line) does not lead to any further improvement.
+ For this noise level we can therefore estimate the correct 
 \begin_inset Formula $K=2$
 \end_inset
 
- for emitters with 
+ for emitters separated by at least 
 \begin_inset Formula $d>50\mbox{ nm}$
 \end_inset
 
 .
- This can be the actual limiting factor for the resolution of the method.
+ Comparison with the mean localisation precision (magenta line) suggests
+ that the correct estimation of 
+\begin_inset Formula $K$
+\end_inset
+
+ determines the resolution of the method.
+\end_layout
+
+\begin_layout Standard
+The dataset with 
+\begin_inset Formula $K_{\mbox{true}}=10$
+\end_inset
+
+ with different densities of the sources (see section simulatd data) has
+ been evaluated with NMF and with updates for variational approximation
+ of the GaP model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buntine2006"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Real samples
+\end_layout
+
+\begin_layout Standard
+A QDs (Qdot 565, invitrogen) deposited on the coverslip.
  
 \end_layout
 
@@ -1322,7 +1611,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="3">
+<lyxtabular version="3" rows="11" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -1385,7 +1674,7 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-Number of time slices in the sequence
+Number of time slices in the sequence.
 \end_layout
 
 \end_inset
@@ -1420,7 +1709,7 @@ Number of time slices in the sequence
 \begin_inset Text
 
 \begin_layout Plain Layout
-Number of sources in the simulated data
+Number of sources in the simulated data.
 \end_layout
 
 \end_inset
@@ -1455,7 +1744,7 @@ Number of sources in the simulated data
 \begin_inset Text
 
 \begin_layout Plain Layout
-Uniform background added to each time slice
+Uniform background added to each time slice.
 \end_layout
 
 \end_inset
@@ -1490,7 +1779,7 @@ Uniform background added to each time slice
 \begin_inset Text
 
 \begin_layout Plain Layout
-Maximum intensity of a single source in one time slice
+Maximum intensity of a single source in one time slice.
 \end_layout
 
 \end_inset
@@ -1555,7 +1844,7 @@ Blinking behaviour of the individual sources.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Emission wavelength
+Emission wavelength.
 \end_layout
 
 \end_inset
@@ -1590,7 +1879,7 @@ Emission wavelength
 \begin_inset Text
 
 \begin_layout Plain Layout
-Numerical aperture of the objective
+Numerical aperture of the objective.
 \end_layout
 
 \end_inset
@@ -1622,14 +1911,14 @@ pixel-size
 \begin_inset Text
 
 \begin_layout Plain Layout
-Size of a pixel in the sample plane
+Size of a pixel in the sample plane.
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1641,7 +1930,7 @@ Size of a pixel in the sample plane
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1657,7 +1946,7 @@ Size of a pixel in the sample plane
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1665,7 +1954,36 @@ Radius of the region containing the sources (
 \begin_inset Formula $\delta=0.61\frac{\lambda_{em}}{NA}$
 \end_inset
 
-)
+).
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+noise
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Poisson
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Each pixel was corrupted with Poisson noise.
 \end_layout
 
 \end_inset
