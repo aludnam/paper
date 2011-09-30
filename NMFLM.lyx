@@ -425,7 +425,8 @@ key "Ober2004"
 
 \end_inset
 
- the classical resolution limit 
+ the classical resolution limit.
+ 
 \begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
 \end_inset
 
@@ -445,10 +446,10 @@ key "Ober2004"
 \end_inset
 
 .
- The super-resolution image is achieved by a repetitive localisation of
- the different individual spatially separated subsets of fluorophores.
- The optimal number of ON sources in each acquisition frame must be experimental
-ly estimated 
+ Super-resolution is achieved by a repetitive localisation of the different
+ individual spatially separated subsets of fluorophores.
+ The number of ON sources in each acquisition frame must be optimised experiment
+ally
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Small2009"
@@ -474,7 +475,7 @@ key "Rust2006"
 \end_inset
 
 ) control the density of the ON sources by photo-switching.
- However, some recent concepts suggest algorithms which can deal with a
+ However, some recent research suggests algorithms which can deal with a
  high density of ON sources
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -515,32 +516,30 @@ key "Resch-Genger2008"
 
 .
  However, the stochastic blinking of QDs is impractical for standard LM
- because the rate of ON-OFF transition and hence the density of ON sources
+ because the rate of ON-OFF transitions and hence the density of ON sources
  is difficult to control.
  QD labeled data typically consist of highly overlapping sources which cannot
  be localised with standard LM techniques.
 \end_layout
 
 \begin_layout Standard
-Some concepts exploiting the blinking behaviour of the QDs have been proposed.
- Maximum a-posteriori (MAP) fitting of the positions and the intensities
- of known point spread functions (PSFs) to blinking QD data has been proposed
+Some methods exploiting the blinking behaviour of the QDs have been proposed,
+ such as maximum a-posteriori (MAP) fitting of the positions and the intensities
+ of known point spread functions (PSFs) to blinking QD
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Harrington2008"
 
 \end_inset
 
-.
- Independent component analysis (ICA) of the QD data was suggested
+, independent component analysis (ICA) of the QD
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lidke2005"
 
 \end_inset
 
-.
- A resolution improvement by analysis of the intensity fluctuation (SOFI)
+ or resolution improvement by analysis of the intensity fluctuation (SOFI)
  has been demonstrated
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -584,11 +583,12 @@ key "Lee1999"
 \end_inset
 
  as a natural model for QD data.
- NMF decomposes a movie of the blinking QDs into spatial (time independent
- images of the individual sources) and temporal parts (fluctuating intensities
- of each emitter).
- NMF imposes natural non-negativity constraints on both the spatial (the
- images of the individual sources) and the temporal (intensities) components.
+ NMF decomposes a movie of the blinking QDs into spatial and temporal parts
+ (i.e.
+ time independent emission profiles of the individual sources and fluctuating
+ intensities of each emitter, respectively).
+ NMF imposes natural non-negativity constraints on both the spatial and
+ the temporal components.
  Moreover, we used the NMF algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -668,7 +668,7 @@ The NMF algorithm requires prior knowledge about the number of sources
 \end_layout
 
 \begin_layout Standard
-The results of NMF are the maximum-likelihood estimates and therefore a
+The results of NMF are the maximum-likelihood estimates, and therefore a
  higher 
 \begin_inset Formula $K$
 \end_inset
@@ -775,8 +775,8 @@ key "Canny2004,Buntine2006"
 \end_layout
 
 \begin_layout Standard
-An alternative approach is to analyse the residuals (data-model) for models
- with different 
+An alternative approach is to analyse the residuals (difference between
+ data and estimated model) for models with different 
 \begin_inset Formula $K$
 \end_inset
 
@@ -811,9 +811,9 @@ Results
 \end_layout
 
 \begin_layout Standard
-Test on simulated data with different densities of ten QDs suggests (supplementa
-ry materials) that the analysis of the residuals in correlations provides
- a more accurate estimate of the number of sources 
+Tests on simulated data with different densities of ten QDs suggests (see
+ supplementary materials) that the analysis of the residuals in correlations
+ provides the most accurate estimate of the number of sources 
 \begin_inset Formula $K$
 \end_inset
 
@@ -829,7 +829,7 @@ Simulations of noisy data comprising two QDs show that NMF can reliably
 \end_inset
 
  when 
-\begin_inset Formula $K_{\mbox{ture}}$
+\begin_inset Formula $K_{\mbox{true}}$
 \end_inset
 
  is known (
@@ -875,7 +875,7 @@ Out of focus PSF
 
 \begin_layout Standard
 NMF can extract individual sources with differing shape because apart from
- the non-negativity there is no further constraints on the separated components.
+ the non-negativity there are no further constraints on the separated components.
  We show a separation of overlapping out-of-focus point spread functions
  (PSF) from a movie (
 \begin_inset Formula $10^{3}$
@@ -958,10 +958,10 @@ Discussion
 \end_layout
 
 \begin_layout Standard
-We demonstrated that NMF allows to separate images of individual emitters
- from a movie of blinking QDs.
+We have demonstrated that NMF allows to separate individual emitters from
+ a movie of blinking QDs.
  The ability to recover PSFs with different shapes from the data with highly
- overlapping sources makes the method interesting for imaging of 3D samples
+ overlapping sources makes the method attractive for imaging of 3D samples
  where fluorophores can be in different focal depths and therefore produce
  a variety of different PSFs.
  Diversity in PSFs for individual sources can also arise with aberrations
@@ -970,15 +970,19 @@ We demonstrated that NMF allows to separate images of individual emitters
 \end_layout
 
 \begin_layout Standard
-NMF allows localisation microscopy with blinking QDs, however, NMF is not
- limited to QD only.
- It can separate any source with intermittent intensity as long as the actual
- fluorophores remain static in space during the acquisition period.
- 
+Reliable estimation of the number of sources is important for correct recovery
+ of individual components.
+ This is a difficult task for data with a high density of overlapping sources.
+ We demonstrated on simulated data the limitations this imposes on resolution
+ of the method.
 \end_layout
 
 \begin_layout Standard
-A typical data set consist of 
+NMF allows localisation microscopy with blinking QDs, however, NMF is not
+ limited to QDs only.
+ It can separate any source with intermittent intensity as long as the actual
+ fluorophores remain static in space during the acquisition period.
+ A typical data set consists of 
 \begin_inset Formula $10^{3}$
 \end_inset
 
@@ -1005,15 +1009,19 @@ NMF does not take into account the temporal structure of the data.
  Time frames can be permuted without affecting the separated components.
  However, there is a clear temporal structure in QDs blinking - the periods
  of ON and OFF times.
- This information would likely facilitate the factorisation.
+ Exploiting this information would likely facilitate the factorisation and
+ will be a subject to further research.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Acknowledgements
 \end_layout
 
 \begin_layout Standard
-Reliable estimation of the number of sources is important for correct recovery
- of individual components.
- This is a difficult task for data with high density of overlapping sources.
- We demonstrated on simulated data that this might be limiting factor for
- the resolution and applicability of the method.
+We would like to thank to Rory Duncan and Colin Rickman for their help with
+ QD data acquisition.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1108,7 +1116,7 @@ where the
 \begin_inset Formula ${\bf H}$
 \end_inset
 
- subject to non-negativity constraints on the entries 
+, subject to non-negativity constraints on the entries 
 \begin_inset Formula $w_{nk}\geq0$
 \end_inset
 
@@ -1125,7 +1133,7 @@ where the
 \begin_inset Formula ${\bf W}$
 \end_inset
 
- (
+ (a 
 \begin_inset Formula $N\times1$
 \end_inset
 
@@ -1233,7 +1241,7 @@ where the `
 \begin_inset Formula $h_{kt}$
 \end_inset
 
- were initialised at random from uniform distribution.
+ were initialised at random from the uniform distribution.
  The columns of the matrix 
 \begin_inset Formula ${\bf W}$
 \end_inset
@@ -1262,16 +1270,22 @@ where the `
 .
  This component was not updated over the iterations.
  We run each NMF evaluation with five partial restarts - after each run
- convergence we restarted the values of 
-\begin_inset Formula $h_{kt}$
+ converges we restarted the values of 
+\begin_inset Formula $w_{nk}$
 \end_inset
 
- while keeping 
-\begin_inset Formula $w_{xk}$
+ and run the updates for both 
+\begin_inset Formula ${\bf W}$
 \end_inset
 
-.
+ and 
+\begin_inset Formula ${\bf H}$
+\end_inset
+
+ again.
+ The new result is accepted if the likelihood function increases.
  This procedure helps to reach a better local minimum.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1372,7 +1386,7 @@ Correlations in residuals
 \end_layout
 
 \begin_layout Standard
-The number of components 
+The true number of components 
 \begin_inset Formula $K_{\mbox{true}}$
 \end_inset
 
@@ -1412,8 +1426,8 @@ The factor
 \begin_inset Formula $1/\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}$
 \end_inset
 
- is applied in order to standardise the residuals of Poisson distributed
- data.
+ is applied in order to standardise the residuals (zero mean and unit variance)
+ of Poisson distributed data.
  We can then compute the 
 \begin_inset Formula $N\times N$
 \end_inset
@@ -1459,11 +1473,11 @@ Underestimation of the number of sources (
  the correlations are expected to drop to a base level and the residuals
  become uncorrelated.
  We can pick up the value of 
-\begin_inset Formula $K=\bar{K}$
+\begin_inset Formula $K=\hat{K}$
 \end_inset
 
  for which the residual correlations decrease to a certain level and 
-\begin_inset Formula $K>\bar{K}$
+\begin_inset Formula $K>\hat{K}$
 \end_inset
 
  does not give any further improvement.
@@ -1509,7 +1523,7 @@ We generated two different collections of data-sets.
 \end_inset
 
 ) separated by a distance 
-\begin_inset Formula $d=0.1-1.2\mbox{ pixels}$
+\begin_inset Formula $d=0.1\mbox{ to }1.2\mbox{ pixels}$
 \end_inset
 
 .
@@ -1531,7 +1545,7 @@ We generated two different collections of data-sets.
 
  is the classical resolution limit.
  Each dataset in both collections was generated 10 times with a random geometric
-al configuration of the individual sources.
+ configuration of the individual sources.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1567,9 +1581,9 @@ reference "fig: estimation of K by variational lower bound and maximum correlati
 \end_inset
 
 .
- We generated data with 10 random geometrical configuration for each density.
- First 18 principal components (PC) eigenvalues for three different random
- configurations are plotted in the second row of fig.
+ We generated data with 10 random geometric configuration for each density.
+ The first 18 principal components (PC) eigenvalues for three different
+ random configurations are plotted in the second row of fig.
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: estimation of K by variational lower bound and maximum correlation"
@@ -1584,7 +1598,7 @@ reference "fig: estimation of K by variational lower bound and maximum correlati
 
 .
  However, for dense data (right) this estimation is impossible to make because
- the PC eigenvalues drip very gradually.
+ the PC eigenvalues drop very gradually.
  
 \end_layout
 
@@ -1593,8 +1607,8 @@ The variational lower bound for models with different
 \begin_inset Formula $K$
 \end_inset
 
- for three different geometrical configuration of the sources is plotted
- in the third line of fig.
+ for three different geometric configuration of the sources is plotted in
+ the third line of fig.
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "fig: estimation of K by variational lower bound and maximum correlation"
@@ -1683,7 +1697,7 @@ We used the simulated data of two QDs (
 \end_inset
 
 ) separated by 
-\begin_inset Formula $d=0.1-1.2\mbox{ pixels}$
+\begin_inset Formula $d=0.1\mbox{ to }1.2\mbox{ pixels}$
 \end_inset
 
  to evaluated the model for 
@@ -1694,7 +1708,7 @@ We used the simulated data of two QDs (
 \begin_inset Formula $3$
 \end_inset
 
- and analysed the residual correlations 
+ and analysed the residual correlations eq.
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Correlation in residuals"
@@ -1786,13 +1800,17 @@ To asses the localisation performance of NMF we used dataset of two QDs
 \end_inset
 
 .
- Separated components were localised as a maximum likelihood fit of an isotropic
- 2D gaussian with a centre 
-\begin_inset Formula $\bm{\overline{x}}_{i}$
+ Sources were localised as a maximum likelihood fit of an isotropic 2D gaussian
+ with a centre 
+\begin_inset Formula $\bm{\hat{x}}_{k}$
+\end_inset
+
+ to the separated components 
+\begin_inset Formula $\bm{w}_{k}$
 \end_inset
 
 .
- We computed the mean localisation error per separation
+ We computed the mean relative localisation error as
 \begin_inset Formula 
 \[
 \varepsilon=\frac{1}{d}\frac{e_{1}+e_{2}}{2}
@@ -1801,15 +1819,15 @@ To asses the localisation performance of NMF we used dataset of two QDs
 \end_inset
 
 where 
-\begin_inset Formula $e_{i}=\left|\bm{\overline{x}}_{i}-\bm{x}_{i}^{\mbox{true}}\right|$
+\begin_inset Formula $e_{k}=\left|\bm{\hat{x}}_{k}-\bm{x}_{k}^{\mbox{true}}\right|$
 \end_inset
 
  corresponds to the localisation error of the 
-\begin_inset Formula $i$
+\begin_inset Formula $k$
 \end_inset
 
 th source located at 
-\begin_inset Formula $\bm{x}_{i}^{true}$
+\begin_inset Formula $\bm{x}_{k}^{true}$
 \end_inset
 
  and 
@@ -1884,7 +1902,7 @@ Real samples
 \end_layout
 
 \begin_layout Standard
-Solution of QDs (Qdot 565, invitrogen) was deposited and dried on the coverslip
+A solution of QDs (Qdot 565, invitrogen) was deposited and dried on a coverslip
  and imaged with a standard wide-field microscope (100x, 1.4NA) on a CCD
  camera (64nm pixel-size).
  We acquired 
@@ -2465,8 +2483,8 @@ qdotspath /S307/images/maxCorrLocPrec}
 status open
 
 \begin_layout Plain Layout
-S311 is the same graph but for parameters from Rainers lab (labmda 565,
- 1.4 NA and 64nm pixelsize
+S311 is the same graph but for parameters from Rainers lab (lambda 565,
+ 1.4 NA and 64nm pixel-size
 \end_layout
 
 \end_inset
@@ -2494,7 +2512,12 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-The maximum value of correlations in residuals for 
+Simulated data of two sources (
+\begin_inset Formula $K_{\mbox{true}}=2$
+\end_inset
+
+).
+ The maximum value of correlations in the residuals for 
 \begin_inset Formula $K=1$
 \end_inset
 
@@ -2520,12 +2543,7 @@ The maximum value of correlations in residuals for
 \end_inset
 
 .
- Simulated data of two sources (
-\begin_inset Formula $K_{\mbox{true}}=2$
-\end_inset
-
-).
- The difference in residual correlations for 
+ The differences in residual correlations for 
 \begin_inset Formula $K=1$
 \end_inset
 
@@ -2538,7 +2556,7 @@ The maximum value of correlations in residuals for
 \end_inset
 
 .
- The classical resolution limit 
+ The classical resolution limit is 
 \begin_inset Formula $\delta=273\mbox{ nm}$
 \end_inset
 
@@ -2616,7 +2634,7 @@ qdotspath /S310/images/dpixc_mean_loc}
 status open
 
 \begin_layout Plain Layout
-S313 is the same graph but for parameters from Rainers lab (labmda 565,
+S313 is the same graph but for parameters from Rainers lab (lambda 565,
  1.4 NA and 64nm pixelsize
 \end_layout
 
@@ -3790,6 +3808,39 @@ imc
 \end_inset
 
  (right column).
+ Mean (wide field) image of the simulated data (1st row).
+ Blue circles correspond to the true locations of the emitters.
+ Red circles show the estimated locations of the components separated with
+ NMF.
+ Green circle represent an area of the classical resolution limit 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ Principal component analysis (second row), variational lower bound (third
+ row) and maximum residual correlations (bottom row) for corresponding data
+ sets.
+ Red, green and blue curves correspond to three datasets (out of 7) with
+ three different geometric configurations.
+ Dotted lines show the values for 
+\begin_inset Formula ${\bf W}_{\mbox{true}}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\bf H}_{\mbox{true}}$
+\end_inset
+
+, the values for data generation.
+ Dashed lines show the values when NMF algorithm was initialised with 
+\begin_inset Formula ${\bf W}_{\mbox{true}}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\bf H}_{\mbox{true}}$
+\end_inset
+
+.
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig: estimation of K by variational lower bound and maximum correlation"
@@ -3955,6 +4006,16 @@ Histograms of the
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Histograms-of-the-K-estimation"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+better colours of the bars, comparison with PCA as well!
+\end_layout
 
 \end_inset
 
@@ -4393,7 +4454,7 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Estimation of K
+Estimation of K for the real data - set of out of focus PSFs.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:real QD - K estimation"
@@ -4597,7 +4658,7 @@ end{centering}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Left: mean intensity image correspond to a standard wide-field image.
+Left: mean intensity image corresponding to a standard wide-field image.
  Right: separated individual sources for 
 \begin_inset Formula $K=13$
 \end_inset

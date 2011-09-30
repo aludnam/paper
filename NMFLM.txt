@@ -1,0 +1,695 @@
+
+
+NMF in LM
+
+
+
+
+
+  Introduction
+
+Localisation microscopy (LM) is a conceptually simple and 
+accessible technique providing super-resolution fluorescent 
+images[Hess2006, Huang2008, Linde2008, Jones2011]. The structure 
+of the sample is reconstructed by localising individual 
+fluorophores with precision surpassing [Ober2004] the classical 
+resolution limit. \delta=0.61\frac{\lambda}{\mbox{NA}}, where \lambda
+ is the wavelength of the emission light and \mbox{NA} is the 
+numerical aperture of the objective lens. LM makes use of the 
+fluorophore transition between bright (ON) and dark (OFF) states 
+to discriminate individual sources separated by a distance d<\delta
+. Super-resolution is achieved by a repetitive localisation of 
+the different individual spatially separated subsets of 
+fluorophores. The number of ON sources in each acquisition frame 
+must be optimised experimentally[Small2009]. A high density of 
+the ON fluorophores results in overlapping sources and 
+complicates localisation whereas a small density leads to a long 
+acquisition time. Standard LM techniques (fPALM [Hess2006], STORM 
+[Rust2006]) control the density of the ON sources by 
+photo-switching. However, some recent research suggests 
+algorithms which can deal with a high density of ON sources[Holden2011]
+. 
+
+Quantum dots (QD) are an order of magnitude brighter compared to 
+the organic dyes used in conventional LM [Jaiswal2004, Resch-Genger2008]
+. Under continuous excitation the QDs exhibit a stochastic 
+blinking between ON and OFF states [Stefani2009]. Excellent 
+photo-stability, low cyto-toxicity and distinctive spectral 
+properties make QDs very attractive for biological research[Resch-Genger2008]
+. However, the stochastic blinking of QDs is impractical for 
+standard LM because the rate of ON-OFF transitions and hence the 
+density of ON sources is difficult to control. QD labeled data 
+typically consist of highly overlapping sources which cannot be 
+localised with standard LM techniques.
+
+Some methods exploiting the blinking behaviour of the QDs have 
+been proposed, such as maximum a-posteriori (MAP) fitting of the 
+positions and the intensities of known point spread functions 
+(PSFs) to blinking QD[Harrington2008], independent component 
+analysis (ICA) of the QD[Lidke2005] or resolution improvement by 
+analysis of the intensity fluctuation (SOFI) has been 
+demonstrated[Dertinger2010b].
+
+  NMF
+
+
+
+We used non-negative matrix factorisation (NMF) [Lee1999] as a 
+natural model for QD data. NMF decomposes a movie of the blinking 
+QDs into spatial and temporal parts (i.e. time independent 
+emission profiles of the individual sources and fluctuating 
+intensities of each emitter, respectively). NMF imposes natural 
+non-negativity constraints on both the spatial and the temporal 
+components. Moreover, we used the NMF algorithm[Lee2001] which 
+maximises the likelihood of the model for data corrupted with 
+Poisson noise. This makes NMF preferable to ICA [Lidke2005] for 
+QD data because ICA allows negative entries in the separated 
+components and does not account for noise in the measured data 
+(fig.[fig:Comparison of NMF and ICA]). 
+
+NMF does not put any additional constraints on the shape (point 
+spread function PSF) or blinking behaviour of the individual 
+sources, apart from being non-negative. Therefore NMF can 
+separate overlapping sources of differing shapes and blinking 
+characteristics. Variability in PSFs can, for example, arise in a 
+3D sample where fluorophores can be in different focal depths and 
+therefore each exhibiting a unique PSF.
+
+  Model comparison
+
+
+
+The NMF algorithm requires prior knowledge about the number of 
+sources K to be separated. Principal component analysis of the 
+data (PCA) can be used as a simple method for dimensionality 
+estimation. However, for noisy data the estimation of K is 
+difficult. 
+
+The results of NMF are the maximum-likelihood estimates, and 
+therefore a higher K leads to a higher likelihood (or a lower 
+residual error) as more sources are better able to fit the data. 
+However, overestimating K produces spurious sources. On the other 
+hand, underestimation of K results in incorrect source shapes as 
+one component must fit several sources. Therefore a reliable 
+estimation of K is vital for a successful separation.
+
+The posterior distribution p(K|{\bf D}) represents evidence for a 
+particular value of K given a data set {\bf D}. A lower bound for 
+this quantity can be estimated by Bayesian treatment of the 
+probabilistic NMF formulation [Canny2004, Buntine2006]. We can 
+then choose the K which maximises the lower bound on p(K|{\bf D})
+. However, a test on simulated data suggests that this approach 
+systematically underestimates K. (Details in supplementary 
+materials.)
+
+An alternative approach is to analyse the residuals (difference 
+between data and estimated model) for models with different K. 
+Models with low K give rise to correlations in residuals because 
+multiple individual emitters have to be represented with fewer 
+components. Correlations decrease with higher K. We selected the 
+smallest K which reduces the residual correlations to a certain 
+level. Simulations suggest that this approach can provide more 
+reliable estimation of K compared to the variational lower bound 
+method. (Details in supplementary materials.)
+
+  Results
+
+Tests on simulated data with different densities of ten QDs 
+suggests (see supplementary materials) that the analysis of the 
+residuals in correlations provides the most accurate estimate of 
+the number of sources K. We used this method in further 
+computations. 
+
+Simulations of noisy data comprising two QDs show that NMF can 
+reliably separate two close emitters (d>\delta/10) when K_{\mbox{true}}
+ is known (K=K_{\mbox{true}}). However, the ability to estimate K 
+correctly becomes increasingly difficult for closely spaced 
+sources. The high correlations in residuals for K<K_{\mbox{true}} 
+arise only when the two sources are separated by at least d>\delta/5
+, where \delta=0.61\lambda/\mbox{NA} is the classical resolution 
+limit (fig. [fig:Localisation precision and maximum correlations]
+). 
+
+  Out of focus PSF
+
+NMF can extract individual sources with differing shape because 
+apart from the non-negativity there are no further constraints on 
+the separated components. We show a separation of overlapping 
+out-of-focus point spread functions (PSF) from a movie (10^{3} 
+frames) of several blinking QDs (fig. [fig:Real-QD-data.]). 
+Individual emitters were in slightly different focal depths and 
+therefore each QD produced a distinctive PSF. As can be seen from 
+fig.[fig:Real-QD-data.] individual PSFs were highly overlapping 
+in each frame. 
+
+The number of components was estimated from the analysis of the 
+correlations in residual (fig.[fig:real QD - K estimation]). 
+
+NMF was able to recover images of individual sources which 
+correspond to realistic out-of-focus PSFs (fig. [fig:Real-QD-data.]
+). It also recovered sources with PSFs only partially present in 
+the selected region. 
+
+  Discussion
+
+We have demonstrated that NMF allows to separate individual 
+emitters from a movie of blinking QDs. The ability to recover 
+PSFs with different shapes from the data with highly overlapping 
+sources makes the method attractive for imaging of 3D samples 
+where fluorophores can be in different focal depths and therefore 
+produce a variety of different PSFs. Diversity in PSFs for 
+individual sources can also arise with aberrations in the optical 
+system. 
+
+Reliable estimation of the number of sources is important for 
+correct recovery of individual components. This is a difficult 
+task for data with a high density of overlapping sources. We 
+demonstrated on simulated data the limitations this imposes on 
+resolution of the method.
+
+NMF allows localisation microscopy with blinking QDs, however, 
+NMF is not limited to QDs only. It can separate any source with 
+intermittent intensity as long as the actual fluorophores remain 
+static in space during the acquisition period. A typical data set 
+consists of 10^{3} frames and therefore the acquisition time is 
+typically in order of tens of seconds. During this period the 
+sample must remain still. This is a common limiting factor for 
+localisation microscopy techniques. However, as NMF can separate 
+overlapping sources it can speed up the acquisition compared to 
+the standard LM techniques[Small2009]. Moreover the possibility 
+of using QDs can make the exposure time shorter because QDs are 
+usually brighter than common organic fluorophores used in LM.
+
+NMF does not take into account the temporal structure of the 
+data. Time frames can be permuted without affecting the separated 
+components. However, there is a clear temporal structure in QDs 
+blinking - the periods of ON and OFF times. Exploiting this 
+information would likely facilitate the factorisation and will be 
+a subject to further research. 
+
+  Acknowledgements
+
+We would like to thank to Rory Duncan and Colin Rickman for their 
+help with QD data acquisition. 
+
+
+
+A Supplementary materials<sub:Supplementary-materials>
+
+  NMF model of the blinking QDs
+
+A movie of blinking quantum dots can be regarded as an N\times T 
+data matrix {\bf D} where N is the number of pixels and T is the 
+number of time frames in the movie. Each frame in the movie is 
+transformed into a column of the matrix {\bf D} by concatenating 
+columns of the 2D image into a N\times1 vector. Non-negative 
+matrix factorisation (NMF) makes an approximative decomposition {\bf D}\approx{\bf WH},
+where the N\times T matrix {\bf D} is expressed as a 
+multiplication of the N\times K matrix {\bf W} and K\times T 
+matrix {\bf H}, subject to non-negativity constraints on the 
+entries w_{nk}\geq0 and h_{kt}\geq0. Each column \bm{w}_{k} of 
+the matrix {\bf W} (a N\times1 vector) then represents an image 
+of the kth source and each row \bm{h}_{k} of the matrix {\bf H} (1\times T
+ vector) represents the time profile of the kth source intensity.
+
+The NMF algorithm [Lee2001] makes the decomposition [eq:NMF approximative]
+ such that the likelihood function of the model is maximised 
+under assumption of Poisson noise. The approximative 
+factorisation [eq:NMF approximative] can then be written as \mathbb{E}\left[{\bf D}\right]={\bf WH},
+where \mathbb{E}\left[.\right] denotes expectation value of the 
+noisy data with respect to the Poisson distribution.
+
+  NMF updates 
+
+We used iterative NMF updates[Lee2001] to compute the 
+factorisation [eq:NMF relaxed]w_{nk}where the `./' operation 
+refers to an element-wise division. The matrix elements w_{nk} 
+and h_{kt} were initialised at random from the uniform 
+distribution. The columns of the matrix {\bf W} were normalised 
+such that \sum_{n}w_{nk}=1. One component was added as a 
+homogeneous, static background: w_{n(K+1)}=\frac{1}{N}, h_{(K+1)t}=Nb
+, where the background value b was estimated from the dark 
+regions of the data averaged over time \frac{1}{T}\sum_{t}d_{nt}. 
+This component was not updated over the iterations. We run each 
+NMF evaluation with five partial restarts - after each run 
+converges we restarted the values of w_{nk} and run the updates 
+for both {\bf W} and {\bf H} again. The new result is accepted if 
+the likelihood function increases. This procedure helps to reach 
+a better local minimum. 
+
+  Gamma-Poisson model
+
+The gamma-Poisson (GaP) model has been proposed as a 
+probabilistic model for NMF[Canny2004]. The entries h_{kt} of the 
+intensity matrix {\bf H} are regarded as latent variables 
+generated from a Gamma distribution with parameters \alpha_{k},\ \beta_{k}
+ and the data are modelled as a Poisson variable with mean {\bf WH}
+ as in [eq:NMF relaxed]. Variables \theta=\{\bm{w}_{k},\alpha_{k},\beta_{k},\, k=1..K\}
+ are then parameters of the GaP model. The variational 
+approximation of the GaP model[Buntine2006] provides a lower 
+bound \mathcal{L} on the likelihood function p({\bf D}|K,\theta) 
+with latent variables \bm{h}_{k} integrated out. We can express 
+the posterior distribution p(K|{\bf D})\propto p({\bf D}|K)p(K) 
+where p(K) is a prior distribution over values of K and p({\bf D}|K)=\int p({\bf D}|\theta,K)p(\theta|K)d\theta
+ is a marginal likelihood.
+
+  Correlations in residuals
+
+The true number of components K_{\mbox{true}} can also be 
+estimated from the N\times T residual matrix \bm{S} (entries s_{xt}
+). After evaluating the model [eq:NMF relaxed] for a specific K, 
+we compute a standardised residual matrix with entries s_{nt}=\frac{d_{nt}-\sum_{k=1}^{K}w_{nk}h_{kt}}{\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}}}.
+The factor 1/\sqrt{\sum_{k=1}^{K}w_{nk}h_{kt}} is applied in 
+order to standardise the residuals (zero mean and unit variance) 
+of Poisson distributed data. We can then compute the N\times N 
+correlation matrix \bm{C}_{S}=\bm{SS}^{T},and the N\times N 
+matrix of the correlation coefficients \bm{R}_{S} with entries r_{ij}=\frac{c_{ij}}{\sqrt{c_{ii}c_{jj}}}.
+
+Underestimation of the number of sources (K<K_{\mbox{true}}) will 
+lead to correlations between some pixels as the model will try to 
+explain multiple sources with one component. For K\geq K_{\mbox{true}}
+ the correlations are expected to drop to a base level and the 
+residuals become uncorrelated. We can pick up the value of K=\hat{K}
+ for which the residual correlations decrease to a certain level 
+and K>\hat{K} does not give any further improvement. 
+
+  Simulated data<sub:Simulated-data>
+
+The parameters used for simulations are shown in table [tab:Parameters-of-the-simulation]
+. The individual QDs were generated as in-focus point-spread 
+functions and the intensity of each source was generated from 
+uniform distribution on the interval \left[0,\, I_{max}\right]. A 
+uniform constant background was added to each frame and all 
+pixels were corrupted with Poisson noise. 
+
+We generated two different collections of data-sets. In the first 
+collection we simulated two sources (K_{\mbox{true}}=2) separated 
+by a distance d=0.1\mbox{ to }1.2\mbox{ pixels}. In the second 
+collection we simulated ten sources (K_{\mbox{true}}=10) randomly 
+distributed within a circular area with diameter r=\delta,\,1.5\delta
+ and 2\delta, where \delta=0.61\frac{\lambda}{\mbox{NA}} is the 
+classical resolution limit. Each dataset in both collections was 
+generated 10 times with a random geometric configuration of the 
+individual sources.
+
+  Estimation of K
+
+We compared the performance of the the variational approximation 
+of GaP model and the analysis of the residual correlations in K 
+estimation task. We used simulated data comprising 10 sources (K_{\mbox{true}}=10
+). The mean image of the data with three different densities of 
+sources is shown in the first line of fig.[fig: estimation of K by variational lower bound and maximum correlation]
+. We generated data with 10 random geometric configuration for 
+each density. The first 18 principal components (PC) eigenvalues 
+for three different random configurations are plotted in the 
+second row of fig.[fig: estimation of K by variational lower bound and maximum correlation]
+. For sparse data (left column) we can estimate the number of 
+components from the `kink' in the spectrum of PC eigenvalues at K=10
+. However, for dense data (right) this estimation is impossible 
+to make because the PC eigenvalues drop very gradually. 
+
+The variational lower bound for models with different K for three 
+different geometric configuration of the sources is plotted in 
+the third line of fig.[fig: estimation of K by variational lower bound and maximum correlation]
+. The lower bound peaks at the correct K=K_{\mbox{true}} for 
+sparse data set (left), but for the denser data (right) it tends 
+to reach the maximum for K<K_{\mbox{true}}. The variational lower 
+bound systematically underestimates the value of K.
+
+The maximum correlation coefficient [eq:Correlation in residuals] 
+in residuals \max_{i,j}(r_{ij}) is shown in the last line of fig.[fig: estimation of K by variational lower bound and maximum correlation]
+. The model was estimated using the NMF updates[eq:NMF updates Lee 2001]
+. Values for three different configurations are shown. We can 
+pick the K were the `kink' occurs.
+
+A histogram of estimated K for both methods is shown in fig.[fig:Histogram: Maximum-correlations-in]
+. The analyses of the maximum residual correlation provides a 
+better estimate for K.
+
+We used the simulated data of two QDs (K_{\mbox{true}}=2) 
+separated by d=0.1\mbox{ to }1.2\mbox{ pixels} to evaluated the 
+model for K=1,\,2 and 3 and analysed the residual correlations 
+eq.[eq:Correlation in residuals]. The maximum value \max_{i,j}(r_{ij})
+ in the correlation coefficient matrix [eq:Correlation in residuals]
+ as a function of d is shown in fig.[fig:Localisation precision and maximum correlations]
+ for the three different values of K. For closely spaced sources 
+(d\leq30\mbox{ nm)} the correlations are approximately on the 
+same level for any K. However, for d\geq40\mbox{ nm} there is a 
+steep increase of the correlations for K=1 (blue line) compared 
+to K=2 (green line). The model with K=3 (red line) does not lead 
+to any further improvement. For this noise level we can therefore 
+estimate the correct K=2 for emitters separated by at least d>50\mbox{ nm}
+.
+
+  Localisation error
+
+To asses the localisation performance of NMF we used dataset of 
+two QDs (K_{\mbox{true}}=2) separated by d and assumed that the 
+number of sources is known K=K_{\mbox{true}}. Sources were 
+localised as a maximum likelihood fit of an isotropic 2D gaussian 
+with a centre \bm{\hat{x}}_{k} to the separated components \bm{w}_{k}
+. We computed the mean relative localisation error as\varepsilon=\frac{1}{d}\frac{e_{1}+e_{2}}{2}
+where e_{k}=\left|\bm{\hat{x}}_{k}-\bm{x}_{k}^{\mbox{true}}\right|
+ corresponds to the localisation error of the kth source located 
+at \bm{x}_{k}^{true} and d=\left|\bm{x}_{1}^{\mbox{true}}-\bm{x}_{2}^{\mbox{true}}\right|
+ is the true separation of the emitters. The estimated \varepsilon
+ for different values of d is shown as a magenta line in fig.[fig:Localisation precision and maximum correlations]
+. For d>30\mbox{ nm} the mean localisation error is less than 20\%
+ of the separation d (\varepsilon=0.2) and is further decreasing 
+for higher values of d. 
+
+Comparison with with the maximum residual correlation curves 
+(blue, green, red in fig.[fig:Localisation precision and maximum correlations]
+) shows that the determining factor for resolution of the method 
+is the ability to estimate K correctly (here for d>50\mbox{ nm}). 
+
+  Real samples
+
+A solution of QDs (Qdot 565, invitrogen) was deposited and dried 
+on a coverslip and imaged with a standard wide-field microscope 
+(100x, 1.4NA) on a CCD camera (64nm pixel-size). We acquired 10^{3}
+ frames each with 100 ms exposure time. The total acquisition 
+time was about 2 mins. 
+
+The camera pixels values were converted into a photon counts with 
+a gain estimated from a calibration measurement.
+
+  Tables
+
+[float Table:
+
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|  Parameter    |            Value             |                                    Description                                     |
++---------------+------------------------------+------------------------------------------------------------------------------------+
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|      T        |           10^{3}             |                       Number of time slices in the sequence.                       |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|   K_{true}    |             10               |                      Number of sources in the simulated data.                      |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|      b        |       10^{2} photons         |                    Uniform background added to each time slice.                    |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|   I_{max}     |   1.5\cdot10^{3} photons     |              Maximum intensity of a single source in one time slice.               |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|   blinking    |           uniform            |                   Blinking behaviour of the individual sources.                    |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+| \lambda_{em}  |       655\ \text{nm}         |                                Emission wavelength.                                |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|      NA       |             1.2              |                        Numerical aperture of the objective.                        |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|  pixel-size   |           106 nm             |                        Size of a pixel in the sample plane.                        |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|    \delta     | 333\,\text{nm} (3.1 pixels)  | Radius of the region containing the sources (\delta=0.61\frac{\lambda_{em}}{NA}
+). |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+|    noise      |           Poisson            |                    Each pixel was corrupted with Poisson noise.                    |
++---------------+------------------------------+------------------------------------------------------------------------------------+
+
+
+[Table 1:
+Parameters of the simulation<tab:Parameters-of-the-simulation>
+]
+]
+
+  Figures
+
+
+
+[float Figure:
+
+
+
+
+
+
+[Figure 1:
+Simulated data of two sources (K_{\mbox{true}}=2). The maximum 
+value of correlations in the residuals for K=1 (blue), 2 (green) 
+and 3 (red). Mean localisation error per separation \varepsilon 
+for K=2 (magenta) with fitted curve \propto1/d. The differences 
+in residual correlations for K=1 and K=2 are apparent only when 
+the two sources are separated by at least 50\mbox{ nm}. The 
+classical resolution limit is \delta=273\mbox{ nm}. <fig:Localisation precision and maximum correlations>
+]
+]
+
+[float Figure:
+
+
+[float Figure:
+
+
+[Sub-Figure 1.1:
+wide field
+]
+]
+[float Figure:
+ 
+
+[Sub-Figure 1.2:
+NMF (noise)
+]
+]
+[float Figure:
+ 
+
+[Sub-Figure 1.3:
+ICA (noise)
+]
+] 
+[float Figure:
+ 
+
+[Sub-Figure 1.4:
+ICA (noise free)
+]
+]
+
+
+
+[Figure 2:
+Comparison of the components separated with NMF (b) and ICA (c) 
+for noisy data of two blinking QDs separated by d=50\mbox{ nm} 
+(mean value shown in (a)). ICA for noise free data shown in (d). 
+The true and the estimated positions are shown as blue circle and 
+red crosses, respectively. The radius of the green circle is the 
+resolution limit \delta. Blue pixels contain negative values. <fig:Comparison of NMF and ICA>
+]
+]
+
+[float Figure:
+
+
+
+
+[float Figure:
+
+
+[Sub-Figure 2.1:
+<fig:simulations 2.0 delta >
+]
+][float Figure:
+
+
+[Sub-Figure 2.2:
+<fig:simulations 1.5 delta >
+]
+][float Figure:
+
+
+[Sub-Figure 2.3:
+<fig:simulations 1 delta >
+]
+]
+
+
+
+[float Figure:
+
+
+[Sub-Figure 2.4:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.5:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.6:
+
+]
+]
+
+[float Figure:
+
+
+[Sub-Figure 2.7:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.8:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.9:
+
+]
+]
+
+
+
+[float Figure:
+
+
+[Sub-Figure 2.10:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.11:
+
+]
+][float Figure:
+
+
+[Sub-Figure 2.12:
+
+]
+]
+
+
+
+[Figure 3:
+K estimation for sources contained in a circular area with radius 
+ (left column),  (middle column) and  (right column). Mean (wide 
+field) image of the simulated data (1st row). Blue circles 
+correspond to the true locations of the emitters. Red circles 
+show the estimated locations of the components separated with 
+NMF. Green circle represent an area of the classical resolution 
+limit \delta. Principal component analysis (second row), 
+variational lower bound (third row) and maximum residual 
+correlations (bottom row) for corresponding data sets. Red, green 
+and blue curves correspond to three datasets (out of 7) with 
+three different geometric configurations. Dotted lines show the 
+values for {\bf W}_{\mbox{true}} and {\bf H}_{\mbox{true}}, the 
+values for data generation. Dashed lines show the values when NMF 
+algorithm was initialised with {\bf W}_{\mbox{true}} and {\bf H}_{\mbox{true}}
+. <fig: estimation of K by variational lower bound and maximum correlation>
+]
+]
+
+[float Figure:
+[float Figure:
+
+
+[Sub-Figure 3.1:
+Variational lower bound<fig:Histogram:Variational-lower-bound>
+]
+][float Figure:
+
+
+[Sub-Figure 3.2:
+Maximum correlations in residuals<fig:Histogram: Maximum-correlations-in>
+]
+]
+
+[Figure 4:
+Histograms of the K estimations for data with three different 
+sources density. (K_{\mbox{true}}=10) <fig:Histograms-of-the-K-estimation>
+
+]
+]
+
+[float Figure:
+
+
+
+
+[float Figure:
+
+
+[Sub-Figure 4.1:
+Mean intensity image
+]
+]
+
+
+[float Figure:
+
+]
+
+[float Figure:
+
+
+[Sub-Figure 4.2:
+Movie of the blinking sources (six frames out of 10^{3})
+]
+]
+
+
+
+
+
+[Figure 5:
+Real QD data.<fig:Real-QD-data.>
+]
+]
+
+[float Figure:
+
+
+[float Figure:
+
+
+[Sub-Figure 5.1:
+PCA<fig:Out of focus QDs - PCA>
+]
+][float Figure:
+
+
+[Sub-Figure 5.2:
+Correlations<fig:Out of focus QDs - Correlations>
+]
+]
+
+
+
+[Figure 6:
+Estimation of K for the real data - set of out of focus PSFs.<fig:real QD - K estimation>
+]
+][float Figure:
+
+
+[float Figure:
+
+
+[Sub-Figure 6.1:
+Mean intensity image
+]
+][float Figure:
+
+
+[Sub-Figure 6.2:
+Separated sources<fig:Out of focus QD - Separated-sources>
+]
+]
+
+
+
+[Figure 7:
+Left: mean intensity image corresponding to a standard wide-field 
+image. Right: separated individual sources for K=13.<fig:real QDs separated>
+]
+]
+
+
+[LaTeX Command: bibtex]
+
