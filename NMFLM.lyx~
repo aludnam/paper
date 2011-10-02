@@ -331,7 +331,7 @@ main article:
 \begin_inset Newline newline
 \end_inset
 
-Resolution of two sources vs estimation of the K for two sources.
+?Resolution of two sources vs estimation of the K for two sources.
  Or for 10 sources? 
 \begin_inset Newline newline
 \end_inset
@@ -522,36 +522,8 @@ key "Resch-Genger2008"
  be localised with standard LM techniques.
 \end_layout
 
-\begin_layout Standard
-Some methods exploiting the blinking behaviour of the QDs have been proposed,
- such as maximum a-posteriori (MAP) fitting of the positions and the intensities
- of known point spread functions (PSFs) to blinking QD
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Harrington2008"
-
-\end_inset
-
-, independent component analysis (ICA) of the QD
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lidke2005"
-
-\end_inset
-
- or resolution improvement by analysis of the intensity fluctuation (SOFI)
- has been demonstrated
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Dertinger2010b"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Subsubsection*
-NMF
+Methods
 \end_layout
 
 \begin_layout Standard
@@ -585,7 +557,7 @@ key "Lee1999"
  as a natural model for QD data.
  NMF decomposes a movie of the blinking QDs into spatial and temporal parts
  (i.e.
- time independent emmision profiles of the individual sources and fluctuating
+ time independent emission profiles of the individual sources and fluctuating
  intensities of each emitter, respectively).
  NMF imposes natural non-negativity constraints on both the spatial and
  the temporal components.
@@ -598,23 +570,6 @@ key "Lee2001"
 
  which maximises the likelihood of the model for data corrupted with Poisson
  noise.
- This makes NMF preferable to ICA 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lidke2005"
-
-\end_inset
-
- for QD data because ICA allows negative entries in the separated components
- and does not account for noise in the measured data (fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Comparison of NMF and ICA"
-
-\end_inset
-
-).
- 
 \end_layout
 
 \begin_layout Standard
@@ -626,6 +581,60 @@ NMF does not put any additional constraints on the shape (point spread function
  Variability in PSFs can, for example, arise in a 3D sample where fluorophores
  can be in different focal depths and therefore each exhibiting a unique
  PSF.
+\end_layout
+
+\begin_layout Standard
+Some methods exploiting the blinking behaviour of the QDs have been proposed.
+ Independent component analysis (ICA) of the QD data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lidke2005"
+
+\end_inset
+
+ is a factorisation method with different set of constratins compared to
+ NMF.
+ The separated components are required to be statistically independent,
+ rather then non-negative.
+ ICA allows negative entries and does not account for noise in the measured
+ data which can make recovery of the individual sources difficult from a
+ realistic noisy data (see fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+ in supplementary materials).
+ Maximum a-posteriori (MAP) fitting of the positions and the intensities
+ of known point spread functions (PSFs) to blinking QDs
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrington2008"
+
+\end_inset
+
+ has been demonstrated.
+ However this method requires a prior knowledge about the PSF shape and
+ assumes the PSF to be identical for all emitters.
+ Higher order statistic analysis of the intensity fluctuation (SOFI)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2010b"
+
+\end_inset
+
+ can provide resolution improvement.
+ The intensity of the sources in the SOFI image, however, reflects the fluctuati
+on behavior rather than the strength of the emitter
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2009"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -796,7 +805,12 @@ An alternative approach is to analyse the residuals (difference between
 \begin_inset Formula $K$
 \end_inset
 
- which reduces the residual correlations to a certain level.
+ which reduces the residual correlations to a level wehre further increase
+ of the 
+\begin_inset Formula $K$
+\end_inset
+
+ do not decreste the correlatons any further.
  Simulations suggest that this approach can provide more reliable estimation
  of 
 \begin_inset Formula $K$
@@ -913,11 +927,7 @@ reference "fig:real QD - K estimation"
 \end_inset
 
 ).
- 
-\end_layout
-
-\begin_layout Standard
-NMF was able to recover images of individual sources which correspond to
+ NMF was able to recover images of individual sources which correspond to
  realistic out-of-focus PSFs (fig.
 \begin_inset space ~
 \end_inset
@@ -1010,7 +1020,7 @@ NMF does not take into account the temporal structure of the data.
  However, there is a clear temporal structure in QDs blinking - the periods
  of ON and OFF times.
  Exploiting this information would likely facilitate the factorisation and
- will be a subjetc to further research.
+ will be a subject to further research.
  
 \end_layout
 
@@ -2483,8 +2493,8 @@ qdotspath /S307/images/maxCorrLocPrec}
 status open
 
 \begin_layout Plain Layout
-S311 is the same graph but for parameters from Rainers lab (labmda 565,
- 1.4 NA and 64nm pixelsize
+S311 is the same graph but for parameters from Rainers lab (lambda 565,
+ 1.4 NA and 64nm pixel-size
 \end_layout
 
 \end_inset
@@ -2634,7 +2644,7 @@ qdotspath /S310/images/dpixc_mean_loc}
 status open
 
 \begin_layout Plain Layout
-S313 is the same graph but for parameters from Rainers lab (labmda 565,
+S313 is the same graph but for parameters from Rainers lab (lambda 565,
  1.4 NA and 64nm pixelsize
 \end_layout
 
@@ -3809,8 +3819,8 @@ imc
 
  (right column).
  Mean (wide field) image of the simulated data (1st row).
- Blue circels correspond to the true locations of the emitters.
- Red circles show the estimated locations of the components separaed with
+ Blue circles correspond to the true locations of the emitters.
+ Red circles show the estimated locations of the components separated with
  NMF.
  Green circle represent an area of the classical resolution limit 
 \begin_inset Formula $\delta$
@@ -3880,6 +3890,24 @@ begin{centering}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+sizeHist}{.33}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -3893,7 +3921,51 @@ status open
 
 
 \backslash
-includegraphics[scale=.5]{
+includegraphics[scale=
+\backslash
+sizeHist]{
+\backslash
+homepath 
+\backslash
+qdotspath /S300/images/KestHist_PCA_Kink}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Principal component analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[scale=
+\backslash
+sizeHist]{
 \backslash
 homepath 
 \backslash
@@ -3940,7 +4012,9 @@ status open
 
 
 \backslash
-includegraphics[scale=.5]{
+includegraphics[scale=
+\backslash
+sizeHist]{
 \backslash
 homepath 
 \backslash
@@ -4014,7 +4088,7 @@ name "fig:Histograms-of-the-K-estimation"
 status open
 
 \begin_layout Plain Layout
-better colors of hte bars, comparison with PCA as well!
+better colours of the bars, comparison with PCA as well!
 \end_layout
 
 \end_inset
