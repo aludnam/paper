@@ -756,44 +756,32 @@ key "Canny2004,Buntine2006"
 \end_layout
 
 \begin_layout Standard
-The posterior distribution 
-\begin_inset Formula $p(K|{\bf D})$
-\end_inset
-
- represents evidence for a particular value of 
-\begin_inset Formula $K$
-\end_inset
-
- given a data set 
-\begin_inset Formula ${\bf D}$
-\end_inset
-
-.
- A lower bound for this quantity can be estimated by Bayesian treatment
- of the probabilistic NMF formulation 
+Bayesian treatment of the probabilistic NMF formulation (Gamma - Poisson
+ (GaP) model )
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Canny2004,Buntine2006"
+key "Canny2004"
 
 \end_inset
 
-.
- We can then choose the 
+ can quantify evidence of particular 
 \begin_inset Formula $K$
 \end_inset
 
- which maximises the lower bound on 
-\begin_inset Formula $p(K|{\bf D})$
+ for given data.
+ We showed on simulated data that variational approximation of the GaP model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buntine2006"
+
 \end_inset
 
-.
- However, a test on simulated data suggests that this approach systematically
- underestimates 
+ systematically underestimates the values of 
 \begin_inset Formula $K$
 \end_inset
 
-.
- (Details in supplementary materials.)
+ (see supplementary matreials for details).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -824,20 +812,13 @@ An alternative approach is to analyse the residuals (difference between
 \end_inset
 
  do not decreste the correlatons any further.
- Simulations suggest that this approach can provide more reliable estimation
+ Simulations suggest that this approach can provide most reliable estimation
  of 
 \begin_inset Formula $K$
 \end_inset
 
- compared to the variational lower bound method.
- (Details in supplementary materials and comarison in supplementary fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Histograms-of-the-K-estimation"
-
-\end_inset
-
-.)
+ compared to PCA and variational GaP.
+ (Details in supplementary materials.)
 \end_layout
 
 \begin_layout Subsubsection*
@@ -1427,6 +1408,47 @@ where the `
 \end_layout
 
 \begin_layout Subsubsection*
+Comparison to ICA
+\end_layout
+
+\begin_layout Standard
+Comparison of NMF and ICA separated components from simulated data of two
+ QDs is shown in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+.
+ ICA can separate components from noise-free data (fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+c), however fails in the noisy case (fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+b).
+ Our NMF model accounts for Poisson noise and is able to separate the sources
+ even from noisy data (fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+a).
+ 
+\end_layout
+
+\begin_layout Subsubsection*
 Gamma-Poisson model
 \end_layout
 
@@ -1470,27 +1492,10 @@ reference "eq:NMF relaxed"
 \end_inset
 
  are then parameters of the GaP model.
- The variational approximation of the GaP model
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Buntine2006"
+\end_layout
 
-\end_inset
-
- provides a lower bound 
-\begin_inset Formula $\mathcal{L}$
-\end_inset
-
- on the likelihood function 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
- with latent variables 
-\begin_inset Formula $\bm{h}_{k}$
-\end_inset
-
- integrated out.
- We can express the posterior distribution 
+\begin_layout Standard
+The posterior distribution can be written as 
 \begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)p(K)$
 \end_inset
 
@@ -1515,8 +1520,7 @@ key "Buntine2006"
 \begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)$
 \end_inset
 
-.
- The marginal likelihood 
+ where the marginal likelihood 
 \begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
 \end_inset
 
@@ -1525,15 +1529,31 @@ key "Buntine2006"
 \end_inset
 
 .
+ The variational approximation of the GaP model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buntine2006"
+
+\end_inset
+
+ provides a lower bound 
+\begin_inset Formula $\mathcal{L}$
+\end_inset
+
+ on the likelihood function 
+\begin_inset Formula $p({\bf D}|K,\theta)$
+\end_inset
+
+ with latent variables 
+\begin_inset Formula $\bm{h}_{k}$
+\end_inset
+
+ integrated out.
  The maximum of the lower bound 
 \begin_inset Formula $\mathcal{L}$
 \end_inset
 
- on 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
- for different values of 
+ computed for different values of 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1548,11 +1568,56 @@ g-i) can suggest
 \begin_inset Formula $K$
 \end_inset
 
- which would maximise 
-\begin_inset Formula $p({\bf D}|K)$
+ which maximises 
+\begin_inset Formula $p({\bf D}|K,\theta)$
 \end_inset
 
 .
+ However, integration over the parameters 
+\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
+\end_inset
+
+ will penalise the complexity of the model (similar to Bayesian Information
+ Criterion
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bishop2006"
+
+\end_inset
+
+) and therefore shift the maximum of 
+\begin_inset Formula $p({\bf D}|K)$
+\end_inset
+
+ towards smaller values of 
+\begin_inset Formula $K$
+\end_inset
+
+ compared to 
+\begin_inset Formula $p({\bf D}|K,\theta)$
+\end_inset
+
+.
+ As we show in fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+g-i the lower bound already underestimates the value of 
+\begin_inset Formula $K$
+\end_inset
+
+ and we can expect that 
+\begin_inset Formula $p({\bf D}|K)$
+\end_inset
+
+ peaks for even lower 
+\begin_inset Formula $K$
+\end_inset
+
+ and therefore systematically undrestimates the number of sources.
  
 \end_layout
 
@@ -3073,7 +3138,6 @@ reference "tab:Parameters-of-the-simulation"
 
 .
  Blue pixels contain negative values.
- 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Comparison of NMF and ICA"
@@ -4535,7 +4599,7 @@ sizeHist]{
 \backslash
 homepath 
 \backslash
-qdotspath /S300/images/KestHist_maxC_Kink}
+qdotspath /S301/images/KestHist_maxC_Kink}
 \end_layout
 
 \end_inset
@@ -5014,7 +5078,6 @@ hspace*{-1.5cm}
 \end_layout
 
 \end_inset
-
 
 
 \begin_inset Tabular
@@ -5632,7 +5695,7 @@ name "fig:real QDs separated"
 
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "references/QuantumDots,references/Microscopy,references/MachineLearning,references/SNARE"
+bibfiles "references/QuantumDots,references/Microscopy,references/MachineLearning,references/SNARE,references/Books"
 options "plain"
 
 \end_inset
