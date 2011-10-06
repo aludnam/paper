@@ -276,92 +276,6 @@ We use non-negative matrix factorisation (NMF) as a model for blinking quantum
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Quantum dots are good for microscopy because they are bright and photo-stable.
- LM cant really use them because they are difficult to control.
- (Some recent publications in LM using QDs.
- Stress that LM is very accessible and cheap.) We try first to separate the
- individual sources and then localise them individually contrary to the
- fitting of the model of the PSF and intensity to the time data.
- This accommodates the PSF of different shapes as no prior knowledge about
- the PSF (apart from the non-negativity constraints) are used.
- 
-\end_layout
-
-\begin_layout Plain Layout
-One of the issue is to estimate the number of components in the data.
- As this might result in different reconstruction (demonstration).
- Different approaches of the K estimation.
- Compare PCA, BIC, variational LB and correlations in residuals.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Give a draft to Chris by the end of the next week.
- 
-\end_layout
-
-\begin_layout Plain Layout
-When to go to Germany? Beginning of October? 
-\end_layout
-
-\begin_layout Plain Layout
-Maybe measure the similarity of the simulated and recovered sources? (comparison
- of ICA and NMF)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Images:
-\end_layout
-
-\begin_layout Itemize
-main article:
-\begin_inset Newline newline
-\end_inset
-
-?Resolution of two sources vs estimation of the K for two sources.
- Or for 10 sources? 
-\begin_inset Newline newline
-\end_inset
-
-Separated out of focus PSFs.
- 
-\end_layout
-
-\begin_layout Itemize
-supplementary materials:
-\begin_inset Newline newline
-\end_inset
-
-K estimation comparison for PCA, variational lower bound and correlations.
- 
-\begin_inset Newline newline
-\end_inset
-
-Localisation of the individual components demonstrated on the simulated
- data.
- 
-\begin_inset Newline newline
-\end_inset
-
-Comparison to ICA?
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status open
 
@@ -382,32 +296,6 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-LM concept (+ Stress that LM is very accessible and cheap.)
-\begin_inset Newline newline
-\end_inset
-
-QD good for LM (bright and stable) but current method cant use QD because
- of the blinking (cant be controlled).
-\begin_inset Newline newline
-\end_inset
-
-Existing work - MAP, ICA, [1.
- Chien, F.-C., Kuo, C.W.
- & Chen, P.
- Localisation imaging using blinking quantum dots.
- The Analyst 136, 1608-13 (2011).]
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 Localisation microscopy (LM) is a conceptually simple and accessible technique
  providing super-resolution fluorescent images
 \begin_inset CommandInset citation
@@ -527,26 +415,6 @@ Methods
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-NMF introduction - KL update -> Poisson data.
- Blind in time and space.
- Local minima (multiple restarts).
- Relation to the RL deconvolution.
- Mention GaP as a generative probabilistic model for NMF (introduce H as
- hidden variables).
- Explain what has NMF and GaP in common and what is different.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 We used non-negative matrix factorisation (NMF) 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -655,25 +523,6 @@ Model comparison
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Compare on simulations BIC, PCA, variational approach and residual correlation
- analysis.
-\end_layout
-
-\begin_layout Plain Layout
-Variational approach to GaP.
- (short about integrating out H, W are parameters)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 The NMF algorithm requires prior knowledge about the number of sources 
 \begin_inset Formula $K$
 \end_inset
@@ -712,47 +561,6 @@ The results of NMF are the maximum-likelihood estimates, and therefore a
 \end_inset
 
  is vital for a successful separation.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-A Bayesian treatment of the probabilistic formulation of NMF 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Canny2004,Buntine2006"
-
-\end_inset
-
- can quantitatively evaluate a credibility of the individual models with
- different values of 
-\begin_inset Formula $K$
-\end_inset
-
- for a given data set 
-\begin_inset Formula ${\bf D}$
-\end_inset
-
- - the posterior probability 
-\begin_inset Formula $p(K|{\bf D})$
-\end_inset
-
-.
- We can then choose the 
-\begin_inset Formula $K$
-\end_inset
-
- which maximises this quantity.
- However, a test on simulated data suggests that this approach systematically
- underestimates 
-\begin_inset Formula $K$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4141,16 +3949,12 @@ lbd
 status open
 
 \begin_layout Plain Layout
-These are results from the nmf initialized from the var updates.
- Somehow smoother curves...
+Max correlations
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -4402,17 +4206,8 @@ imc
  Principal component analysis (second row), variational lower bound (third
  row) and maximum residual correlations (bottom row) for corresponding data
  sets.
- Red, green and blue curves correspond to three datasets (out of 7) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-will be 10
-\end_layout
-
-\end_inset
-
-with three different geometric configurations.
+ Red, green and blue curves correspond to three datasets (out of 10) with
+ three different geometric configurations.
  Dotted lines show the values for 
 \begin_inset Formula ${\bf W}_{\mbox{true}}$
 \end_inset
@@ -4665,16 +4460,6 @@ name "fig:Histograms-of-the-K-estimation"
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-better colours of the bars, comparison with PCA as well!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -4688,295 +4473,6 @@ better colours of the bars, comparison with PCA as well!
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=1.38]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/dpixcmean}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Mean intensity image
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d1}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d2}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d3}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d6}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d7}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-sizec]{
-\backslash
-homepath 
-\backslash
-qdotspath /S279/images/d8}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Movie of the blinking sources (six frames out of 
-\begin_inset Formula $10^{3}$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{centering}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Real QD data.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Real-QD-data.-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -5064,7 +4560,7 @@ sizeMovie}{.6}
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -5131,7 +4627,7 @@ sizeMovie]{
 \backslash
 homepath 
 \backslash
-qdotspath /S279/images/d1}
+qdotspath /S279/images/d2}
 \end_layout
 
 \end_inset
@@ -5158,7 +4654,7 @@ sizeMovie]{
 \backslash
 homepath 
 \backslash
-qdotspath /S279/images/d1}
+qdotspath /S279/images/d3}
 \end_layout
 
 \end_inset
@@ -5187,7 +4683,7 @@ sizeMovie]{
 \backslash
 homepath 
 \backslash
-qdotspath /S279/images/d1}
+qdotspath /S279/images/d4}
 \end_layout
 
 \end_inset
@@ -5214,7 +4710,7 @@ sizeMovie]{
 \backslash
 homepath 
 \backslash
-qdotspath /S279/images/d1}
+qdotspath /S279/images/d5}
 \end_layout
 
 \end_inset
@@ -5241,7 +4737,7 @@ sizeMovie]{
 \backslash
 homepath 
 \backslash
-qdotspath /S279/images/d1}
+qdotspath /S279/images/d6}
 \end_layout
 
 \end_inset
