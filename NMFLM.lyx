@@ -462,8 +462,6 @@ key "Lidke2005"
 
  is a factorisation method with different set of constrains compared to
  NMF.
- The separated components are required to be statistically independent,
- rather then non-negative.
  ICA allows negative entries and does not account for noise in the measured
  data which can make recovery of the individual sources difficult from a
  realistic noisy data (see fig.
@@ -1296,13 +1294,99 @@ reference "eq:NMF relaxed"
 
 .
  Variables 
-\begin_inset Formula $\theta=\{\bm{w}_{k},\alpha_{k},\beta_{k},\, k=1..K\}$
+\begin_inset Formula $\theta=\{\bm{w}_{k},\alpha_{k},\beta_{k};\; k=1..K\}$
 \end_inset
 
  are then parameters of the GaP model.
 \end_layout
 
 \begin_layout Standard
+A variational approximation of the GaP model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Buntine2006"
+
+\end_inset
+
+ provide lower bound 
+\begin_inset Formula ${\cal L}$
+\end_inset
+
+ on the likelihood 
+\begin_inset Formula $p({\bf D}|K,\theta)$
+\end_inset
+
+ by approximately integrating out the latent variables 
+\begin_inset Formula $\bm{h}_{k}$
+\end_inset
+
+.
+ To obtain the marginal likelihood 
+\begin_inset Formula $p({\bf D}|K)$
+\end_inset
+
+ it would be necessary to also integrate out 
+\begin_inset Formula $\theta$
+\end_inset
+
+, but this is computationally challenging.
+ A simple approximation could be obtained using the Bayesian Information
+ Criterion
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bishop2006"
+
+\end_inset
+
+, where we find 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ that maximizes 
+\begin_inset Formula ${\cal L}$
+\end_inset
+
+, and then add a penalty term for the 
+\begin_inset Formula $NK$
+\end_inset
+
+ parameters contained in 
+\begin_inset Formula ${\bf W}$
+\end_inset
+
+, so that models with larger 
+\begin_inset Formula $K$
+\end_inset
+
+ would be more heavily penalized.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: estimation of K by variational lower bound and maximum correlation"
+
+\end_inset
+
+g-i we show that in fact the lower bound already underestimates the value
+ of 
+\begin_inset Formula $K$
+\end_inset
+
+, so that 
+\begin_inset Formula $p({\bf D}|K)$
+\end_inset
+
+ would likely peak at even lower values of 
+\begin_inset Formula $K$
+\end_inset
+
+ and thus systematically underestimate the number of sources.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 The posterior distribution can be written as 
 \begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)p(K)$
 \end_inset
@@ -1427,6 +1511,11 @@ g-i the lower bound already underestimates the value of
 
  and therefore systematically underestimates the number of sources.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection*
