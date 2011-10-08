@@ -24,9 +24,7 @@ the ON fluorophores results in overlapping sources and
 complicates localisation whereas a small density leads to a long 
 acquisition time. Standard LM techniques (fPALM [Hess2006], STORM 
 [Rust2006]) control the density of the ON sources by 
-photo-switching. However, some recent research suggests 
-algorithms which can deal with a high density of ON sources[Holden2011]
-. 
+photo-switching.
 
 Quantum dots (QD) are an order of magnitude brighter compared to 
 the organic dyes used in conventional LM [Jaiswal2004, Resch-Genger2008]
@@ -71,15 +69,17 @@ supplementary materials). Maximum a-posteriori (MAP) fitting of
 the positions and the intensities of known point spread functions 
 (PSFs) to blinking QDs[Harrington2008] has been demonstrated. 
 This method, however, requires a prior knowledge about the PSF 
-shape and assumes the PSF to be identical for all emitters. 
-Higher order statistic analysis of the intensity fluctuation 
-(SOFI)[Dertinger2010b] can provide resolution improvement. The 
-intensity of the sources in the SOFI image, however, reflects the 
-fluctuation behaviour rather than the strength of the emitter[Dertinger2009]
-. Sources which do not show a fluctuation in the intensity will 
-not appear in the SOFI image. Note that NMF can separate a static 
-source from the fluctuating one and the intensity of the sources 
-can be determined from the temporal part. 
+shape and assumes the PSF to be identical for all emitters. This 
+also apply to a recently published DOASTORM algorithm [Holden2011]
+ which can deal with overlapping sources. Higher order statistic 
+analysis of the intensity fluctuation (SOFI)[Dertinger2010b] can 
+provide resolution improvement. The intensity of the sources in 
+the SOFI image, however, reflects the fluctuation behaviour 
+rather than the strength of the emitter[Dertinger2009]. Sources 
+which do not show a fluctuation in the intensity will not appear 
+in the SOFI image. Note that NMF can separate a static source 
+from the fluctuating one and the intensity of the sources can be 
+determined from the temporal part. 
 
   Model comparison
 
@@ -300,9 +300,9 @@ obtain the marginal likelihood p({\bf D}|K) it would be necessary
 to also integrate out \theta, but this is computationally 
 challenging. A simple approximation could be obtained using the 
 Bayesian Information Criterion[Bishop2006], where we find \hat{\theta}
- that maximizes {\cal L}, and then add a penalty term for the NK 
+ that maximises {\cal L}, and then add a penalty term for the NK 
 parameters contained in {\bf W}, so that models with larger K 
-would be more heavily penalized. In Figure [fig: estimation of K by variational lower bound and maximum correlation]
+would be more heavily penalised. In Figure [fig: estimation of K by variational lower bound and maximum correlation]
 g-i we show that in fact the lower bound already underestimates 
 the value of K, so that p({\bf D}|K) would likely peak at even 
 lower values of K and thus systematically underestimate the 

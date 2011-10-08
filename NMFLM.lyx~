@@ -363,16 +363,6 @@ key "Rust2006"
 \end_inset
 
 ) control the density of the ON sources by photo-switching.
- However, some recent research suggests algorithms which can deal with a
- high density of ON sources
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Holden2011"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
@@ -483,6 +473,14 @@ key "Harrington2008"
  has been demonstrated.
  This method, however, requires a prior knowledge about the PSF shape and
  assumes the PSF to be identical for all emitters.
+ This also apply to a recently published DOASTORM algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+ which can deal with overlapping sources.
  Higher order statistic analysis of the intensity fluctuation (SOFI)
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1294,7 +1292,7 @@ reference "eq:NMF relaxed"
 
 .
  Variables 
-\begin_inset Formula $\theta=\{\bm{w}_{k},\alpha_{k},\beta_{k},\, k=1..K\}$
+\begin_inset Formula $\theta=\{\bm{w}_{k},\alpha_{k},\beta_{k};\; k=1..K\}$
 \end_inset
 
  are then parameters of the GaP model.
@@ -1342,7 +1340,7 @@ key "Bishop2006"
 \begin_inset Formula $\hat{\theta}$
 \end_inset
 
- that maximizes 
+ that maximises 
 \begin_inset Formula ${\cal L}$
 \end_inset
 
@@ -1358,7 +1356,7 @@ key "Bishop2006"
 \begin_inset Formula $K$
 \end_inset
 
- would be more heavily penalized.
+ would be more heavily penalised.
  In Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3038,393 +3036,6 @@ reference "tab:Parameters-of-the-simulation"
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Comparison of NMF and ICA"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=.9]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/dpixc_mean_loc}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-S313 is the same graph but for parameters from Rainers lab (lambda 565,
- 1.4 NA and 64nm pixelsize
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-wide field
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace*{-.5cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/nmf_noise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/nmf_noise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-NMF (noise)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_Noise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_Noise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ICA (noise)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_noNoise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_noNoise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ICA (noise free)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 	
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Comparison of the components separated with NMF (b) and ICA (c) for noisy
- data of two blinking QDs separated by 
-\begin_inset Formula $d=50\mbox{ nm}$
-\end_inset
-
- (mean value shown in (a)).
- ICA for noise free data shown in (d).
- The true and the estimated positions are shown as blue circle and red crosses,
- respectively.
- The radius of the green circle is the resolution limit 
-\begin_inset Formula $\delta$
-\end_inset
-
-.
- Blue pixels contain negative values.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Comparison of NMF and ICA-1"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 

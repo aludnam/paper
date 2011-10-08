@@ -363,16 +363,6 @@ key "Rust2006"
 \end_inset
 
 ) control the density of the ON sources by photo-switching.
- However, some recent research suggests algorithms which can deal with a
- high density of ON sources
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Holden2011"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
@@ -483,6 +473,14 @@ key "Harrington2008"
  has been demonstrated.
  This method, however, requires a prior knowledge about the PSF shape and
  assumes the PSF to be identical for all emitters.
+ This also apply to a recently published DOASTORM algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+ which can deal with overlapping sources.
  Higher order statistic analysis of the intensity fluctuation (SOFI)
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1342,7 +1340,7 @@ key "Bishop2006"
 \begin_inset Formula $\hat{\theta}$
 \end_inset
 
- that maximizes 
+ that maximises 
 \begin_inset Formula ${\cal L}$
 \end_inset
 
@@ -1358,7 +1356,7 @@ key "Bishop2006"
 \begin_inset Formula $K$
 \end_inset
 
- would be more heavily penalized.
+ would be more heavily penalised.
  In Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1380,142 +1378,6 @@ g-i we show that in fact the lower bound already underestimates the value
 \end_inset
 
  and thus systematically underestimate the number of sources.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The posterior distribution can be written as 
-\begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)p(K)$
-\end_inset
-
- where 
-\begin_inset Formula $p(K)$
-\end_inset
-
- is a prior distribution over values of 
-\begin_inset Formula $K$
-\end_inset
-
-.
- If we assume the prior 
-\begin_inset Formula $p(K)$
-\end_inset
-
- to be equal for each 
-\begin_inset Formula $K$
-\end_inset
-
-, we can express 
-\begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)$
-\end_inset
-
- where the marginal likelihood 
-\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
-\end_inset
-
- requires integration over the parameters 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- The variational approximation of the GaP model
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Buntine2006"
-
-\end_inset
-
- provides a lower bound 
-\begin_inset Formula $\mathcal{L}$
-\end_inset
-
- on the likelihood function 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
- with latent variables 
-\begin_inset Formula $\bm{h}_{k}$
-\end_inset
-
- integrated out.
- The maximum of the lower bound 
-\begin_inset Formula $\mathcal{L}$
-\end_inset
-
- computed for different values of 
-\begin_inset Formula $K$
-\end_inset
-
- (fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: estimation of K by variational lower bound and maximum correlation"
-
-\end_inset
-
-g-i) can suggest 
-\begin_inset Formula $K$
-\end_inset
-
- which maximises 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
-.
- However, integration over the parameters 
-\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
-\end_inset
-
- will penalise the complexity of the model (similar to Bayesian Information
- Criterion
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bishop2006"
-
-\end_inset
-
-) and therefore shift the maximum of 
-\begin_inset Formula $p({\bf D}|K)$
-\end_inset
-
- towards smaller values of 
-\begin_inset Formula $K$
-\end_inset
-
- compared to 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
-.
- As we show in fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: estimation of K by variational lower bound and maximum correlation"
-
-\end_inset
-
-g-i the lower bound already underestimates the value of 
-\begin_inset Formula $K$
-\end_inset
-
- and we can expect that 
-\begin_inset Formula $p({\bf D}|K)$
-\end_inset
-
- peaks for even lower 
-\begin_inset Formula $K$
-\end_inset
-
- and therefore systematically underestimates the number of sources.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2418,19 +2280,6 @@ Each pixel was corrupted with Poisson noise.
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Has to be updates according to what parameters will be used...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -2704,7 +2553,6 @@ status open
 \begin_layout Plain Layout
 S313 is the same graph but for parameters from Rainers lab (lambda 565,
  1.4 NA and 64nm pixelsize.
- Maybe add the true image
 \end_layout
 
 \end_inset
@@ -3038,393 +2886,6 @@ reference "tab:Parameters-of-the-simulation"
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Comparison of NMF and ICA"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=.9]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/dpixc_mean_loc}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-S313 is the same graph but for parameters from Rainers lab (lambda 565,
- 1.4 NA and 64nm pixelsize
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-wide field
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace*{-.5cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/nmf_noise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/nmf_noise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-NMF (noise)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_Noise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_Noise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ICA (noise)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hspace*{1.0cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_noNoise_loc_c1}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-includegraphics[scale=
-\backslash
-specialsize]{
-\backslash
-homepath 
-\backslash
-qdotspath /S310/images/ica_noNoise_loc_c2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-ICA (noise free)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 	
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Comparison of the components separated with NMF (b) and ICA (c) for noisy
- data of two blinking QDs separated by 
-\begin_inset Formula $d=50\mbox{ nm}$
-\end_inset
-
- (mean value shown in (a)).
- ICA for noise free data shown in (d).
- The true and the estimated positions are shown as blue circle and red crosses,
- respectively.
- The radius of the green circle is the resolution limit 
-\begin_inset Formula $\delta$
-\end_inset
-
-.
- Blue pixels contain negative values.
- 
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Comparison of NMF and ICA-1"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
