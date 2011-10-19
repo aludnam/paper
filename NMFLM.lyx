@@ -306,36 +306,18 @@ key "Hess2006,Huang2008,Linde2008,Jones2011"
 
 .
  The structure of the sample is reconstructed by localising individual fluoropho
-res with precision surpassing 
+res with precision surpassing the classical resolution limit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ober2004"
 
 \end_inset
 
- the classical resolution limit.
- 
-\begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
-\end_inset
-
-, where 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is the wavelength of the emission light and 
-\begin_inset Formula $\mbox{NA}$
-\end_inset
-
- is the numerical aperture of the objective lens.
- LM makes use of the fluorophore transition between bright (ON) and dark
- (OFF) states to discriminate individual sources separated by a distance
- 
-\begin_inset Formula $d<\delta$
-\end_inset
-
 .
- Super-resolution is achieved by a repetitive localisation of the different
- individual spatially separated subsets of fluorophores.
+ LM makes use of the fluorophore transition between bright (ON) and dark
+ (OFF) states to discriminate individual overlapping source images.
+ Super-resolution is achieved by localisation of the different individual
+ spatially separated subsets of fluorophores.
  The number of ON sources in each acquisition frame must be optimised experiment
 ally
 \begin_inset CommandInset citation
@@ -362,7 +344,17 @@ key "Rust2006"
 
 \end_inset
 
-) control the density of the ON sources by photo-switching.
+) control the density of the ON sources by a stochastic photo-switching
+ and the overlapping sources are discarded.
+ However, a recently published DAOSTORM algorithm
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+ can deal with moderately overlapping sources.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -394,8 +386,8 @@ key "Resch-Genger2008"
 
 .
  However, the stochastic blinking of QDs is impractical for standard LM
- because the rate of ON-OFF transitions and hence the density of ON sources
- is difficult to control.
+ because the rate of switching and hence the density of ON sources is difficult
+ to control.
  QD labeled data typically consist of highly overlapping sources which cannot
  be localised with standard LM techniques.
 \end_layout
@@ -473,14 +465,14 @@ key "Harrington2008"
  has been demonstrated.
  This method, however, requires a prior knowledge about the PSF shape and
  assumes the PSF to be identical for all emitters.
- This also apply to a recently published DOASTORM algorithm 
+ This also apply to the DAOSTORM algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Holden2011"
 
 \end_inset
 
- which can deal with overlapping sources.
+ mentioned above.
  Higher order statistic analysis of the intensity fluctuation (SOFI)
 \begin_inset CommandInset citation
 LatexCommand cite

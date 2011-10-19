@@ -306,36 +306,18 @@ key "Hess2006,Huang2008,Linde2008,Jones2011"
 
 .
  The structure of the sample is reconstructed by localising individual fluoropho
-res with precision surpassing 
+res with precision surpassing the classical resolution limit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ober2004"
 
 \end_inset
 
- the classical resolution limit.
- 
-\begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
-\end_inset
-
-, where 
-\begin_inset Formula $\lambda$
-\end_inset
-
- is the wavelength of the emission light and 
-\begin_inset Formula $\mbox{NA}$
-\end_inset
-
- is the numerical aperture of the objective lens.
- LM makes use of the fluorophore transition between bright (ON) and dark
- (OFF) states to discriminate individual sources separated by a distance
- 
-\begin_inset Formula $d<\delta$
-\end_inset
-
 .
- Super-resolution is achieved by a repetitive localisation of the different
- individual spatially separated subsets of fluorophores.
+ LM makes use of the fluorophore transition between bright (ON) and dark
+ (OFF) states to discriminate individual overlapping source images.
+ Super-resolution is achieved by localisation of the different individual
+ spatially separated subsets of fluorophores.
  The number of ON sources in each acquisition frame must be optimised experiment
 ally
 \begin_inset CommandInset citation
@@ -362,7 +344,17 @@ key "Rust2006"
 
 \end_inset
 
-) control the density of the ON sources by photo-switching.
+) control the density of the ON sources by a stochastic photo-switching
+ and the overlapping sources are discarded.
+ However, a recently published DOASTORM algorithm
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+ can deal with moderately overlapping sources.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -394,8 +386,8 @@ key "Resch-Genger2008"
 
 .
  However, the stochastic blinking of QDs is impractical for standard LM
- because the rate of ON-OFF transitions and hence the density of ON sources
- is difficult to control.
+ because the rate of switching and hence the density of ON sources is difficult
+ to control.
  QD labeled data typically consist of highly overlapping sources which cannot
  be localised with standard LM techniques.
 \end_layout
@@ -1380,142 +1372,6 @@ g-i we show that in fact the lower bound already underestimates the value
  and thus systematically underestimate the number of sources.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The posterior distribution can be written as 
-\begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)p(K)$
-\end_inset
-
- where 
-\begin_inset Formula $p(K)$
-\end_inset
-
- is a prior distribution over values of 
-\begin_inset Formula $K$
-\end_inset
-
-.
- If we assume the prior 
-\begin_inset Formula $p(K)$
-\end_inset
-
- to be equal for each 
-\begin_inset Formula $K$
-\end_inset
-
-, we can express 
-\begin_inset Formula $p(K|{\bf D})\propto p({\bf D}|K)$
-\end_inset
-
- where the marginal likelihood 
-\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
-\end_inset
-
- requires integration over the parameters 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
- The variational approximation of the GaP model
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Buntine2006"
-
-\end_inset
-
- provides a lower bound 
-\begin_inset Formula $\mathcal{L}$
-\end_inset
-
- on the likelihood function 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
- with latent variables 
-\begin_inset Formula $\bm{h}_{k}$
-\end_inset
-
- integrated out.
- The maximum of the lower bound 
-\begin_inset Formula $\mathcal{L}$
-\end_inset
-
- computed for different values of 
-\begin_inset Formula $K$
-\end_inset
-
- (fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: estimation of K by variational lower bound and maximum correlation"
-
-\end_inset
-
-g-i) can suggest 
-\begin_inset Formula $K$
-\end_inset
-
- which maximises 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
-.
- However, integration over the parameters 
-\begin_inset Formula $p({\bf D}|K)=\int p({\bf D}|K,\theta)p(\theta|K)d\theta$
-\end_inset
-
- will penalise the complexity of the model (similar to Bayesian Information
- Criterion
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bishop2006"
-
-\end_inset
-
-) and therefore shift the maximum of 
-\begin_inset Formula $p({\bf D}|K)$
-\end_inset
-
- towards smaller values of 
-\begin_inset Formula $K$
-\end_inset
-
- compared to 
-\begin_inset Formula $p({\bf D}|K,\theta)$
-\end_inset
-
-.
- As we show in fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: estimation of K by variational lower bound and maximum correlation"
-
-\end_inset
-
-g-i the lower bound already underestimates the value of 
-\begin_inset Formula $K$
-\end_inset
-
- and we can expect that 
-\begin_inset Formula $p({\bf D}|K)$
-\end_inset
-
- peaks for even lower 
-\begin_inset Formula $K$
-\end_inset
-
- and therefore systematically underestimates the number of sources.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection*
 Correlations in residuals
 \end_layout
@@ -2416,19 +2272,6 @@ Each pixel was corrupted with Poisson noise.
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Has to be updates according to what parameters will be used...
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -2702,7 +2545,6 @@ status open
 \begin_layout Plain Layout
 S313 is the same graph but for parameters from Rainers lab (lambda 565,
  1.4 NA and 64nm pixelsize.
- Maybe add the true image
 \end_layout
 
 \end_inset
