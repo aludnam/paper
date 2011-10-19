@@ -571,7 +571,8 @@ key "Canny2004"
 \end_inset
 
  for given data.
- We showed on simulated data that variational approximation of the GaP model
+ However, we showed on simulated data that a variational approximation of
+ the GaP model
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Buntine2006"
@@ -597,8 +598,8 @@ An alternative approach is to analyse the residuals (difference between
 \begin_inset Formula $K$
 \end_inset
 
- give rise to correlations in residuals because multiple individual emitters
- have to be represented with fewer components.
+ give rise to correlations in the residual pixels because multiple individual
+ emitters have to be represented with fewer components.
  Correlations decrease with higher 
 \begin_inset Formula $K$
 \end_inset
@@ -614,13 +615,7 @@ An alternative approach is to analyse the residuals (difference between
 \end_inset
 
  do not decrease the correlations any further.
- Simulations suggest that this approach can provide most reliable estimation
- of 
-\begin_inset Formula $K$
-\end_inset
-
- compared to PCA and variational GaP.
- (Details in supplementary materials.)
+ 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -628,9 +623,9 @@ Results
 \end_layout
 
 \begin_layout Standard
-Tests on simulated data with different densities of ten QDs suggests (see
- supplementary materials) that the analysis of the residuals in correlations
- provides the most accurate estimate of the number of sources 
+Tests on simulated data with ten QDs spread across varying area suggest
+ (see supplementary materials) that the analysis of the pixels correlations
+ in residuals provides most reliable estimate of the number of sources 
 \begin_inset Formula $K$
 \end_inset
 
@@ -640,20 +635,34 @@ Tests on simulated data with different densities of ten QDs suggests (see
 \end_layout
 
 \begin_layout Standard
-Simulations of noisy data comprising two QDs show that NMF can reliably
- separate two close emitters (
-\begin_inset Formula $d>\delta/10)$
+Simulations of noisy data comprising two QDs separated by a distance 
+\begin_inset Formula $d$
 \end_inset
 
- when 
-\begin_inset Formula $K_{\mbox{true}}$
+ and with fluctuating intensity uniformly distributed between 0 and some
+ maximum value (details in supplementary materials) show that when the number
+ of sources is known (here 
+\begin_inset Formula $K=2$
 \end_inset
 
- is known (
-\begin_inset Formula $K=K_{\mbox{true}}$
+) NMF can reliably separate highly overlaping sources (
+\begin_inset Formula $d>\delta/10$
 \end_inset
 
-).
+, where 
+\begin_inset Formula $\delta=0.61\frac{\lambda}{\mbox{NA}}$
+\end_inset
+
+ is the radius of the Airy disk, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the emmissin wavelength and 
+\begin_inset Formula $\mbox{NA}$
+\end_inset
+
+ is the numerical apperture of the objective) without prior knowledge about
+ the shape of the individual PSFs.
  However, the ability to estimate 
 \begin_inset Formula $K$
 \end_inset
@@ -667,11 +676,7 @@ Simulations of noisy data comprising two QDs show that NMF can reliably
 \begin_inset Formula $d>\delta/5$
 \end_inset
 
-, where 
-\begin_inset Formula $\delta=0.61\lambda/\mbox{NA}$
-\end_inset
-
- is the classical resolution limit (fig.
+ (fig.
 \begin_inset space ~
 \end_inset
 
@@ -721,16 +726,7 @@ reference "fig:Real-QD-data."
 \end_layout
 
 \begin_layout Standard
-The number of components was estimated from the analysis of the correlations
- in residual (fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:real QD - K estimation"
-
-\end_inset
-
-).
- NMF was able to recover images of individual sources which correspond to
+NMF was able to recover images of individual sources which correspond to
  realistic out-of-focus PSFs (fig.
 \begin_inset space ~
 \end_inset
@@ -738,7 +734,7 @@ reference "fig:real QD - K estimation"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Real-QD-data."
+reference "fig:real QDs separated"
 
 \end_inset
 
@@ -772,11 +768,20 @@ Discussion
 
 \begin_layout Standard
 We have demonstrated that NMF allows to separate individual emitters from
- a movie of blinking QDs.
+ a time series of blinking QDs.
  The ability to recover PSFs with different shapes from the data with highly
  overlapping sources makes the method attractive for imaging of 3D samples
  where fluorophores can be in different focal depths and therefore produce
  a variety of different PSFs.
+ This allows for the application of LM to thick samples which are beyond
+ the capability of the 3D STORM
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Huang2008"
+
+\end_inset
+
+ using the astigmatism approach.
  Diversity in PSFs for individual sources can also arise with aberrations
  in the optical system.
  
@@ -786,22 +791,32 @@ We have demonstrated that NMF allows to separate individual emitters from
 Reliable estimation of the number of sources is important for correct recovery
  of individual components.
  This is a difficult task for data with a high density of overlapping sources.
- We demonstrated on simulated data the limitations this imposes on resolution
- of the method.
+ We demonstrated the limitations this imposes on the resolution of the method.
 \end_layout
 
 \begin_layout Standard
 NMF allows localisation microscopy with blinking QDs, however, NMF is not
  limited to QDs only.
  It can separate any source with intermittent intensity as long as the actual
- fluorophores remain static in space during the acquisition period.
+ fluorophores remain fixed in space during the acquisition period
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+show what happens when drift is presetn - two different components instead
+ of one (S281)
+\end_layout
+
+\end_inset
+
+.
  A typical data set consists of 
 \begin_inset Formula $10^{3}$
 \end_inset
 
  frames and therefore the acquisition time is typically in order of tens
  of seconds.
- During this period the sample must remain still.
+ During this period the sample must not move.
  This is a common limiting factor for localisation microscopy techniques.
  However, as NMF can separate overlapping sources it can speed up the acquisitio
 n compared to the standard LM techniques
@@ -818,7 +833,7 @@ key "Small2009"
 \end_layout
 
 \begin_layout Standard
-NMF does not take into account the temporal structure of the data.
+NMF does not account for the temporal structure of the data.
  Time frames can be permuted without affecting the separated components.
  However, there is a clear temporal structure in QDs blinking - the periods
  of ON and OFF times.
