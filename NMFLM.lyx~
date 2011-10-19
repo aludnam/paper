@@ -346,7 +346,7 @@ key "Rust2006"
 
 ) control the density of the ON sources by a stochastic photo-switching
  and the overlapping sources are discarded.
- However, a recently published DOASTORM algorithm
+ However, a recently published DAOSTORM algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Holden2011"
@@ -392,6 +392,81 @@ key "Resch-Genger2008"
  be localised with standard LM techniques.
 \end_layout
 
+\begin_layout Standard
+Two different ways of exploiting the blinking behaviour of the QDs have
+ been proposed.
+ The first approach is to analyse the higher order statistic of the intensity
+ fluctuation (SOFI) rather than localise the individual sources.
+ It has been shown that this can provide resolution improvement
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2010b"
+
+\end_inset
+
+.
+ The intensity values in the SOFI image, however, reflects the fluctuation
+ behaviour, rather than the strength of the emitters
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2009"
+
+\end_inset
+
+.
+ Sources which do not blink will not appear in the SOFI image.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+more about something that SOFI cannot do but NMF can - out of focus PSF?
+\end_layout
+
+\end_inset
+
+ In the second approach, the individual sources are localised.
+ Maximum a-posteriori (MAP) fitting of the positions and the intensities
+ of known point spread functions (PSFs) to blinking QDs
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrington2008"
+
+\end_inset
+
+ has been demonstrated.
+ This method, however, requires a prior knowledge about the PSF shape and
+ assumes the PSF to be identical for all emitters.
+ This also apply to the DAOSTORM algorithm
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Holden2011"
+
+\end_inset
+
+ mentioned above.
+ Independent component analysis (ICA) of the QD data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lidke2005"
+
+\end_inset
+
+ has been used for separating the overlapping sources in order to localise
+ them.
+ However, ICA model allows negative entries in the individual PSFs and does
+ not account for noise in the measured data which can make recovery of the
+ individual sources difficult in a realistic noisy data (see fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Comparison of NMF and ICA"
+
+\end_inset
+
+ in supplementary materials).
+ 
+\end_layout
+
 \begin_layout Subsubsection*
 Methods
 \end_layout
@@ -405,8 +480,8 @@ key "Lee1999"
 \end_inset
 
  as a natural model for QD data.
- NMF decomposes a movie of the blinking QDs into spatial and temporal parts
- (i.e.
+ NMF, similarly to ICA, decomposes a movie of the blinking QDs into spatial
+ and temporal parts (i.e.
  time independent emission profiles of the individual sources and fluctuating
  intensities of each emitter, respectively).
  NMF imposes natural non-negativity constraints on both the spatial and
@@ -423,6 +498,11 @@ key "Lee2001"
 \end_layout
 
 \begin_layout Standard
+Note that NMF can separate a static source from the fluctuating one and
+ the intensity of the sources can be determined from the temporal part.
+\end_layout
+
+\begin_layout Standard
 NMF does not put any additional constraints on the shape (point spread function
  PSF) or blinking behaviour of the individual sources, apart from being
  non-negative.
@@ -431,79 +511,6 @@ NMF does not put any additional constraints on the shape (point spread function
  Variability in PSFs can, for example, arise in a 3D sample where fluorophores
  can be in different focal depths and therefore each exhibiting a unique
  PSF.
-\end_layout
-
-\begin_layout Standard
-Some methods exploiting the blinking behaviour of the QDs have been proposed.
- Independent component analysis (ICA) of the QD data 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Lidke2005"
-
-\end_inset
-
- is a factorisation method with different set of constrains compared to
- NMF.
- ICA allows negative entries and does not account for noise in the measured
- data which can make recovery of the individual sources difficult from a
- realistic noisy data (see fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Comparison of NMF and ICA"
-
-\end_inset
-
- in supplementary materials).
- Maximum a-posteriori (MAP) fitting of the positions and the intensities
- of known point spread functions (PSFs) to blinking QDs
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Harrington2008"
-
-\end_inset
-
- has been demonstrated.
- This method, however, requires a prior knowledge about the PSF shape and
- assumes the PSF to be identical for all emitters.
- This also apply to a recently published DOASTORM algorithm 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Holden2011"
-
-\end_inset
-
- which can deal with overlapping sources.
- Higher order statistic analysis of the intensity fluctuation (SOFI)
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Dertinger2010b"
-
-\end_inset
-
- can provide resolution improvement.
- The intensity of the sources in the SOFI image, however, reflects the fluctuati
-on behaviour rather than the strength of the emitter
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Dertinger2009"
-
-\end_inset
-
-.
- Sources which do not show a fluctuation in the intensity will not appear
- in the SOFI image.
- Note that NMF can separate a static source from the fluctuating one and
- the intensity of the sources can be determined from the temporal part.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-more about something that SOFI cannot do but NMF can - out of focus PSF?
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Subsubsection*
