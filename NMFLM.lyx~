@@ -2440,11 +2440,11 @@ status open
 \backslash
 includegraphics[scale=
 \backslash
-sizec]{
+sizeb]{
 \backslash
 homepath 
 \backslash
-qdotspath /S307/images/maxCorrLocPrec}
+qdotspath /S307/images/maxCorrLocPrec_lines}
 \end_layout
 
 \end_inset
@@ -2501,7 +2501,7 @@ Simulated data of two sources (
 \end_inset
 
  (red).
- Mean localisation error per separation 
+ Relative localisation error 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -2514,6 +2514,19 @@ Simulated data of two sources (
 \end_inset
 
 .
+ 
+\begin_inset Formula $ $
+\end_inset
+
+For 
+\begin_inset Formula $d>14\mbox{ nm}$
+\end_inset
+
+ (magenta vertical dash-and-dot line) the relative localisation error 
+\begin_inset Formula $\varepsilon<0.5$
+\end_inset
+
+.
  The differences in residual correlations for 
 \begin_inset Formula $K=1$
 \end_inset
@@ -2522,12 +2535,12 @@ Simulated data of two sources (
 \begin_inset Formula $K=2$
 \end_inset
 
- are apparent only when the two sources are separated by at least 
-\begin_inset Formula $50\mbox{ nm}$
+ are apparent only when 
+\begin_inset Formula $d>40\mbox{ nm}$
 \end_inset
 
-.
- The classical resolution limit is 
+ (blue vertical dash-and-dot line).
+ The classical resolution limit (radius of the Airy disk) is 
 \begin_inset Formula $\delta=273\mbox{ nm}$
 \end_inset
 
