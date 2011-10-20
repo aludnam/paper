@@ -345,7 +345,7 @@ key "Rust2006"
 \end_inset
 
 ) control the density of the ON sources by a stochastic photo-switching
- and the overlapping sources are discarded.
+ and the images of overlapping sources are usually discarded.
  However, a recently published DAOSTORM algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -396,7 +396,14 @@ key "Resch-Genger2008"
 Two different ways of exploiting the blinking behaviour of the QDs have
  been proposed.
  The first approach is to analyse the higher order statistic of the intensity
- fluctuation (SOFI) rather than localise the individual sources.
+ fluctuation (SOFI
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Dertinger2010b"
+
+\end_inset
+
+) rather than localise the individual sources.
  It has been shown that this can provide resolution improvement
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -406,7 +413,8 @@ key "Dertinger2010b"
 
 .
  The intensity values in the SOFI image, however, reflects the fluctuation
- behaviour, rather than the strength of the emitters
+ behaviour, rather than the strength of the emitters.
+ Sources which do not blink will not appear in the SOFI image
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Dertinger2009"
@@ -414,7 +422,6 @@ key "Dertinger2009"
 \end_inset
 
 .
- Sources which do not blink will not appear in the SOFI image.
  
 \begin_inset Note Note
 status open
@@ -427,14 +434,14 @@ more about something that SOFI cannot do but NMF can - out of focus PSF?
 
  In the second approach, the individual sources are localised.
  Maximum a-posteriori (MAP) fitting of the positions and the intensities
- of known point spread functions (PSFs) to blinking QDs
+ of known point spread functions (PSFs) to blinking QDs has been demonstrated
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Harrington2008"
 
 \end_inset
 
- has been demonstrated.
+.
  This method, however, requires a prior knowledge about the PSF shape and
  assumes the PSF to be identical for all emitters.
  This also apply to the DAOSTORM algorithm
@@ -589,7 +596,7 @@ key "Buntine2006"
 
 \begin_layout Standard
 An alternative approach is to analyse the residuals (difference between
- data and estimated model) for models with different 
+ data and the estimated model) for models with different 
 \begin_inset Formula $K$
 \end_inset
 
@@ -614,7 +621,7 @@ An alternative approach is to analyse the residuals (difference between
 \begin_inset Formula $K$
 \end_inset
 
- do not decrease the correlations any further.
+ do not reduce the correlations any further.
  
 \end_layout
 
@@ -792,6 +799,11 @@ Reliable estimation of the number of sources is important for correct recovery
  of individual components.
  This is a difficult task for data with a high density of overlapping sources.
  We demonstrated the limitations this imposes on the resolution of the method.
+ The situation become easier if the source intensity exhibit switching between
+ ON and OFF states rather then being uniformly distributed over a certain
+ interval (as used in our simulations).
+ Sources with longer OFF time would further facilitate the the separation.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2522,7 +2534,8 @@ For
 \begin_inset Formula $d>14\mbox{ nm}$
 \end_inset
 
- (magenta vertical dash-and-dot line) the relative localisation error 
+ (magenta vertical dashed-and-dotted line) the relative localisation error
+ 
 \begin_inset Formula $\varepsilon<0.5$
 \end_inset
 
@@ -2539,7 +2552,7 @@ For
 \begin_inset Formula $d>40\mbox{ nm}$
 \end_inset
 
- (blue vertical dash-and-dot line).
+ (blue vertical dashed-and-dotted line).
  The classical resolution limit (radius of the Airy disk) is 
 \begin_inset Formula $\delta=273\mbox{ nm}$
 \end_inset

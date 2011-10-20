@@ -10,21 +10,21 @@ Localisation microscopy (LM) is a conceptually simple and
 accessible technique providing super-resolution fluorescent 
 images[Hess2006, Huang2008, Linde2008, Jones2011]. The structure 
 of the sample is reconstructed by localising individual 
-fluorophores with precision surpassing [Ober2004] the classical 
-resolution limit. \delta=0.61\frac{\lambda}{\mbox{NA}}, where \lambda
- is the wavelength of the emission light and \mbox{NA} is the 
-numerical aperture of the objective lens. LM makes use of the 
-fluorophore transition between bright (ON) and dark (OFF) states 
-to discriminate individual sources separated by a distance d<\delta
-. Super-resolution is achieved by a repetitive localisation of 
-the different individual spatially separated subsets of 
-fluorophores. The number of ON sources in each acquisition frame 
-must be optimised experimentally[Small2009]. A high density of 
-the ON fluorophores results in overlapping sources and 
-complicates localisation whereas a small density leads to a long 
-acquisition time. Standard LM techniques (fPALM [Hess2006], STORM 
-[Rust2006]) control the density of the ON sources by 
-photo-switching.
+fluorophores with precision surpassing the classical resolution 
+limit[Ober2004]. LM makes use of the fluorophore transition 
+between bright (ON) and dark (OFF) states to discriminate 
+individual overlapping source images. Super-resolution is 
+achieved by localisation of the different individual spatially 
+separated subsets of fluorophores. The number of ON sources in 
+each acquisition frame must be optimised experimentally[Small2009]
+. A high density of the ON fluorophores results in overlapping 
+sources and complicates localisation whereas a small density 
+leads to a long acquisition time. Standard LM techniques (fPALM [Hess2006]
+, STORM [Rust2006]) control the density of the ON sources by a 
+stochastic photo-switching and the images of overlapping sources 
+are usually discarded. However, a recently published DAOSTORM 
+algorithm[Holden2011] can deal with moderately overlapping 
+sources. 
 
 Quantum dots (QD) are an order of magnitude brighter compared to 
 the organic dyes used in conventional LM [Jaiswal2004, Resch-Genger2008]
@@ -33,58 +33,62 @@ blinking between ON and OFF states [Stefani2009]. Excellent
 photo-stability, low cyto-toxicity and distinctive spectral 
 properties make QDs very attractive for biological research[Resch-Genger2008]
 . However, the stochastic blinking of QDs is impractical for 
-standard LM because the rate of ON-OFF transitions and hence the 
-density of ON sources is difficult to control. QD labeled data 
-typically consist of highly overlapping sources which cannot be 
-localised with standard LM techniques.
+standard LM because the rate of switching and hence the density 
+of ON sources is difficult to control. QD labeled data typically 
+consist of highly overlapping sources which cannot be localised 
+with standard LM techniques.
+
+Two different ways of exploiting the blinking behaviour of the 
+QDs have been proposed. The first approach is to analyse the 
+higher order statistic of the intensity fluctuation (SOFI[Dertinger2010b]
+) rather than localise the individual sources. It has been shown 
+that this can provide resolution improvement[Dertinger2010b]. The 
+intensity values in the SOFI image, however, reflects the 
+fluctuation behaviour, rather than the strength of the emitters. 
+Sources which do not blink will not appear in the SOFI image[Dertinger2009]
+.  In the second approach, the individual sources are localised. 
+Maximum a-posteriori (MAP) fitting of the positions and the 
+intensities of known point spread functions (PSFs) to blinking 
+QDs has been demonstrated[Harrington2008]. This method, however, 
+requires a prior knowledge about the PSF shape and assumes the 
+PSF to be identical for all emitters. This also apply to the 
+DAOSTORM algorithm[Holden2011] mentioned above. Independent 
+component analysis (ICA) of the blinking data has been used for 
+separating the overlapping sources in order to localise them[Lidke2005]
+. However, ICA model allows negative entries in the individual 
+PSFs and does not account for noise in the measured data which 
+can make recovery of the individual sources difficult in a 
+realistic noisy data (see fig.[fig:Comparison of NMF and ICA] in 
+supplementary materials). 
 
   Methods
 
 We used non-negative matrix factorisation (NMF) [Lee1999] as a 
-natural model for QD data. NMF decomposes a movie of the blinking 
-QDs into spatial and temporal parts (i.e. time independent 
-emission profiles of the individual sources and fluctuating 
-intensities of each emitter, respectively). NMF imposes natural 
-non-negativity constraints on both the spatial and the temporal 
-components. Moreover, we used the NMF algorithm[Lee2001] which 
-maximises the likelihood of the model for data corrupted with 
-Poisson noise.
+natural model for QD data. NMF, similarly to ICA, decomposes a 
+movie of the blinking QDs into spatial and temporal parts (i.e. 
+time independent emission profiles of the individual sources and 
+fluctuating intensities of each emitter, respectively). NMF 
+(unlike ICA) imposes natural non-negativity constraints on both 
+the spatial and the temporal components. Moreover, we used the 
+NMF algorithm[Lee2001] which maximises the likelihood of the 
+model for data corrupted with Poisson noise.
 
 NMF does not put any additional constraints on the shape (point 
 spread function PSF) or blinking behaviour of the individual 
 sources, apart from being non-negative. Therefore NMF can 
 separate overlapping sources of differing shapes and blinking 
-characteristics. Variability in PSFs can, for example, arise in a 
-3D sample where fluorophores can be in different focal depths and 
-therefore each exhibiting a unique PSF.
-
-Some methods exploiting the blinking behaviour of the QDs have 
-been proposed. Independent component analysis (ICA) of the QD 
-data [Lidke2005] is a factorisation method with different set of 
-constrains compared to NMF. ICA allows negative entries and does 
-not account for noise in the measured data which can make 
-recovery of the individual sources difficult from a realistic 
-noisy data (see fig.[fig:Comparison of NMF and ICA] in 
-supplementary materials). Maximum a-posteriori (MAP) fitting of 
-the positions and the intensities of known point spread functions 
-(PSFs) to blinking QDs[Harrington2008] has been demonstrated. 
-This method, however, requires a prior knowledge about the PSF 
-shape and assumes the PSF to be identical for all emitters. This 
-also apply to a recently published DOASTORM algorithm [Holden2011]
- which can deal with overlapping sources. Higher order statistic 
-analysis of the intensity fluctuation (SOFI)[Dertinger2010b] can 
-provide resolution improvement. The intensity of the sources in 
-the SOFI image, however, reflects the fluctuation behaviour 
-rather than the strength of the emitter[Dertinger2009]. Sources 
-which do not show a fluctuation in the intensity will not appear 
-in the SOFI image. Note that NMF can separate a static source 
-from the fluctuating one and the intensity of the sources can be 
-determined from the temporal part. 
+characteristics which is not possible with MAP fitting or 
+DAOSTORM algorithm. Variability in PSFs can, for example, arise 
+in a 3D sample where fluorophores can be in different focal 
+depths and therefore each exhibiting a unique PSF. Note that, 
+contrary to SOFI, NMF can also separate a static source from the 
+fluctuating one and the intensity of the sources can be 
+determined from the temporal part.
 
   Model comparison
 
 The NMF algorithm requires prior knowledge about the number of 
-sources K to be separated. Principal component analysis of the 
+sources (K) to be separated. Principal component analysis of the 
 data (PCA) can be used as a simple method for dimensionality 
 estimation. However, for noisy data the estimation of K is 
 difficult. 
@@ -98,40 +102,42 @@ one component must fit several sources. Therefore a reliable
 estimation of K is vital for a successful separation.
 
 Bayesian treatment of the probabilistic NMF formulation (Gamma - 
-Poisson (GaP) model )[Canny2004] can quantify evidence of 
-particular K for given data. We showed on simulated data that 
-variational approximation of the GaP model[Buntine2006] 
+Poisson GaP model )[Canny2004] can quantify evidence of 
+particular K for given data. However, we showed on simulated data 
+that a variational approximation of the GaP model[Buntine2006] 
 systematically underestimates the values of K (see supplementary 
 materials for details). 
 
 An alternative approach is to analyse the residuals (difference 
-between data and estimated model) for models with different K. 
-Models with low K give rise to correlations in residuals because 
-multiple individual emitters have to be represented with fewer 
-components. Correlations decrease with higher K. We selected the 
-smallest K which reduces the residual correlations to a level 
-where further increase of the K do not decrease the correlations 
-any further. Simulations suggest that this approach can provide 
-most reliable estimation of K compared to PCA and variational 
-GaP. (Details in supplementary materials.)
+between data and the estimated model) for models with different K
+. Models with low K give rise to correlations in the residual 
+pixels because multiple individual emitters have to be 
+represented with fewer components. Correlations decrease with 
+higher K. We selected the smallest K which reduces the residual 
+correlations to a level where further increase of the K do not 
+reduce the correlations any further. 
 
   Results
 
-Tests on simulated data with different densities of ten QDs 
-suggests (see supplementary materials) that the analysis of the 
-residuals in correlations provides the most accurate estimate of 
-the number of sources K. We used this method in further 
+Tests on simulated data with ten QDs spread across varying area 
+suggest (see supplementary materials) that the analysis of the 
+pixels correlations in residuals provides most reliable estimate 
+of the number of sources K. We used this method in further 
 computations. 
 
-Simulations of noisy data comprising two QDs show that NMF can 
-reliably separate two close emitters (d>\delta/10) when K_{\mbox{true}}
- is known (K=K_{\mbox{true}}). However, the ability to estimate K 
-correctly becomes increasingly difficult for closely spaced 
-sources. The high correlations in residuals for K<K_{\mbox{true}} 
-arise only when the two sources are separated by at least d>\delta/5
-, where \delta=0.61\lambda/\mbox{NA} is the classical resolution 
-limit (fig. [fig:Localisation precision and maximum correlations]
-). 
+Simulations of noisy data comprising two QDs separated by a 
+distance d and with fluctuating intensity uniformly distributed 
+between 0 and some maximum value (details in supplementary 
+materials) show that when the number of sources is known (here K=2
+) NMF can reliably separate highly overlapping sources (d>\delta/10
+, where \delta=0.61\frac{\lambda}{\mbox{NA}} is the radius of the 
+Airy disk, \lambda is the emission wavelength and \mbox{NA} is 
+the numerical aperture of the objective) without prior knowledge 
+about the shape of the individual PSFs. However, the ability to 
+estimate K correctly becomes increasingly difficult for closely 
+spaced sources. The high correlations in residuals for K<K_{\mbox{true}}
+ arise only when the two sources are separated by at least d>\delta/5
+ (fig. [fig:Localisation precision and maximum correlations]). 
 
   Out of focus PSF
 
@@ -145,45 +151,49 @@ therefore each QD produced a distinctive PSF. As can be seen from
 fig.[fig:Real-QD-data.] individual PSFs were highly overlapping 
 in each frame. 
 
-The number of components was estimated from the analysis of the 
-correlations in residual (fig.[fig:real QD - K estimation]). NMF 
-was able to recover images of individual sources which correspond 
-to realistic out-of-focus PSFs (fig. [fig:Real-QD-data.]). It 
-also recovered sources with PSFs only partially present in the 
-selected region. 
+NMF was able to recover images of individual sources which 
+correspond to realistic out-of-focus PSFs (fig. [fig:real QDs separated]
+). It also recovered sources with PSFs only partially present in 
+the selected region. 
 
   Discussion
 
 We have demonstrated that NMF allows to separate individual 
-emitters from a movie of blinking QDs. The ability to recover 
-PSFs with different shapes from the data with highly overlapping 
-sources makes the method attractive for imaging of 3D samples 
-where fluorophores can be in different focal depths and therefore 
-produce a variety of different PSFs. Diversity in PSFs for 
-individual sources can also arise with aberrations in the optical 
-system. 
+emitters from a time series of blinking QDs. The ability to 
+recover PSFs with different shapes from the data with highly 
+overlapping sources makes the method attractive for imaging of 3D 
+samples where fluorophores can be in different focal depths and 
+therefore produce a variety of different PSFs. This allows for 
+the application of LM to thick samples which are beyond the 
+capability of the 3D STORM[Huang2008] using the astigmatism 
+approach. Diversity in PSFs for individual sources can also arise 
+with aberrations in the optical system. 
 
 Reliable estimation of the number of sources is important for 
 correct recovery of individual components. This is a difficult 
 task for data with a high density of overlapping sources. We 
-demonstrated on simulated data the limitations this imposes on 
-resolution of the method.
+demonstrated the limitations this imposes on the resolution of 
+the method. The situation become easier if the source intensity 
+exhibit switching between ON and OFF states rather then being 
+uniformly distributed over a certain interval (as used in our 
+simulations). Sources with longer OFF time would further 
+facilitate the the separation. 
 
 NMF allows localisation microscopy with blinking QDs, however, 
 NMF is not limited to QDs only. It can separate any source with 
 intermittent intensity as long as the actual fluorophores remain 
-static in space during the acquisition period. A typical data set 
+fixed in space during the acquisition period. A typical data set 
 consists of 10^{3} frames and therefore the acquisition time is 
 typically in order of tens of seconds. During this period the 
-sample must remain still. This is a common limiting factor for 
+sample must not move. This is a common limiting factor for 
 localisation microscopy techniques. However, as NMF can separate 
 overlapping sources it can speed up the acquisition compared to 
 the standard LM techniques[Small2009]. Moreover the possibility 
 of using QDs can make the exposure time shorter because QDs are 
 usually brighter than common organic fluorophores used in LM.
 
-NMF does not take into account the temporal structure of the 
-data. Time frames can be permuted without affecting the separated 
+NMF does not account for the temporal structure of the data. Time 
+frames can be permuted without affecting the separated 
 components. However, there is a clear temporal structure in QDs 
 blinking - the periods of ON and OFF times. Exploiting this 
 information would likely facilitate the factorisation and will be 
@@ -307,8 +317,6 @@ g-i we show that in fact the lower bound already underestimates
 the value of K, so that p({\bf D}|K) would likely peak at even 
 lower values of K and thus systematically underestimate the 
 number of sources.
-
-
 
   Correlations in residuals
 
@@ -445,8 +453,6 @@ ability to estimate K correctly (here for d>50\mbox{ nm}).
 +---------------+------------------------------+------------------------------------------------------------------------------------+
 
 
-
-
 [Table 1:
 Parameters of the simulation<tab:Parameters-of-the-simulation>
 ]
@@ -466,11 +472,13 @@ Parameters of the simulation<tab:Parameters-of-the-simulation>
 [Figure 1:
 Simulated data of two sources (K_{\mbox{true}}=2). The maximum 
 value of correlations in the residuals for K=1 (blue), 2 (green) 
-and 3 (red). Mean localisation error per separation \varepsilon 
-for K=2 (magenta) with fitted curve \propto1/d. The differences 
-in residual correlations for K=1 and K=2 are apparent only when 
-the two sources are separated by at least 50\mbox{ nm}. The 
-classical resolution limit is \delta=273\mbox{ nm}. <fig:Localisation precision and maximum correlations>
+and 3 (red). Relative localisation error \varepsilon for K=2 
+(magenta) with fitted curve \propto1/d. For d>14\mbox{ nm} 
+(magenta vertical dashed-and-dotted line) the relative 
+localisation error \varepsilon<0.5. The differences in residual 
+correlations for K=1 and K=2 are apparent only when d>40\mbox{ nm}
+ (blue vertical dashed-and-dotted line). The classical resolution 
+limit (radius of the Airy disk) is \delta=273\mbox{ nm}. <fig:Localisation precision and maximum correlations>
 ]
 ]
 
