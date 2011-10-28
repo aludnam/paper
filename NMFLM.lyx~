@@ -2534,7 +2534,8 @@ For
 \begin_inset Formula $d>14\mbox{ nm}$
 \end_inset
 
- (magenta vertical dash-and-dot line) the relative localisation error 
+ (magenta vertical dashed-and-dotted line) the relative localisation error
+ 
 \begin_inset Formula $\varepsilon<0.5$
 \end_inset
 
@@ -2551,7 +2552,7 @@ For
 \begin_inset Formula $d>40\mbox{ nm}$
 \end_inset
 
- (blue vertical dash-and-dot line).
+ (blue vertical dashed-and-dotted line).
  The classical resolution limit (radius of the Airy disk) is 
 \begin_inset Formula $\delta=273\mbox{ nm}$
 \end_inset

@@ -403,7 +403,7 @@ key "Dertinger2010b"
 
 \end_inset
 
-) rather than localise the individual sources.
+) rather than localising the individual sources.
  It has been shown that this can provide resolution improvement
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -412,7 +412,7 @@ key "Dertinger2010b"
 \end_inset
 
 .
- The intensity values in the SOFI image, however, reflects the fluctuation
+ The intensity values in the SOFI image, however, reflect the fluctuation
  behaviour, rather than the strength of the emitters.
  Sources which do not blink will not appear in the SOFI image
 \begin_inset CommandInset citation
@@ -444,7 +444,7 @@ key "Harrington2008"
 .
  This method, however, requires a prior knowledge about the PSF shape and
  assumes the PSF to be identical for all emitters.
- This also apply to the DAOSTORM algorithm
+ This also applies to the DAOSTORM algorithm
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Holden2011"
@@ -515,8 +515,8 @@ NMF does not put any additional constraints on the shape (point spread function
  can be in different focal depths and therefore each exhibiting a unique
  PSF.
  Note that, contrary to SOFI, NMF can also separate a static source from
- the fluctuating one and the intensity of the sources can be determined
- from the temporal part.
+ a fluctuating one and the intensity of the sources can be determined from
+ the temporal part.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -631,8 +631,9 @@ Results
 
 \begin_layout Standard
 Tests on simulated data with ten QDs spread across varying area suggest
- (see supplementary materials) that the analysis of the pixels correlations
- in residuals provides most reliable estimate of the number of sources 
+ (see supplementary materials) that the analysis of the pixel correlations
+ in the residuals provides most reliable estimate of the number of sources
+ 
 \begin_inset Formula $K$
 \end_inset
 
@@ -799,9 +800,9 @@ Reliable estimation of the number of sources is important for correct recovery
  of individual components.
  This is a difficult task for data with a high density of overlapping sources.
  We demonstrated the limitations this imposes on the resolution of the method.
- The situation become easier if the source intensity exhibit switching between
- ON and OFF states rather then being uniformly distributed over a certain
- interval (as used in our simulations).
+ The situation become easier if the source intensities exhibit switching
+ between ON and OFF states rather then being uniformly distributed over
+ a certain interval (as used in our simulations).
  Sources with longer OFF time would further facilitate the the separation.
  
 \end_layout
